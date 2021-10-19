@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.themountaineers.mapper.MemberMapper">
+	<!-- 회원 가입  -->
+	<insert id="memberInsert">
+		insert into member(mem_name, mem_id, mem_pwd,
+		mem_email, mem_birth, mem_phone, mem_joindate, 
+		mem_address, mem_img)
+		values
+		(
+			#{mem_name}, #{mem_id}, #{mem_pwd}, #{mem_email}, #{mem_birth}, #{mem_phone}, now(), #{mem_address}, #{mem_img}
+		)
+	</insert>
+	
+	<!-- 회원정보 조회 -->
+	<select id="memberRead" resultType="com.themountaineers.domain.MemberVO">
+		select 
+		mem_id, mem_name, mem_email, mem_birth, 
+		mem_phone, mem_address, mem_img 
+		from member
+		where mem_id = #{mem_id}
+	</select>
+	
+	<!-- 회원정보 수정 -->
+	<update id="memberUpdate">
+		update member
+		set mem_name = #{mem_name}, 
+		mem_email = #{mem_email}, 
+		mem_birth = #{mem_birth}, 
+		mem_phone = #{mem_phone}, 
+		mem_address = #{mem_address}, 
+		mem_img = #{mem_img}
+		where mem_id = #{mem_id}
+	</update>
+	
+	<delete id="memberDelete">
+		delete from member
+		where mem_id = #{mem_id}
+	</delete>
+</mapper>

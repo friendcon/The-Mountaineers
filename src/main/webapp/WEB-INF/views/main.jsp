@@ -2,7 +2,7 @@
 <%@ page session="false" %>
 <html>
 <head>
-	<title>Home</title>
+	<title>The Mountaineers</title>
 	<jsp:include page="common/head.jsp"></jsp:include>
 </head>
 <body>
