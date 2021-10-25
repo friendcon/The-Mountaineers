@@ -7,7 +7,7 @@
 <title>Insert title here</title>
 </head>
 <body>
+	<h3>로그인 성공!</h3>
 	<a href="/">메인으로</a>
-	<a href="/member/login">로그인</a>
 </body>
 </html>

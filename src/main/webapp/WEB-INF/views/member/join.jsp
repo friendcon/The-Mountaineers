@@ -11,15 +11,26 @@
 	<div class="row">
 		<div>
 			<h3>회원가입</h3>
+			<a>일반 회원가입</a><br>
+			<a>소셜회원가입</a><a href="/member/oauth/kakao" target="_blank">
+			<img src="../../resources/img/button/kakao_login_medium_wide.png"></button>
 		</div>
 	</div>
 	<div class="join_content">
 		<div class="row">
+		<form action="/member/new" method="post">
 			아이디 : <input type="text" name="mem_id"><br>
 			비밀번호 : <input type="password" name="mem_pwd"><br>
+			이름: <input type="text" name="mem_name"><br>
 			이메일 : <input type="text" name="mem_email"><br>
-			생년월일 : <input type="text" name="mem_id"><br>
-			<button>일반 회원가입</button>
+			생년월일 : <input type="text" name="mem_birth">
+			<input type="text" name="mem_month"> 
+			<input type="text" name="mem_day"><br>
+			핸드폰번호 : <input type="text" name="mem_phone"><br>
+			주소 : <input type="text" name="mem_address"><br>
+			프로필사진 : <input type="text" name="mem_img"><br>
+			<button type="submit">일반 회원가입</button>
+		</form>
 		</div>
 	</div>
 	<div class="row">
