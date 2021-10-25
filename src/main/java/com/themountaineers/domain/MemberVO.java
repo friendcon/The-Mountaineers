@@ -2,12 +2,12 @@ package com.themountaineers.domain;
 
 
 import java.util.Date;
+import java.util.List;
 
 import lombok.Data;
 
 @Data
 public class MemberVO {
-	private int mem_no;
 	private String mem_name;
 	private String mem_id;
 	private String mem_pwd;
@@ -17,4 +17,8 @@ public class MemberVO {
 	private String mem_joindate;
 	private String mem_address;
 	private String mem_img;
+	private String mem_month;
+	private String mem_day;
+	
+	private List<AuthVO> authList;
 }

@@ -26,12 +26,42 @@ public class MemberController {
 	@Setter(onMethod_ = @Autowired)
 	private MemberService service;
 	
+	@GetMapping("/oauth/kakao")
+	public void memberOAuthKakao() {
+		
+	}
+	
+	// 회원 권한 거부시 이동 페이지
+	@GetMapping("/login")
+	public void memberLogin(String error, String logout, Model model) {
+		log.info("********** member login **********");
+		log.info("********** error : " + error + " **********");
+		log.info("********** logout : " + logout + " **********");
+		
+		if(error != null) {
+			model.addAttribute("error", "Login Error ! 계정을 확인하세요");
+		} 
+		
+		if(logout != null) {
+			model.addAttribute("logout", "Logout !");
+		}
+	}
+	
+	@GetMapping("/logout")
+	public void memberLogout(){
+		log.info("********** member logout **********");
+	}
+	
 	// 회원가입 관련 페이지
 	@GetMapping("/join")
 	public void memberJoin() {
 		log.info("********** member join page **********");
 	}
 	
+	@GetMapping("/loginsuccess") 
+	public void memberLoginSuccess() {
+		log.info("********** login success **********");
+	}
 	@PostMapping("/new")
 	public String memberJoin(MemberVO member) {
 		log.info("********** member join post **********");

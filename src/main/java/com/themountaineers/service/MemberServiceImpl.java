@@ -1,6 +1,7 @@
 package com.themountaineers.service;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import com.themountaineers.domain.MemberVO;
@@ -18,9 +19,13 @@ public class MemberServiceImpl implements MemberService {
 	@Setter(onMethod_ = @Autowired)
 	private MemberMapper mapper;
 	
+	@Setter(onMethod_ = @Autowired)
+	private BCryptPasswordEncoder encoder;
+	
 	@Override
 	public int memberjoin(MemberVO member) {
-		return mapper.memberInsert(member);
+		member.setMem_pwd(encoder.encode(member.getMem_pwd()));
+		return mapper.memberInsert(member) * mapper.memberAuthInsert(member.getMem_id());
 	}
 
 	@Override
