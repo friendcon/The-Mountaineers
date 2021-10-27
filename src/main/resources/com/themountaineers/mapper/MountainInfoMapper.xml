@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.themountaineers.mapper.MountainInfoMapper">
+	
+	<insert id="insert" parameterType="com.themountaineers.domain.MountainInfoVO">
+		insert into mountain_info (
+		mntilistno,mntiname,mntidetails,mntiadminnum,mntiadd,mntihigh
+		)
+		values(
+		#{mntilistno},
+		#{mntiname},
+		#{mntidetails},
+		#{mntiadminnum},
+		#{mntiadd},
+		#{mntihigh}
+		)
+	</insert>
+	
+	<select id="count" resultType="int">
+		select count(*) 
+		from mountain_info
+	</select>
+	
+	<insert id="insertImg" parameterType="com.themountaineers.domain.MountainInfoImgVO">
+		insert into mountain_info_img(
+		mntilistno,mnti_i_name,mnti_i_route
+		)
+		values(
+		#{mntilistno},
+		#{mnti_i_name},
+		#{mnti_i_route}
+		)
+	</insert>
+	
+
+</mapper>
