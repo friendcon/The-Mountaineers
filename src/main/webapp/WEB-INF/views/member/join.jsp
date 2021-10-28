@@ -6,6 +6,8 @@
 	<title>The Mountaineers | 회원가입 </title>
 	<jsp:include page="../common/head.jsp"></jsp:include>
 	<link href="../../resources/css/member/join.css" rel="stylesheet" type="text/css">
+	<jsp:include page="../common/script.jsp"></jsp:include>
+	<script type="text/javascript" src="../../resources/js/member/joinpage.js"></script>
 </head>
 <body>
 	<jsp:include page="../common/header.jsp"></jsp:include>
@@ -39,21 +41,11 @@
 				
 				<div>
 					<h3>
-						<label for="mem_profile">프로필사진</label>
+						<label for="mem_pwd_check">비밀번호 확인</label>
 					</h3>
-					<div class="profile_wrap">
-						<div class="profile_path">
-							<span class="box">
-								<input type="text" id="mem_profile" name="mem_img" class="int">
-							</span>
-						</div>
-						<div class="profile_button">
-							<span>
-							<!-- <span class="box"> -->
-								<input class="int" id="file_button" type="button" value="프로필 사진 첨부">
-							</span>
-						</div>
-					</div>
+					<span class="box">
+						<input type="password" id="mem_pwd_check" name="mem_pwd_check" class="int" maxlength="30">
+					</span>
 					<span class="error_next_box"></span>
 				</div>
 				
@@ -137,6 +129,27 @@
 						<input type="text" id="mem_address" name="mem_address" class="int" maxlength="50"
 						placeholder="주소 입력">
 					</span>
+					<span class="error_next_box"></span>
+				</div>
+				
+				
+				<div>
+					<h3>
+						<label for="mem_profile">프로필사진</label>
+					</h3>
+					<div class="profile_wrap">
+						<div class="profile_path">
+							<span class="box">
+								<input type="text" id="mem_profile" name="mem_img" class="int">
+							</span>
+						</div>
+						<div class="profile_button">
+							<span>
+								<label class="int" for="file_hidden" id="file_button">프로필 사진 첨부</label>
+								<input class="int" id="file_hidden" type="file" multiple>
+							</span>
+						</div>
+					</div>
 					<span class="error_next_box"></span>
 				</div>
 				

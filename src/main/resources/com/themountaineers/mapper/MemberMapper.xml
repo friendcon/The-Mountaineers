@@ -14,7 +14,7 @@
 		<result property="mem_phone" column="mem_phone"/>
 		<result property="mem_joindate" column="mem_joindate"/>
 		<result property="mem_address" column="mem_address"/>
-		<result property="mem_img" column="mem_img"/>
+		<!-- <result property="mem_img" column="mem_img"/> -->
 		<result property="mem_month" column="mem_month"/>
 		<result property="mem_day" column="mem_day"/>
 		<collection property="authList" resultMap="authMap" />
@@ -29,11 +29,11 @@
 	<insert id="memberInsert">
 		insert into member(mem_name, mem_id, mem_pwd,
 		mem_email, mem_birth, mem_phone, mem_joindate, 
-		mem_address, mem_img, mem_month, mem_day)
+		mem_address, mem_month, mem_day)
 		values
 		(
 			#{mem_name}, #{mem_id}, #{mem_pwd}, #{mem_email}, #{mem_birth}, 
-			#{mem_phone}, now(), #{mem_address}, #{mem_img}, #{mem_month}, #{mem_day}
+			#{mem_phone}, now(), #{mem_address}, #{mem_month}, #{mem_day}
 		)
 	</insert>
 	
@@ -41,7 +41,7 @@
 	<select id="memberRead" resultType="com.themountaineers.domain.MemberVO" resultMap="memberMap">
 		select 
 		mem.mem_id, mem_pwd, mem_name, mem_email, mem_birth, mem_joindate,
-		mem_phone, mem_address, mem_img, mem_month, mem_day, a.auth
+		mem_phone, mem_address, mem_month, mem_day, a.auth
 		from member mem
 		left outer join auth a 
 		on a.mem_id = mem.mem_id
@@ -59,14 +59,6 @@
 			#{mem_id}, 'ROLE_MEMBER'
 		)
 	</insert>
-	
-	<!-- 회원 패스워드 조회 -->
-	<!-- <select id="memberPwRead" resultType="String">
-		select
-		mem_pwd
-		from member
-		where mem_no = #{mem_no}
-	</select> -->
 	
 	<!-- 회원정보 수정 -->
 	<!-- <update id="memberUpdate">

@@ -33,7 +33,7 @@ public class MemberServiceTests {
 		member.setMem_email("sleep1015@gmail.com");
 		member.setMem_phone("010-1234-5678");
 		member.setMem_birth("1999");
-		member.setMem_img("c://user");
+		//member.setMem_img("c://user");
 		member.setMem_address("¼­¿ï½Ã");
 		member.setMem_month("12");
 		member.setMem_day("25");

@@ -16,7 +16,6 @@ public class MemberVO {
 	private String mem_phone;
 	private String mem_joindate;
 	private String mem_address;
-	private String mem_img;
 	private String mem_month;
 	private String mem_day;
 	

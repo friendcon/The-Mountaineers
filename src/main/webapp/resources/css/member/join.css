@@ -86,16 +86,16 @@ h3 {
 	padding-left: 10px;
 }
 
-#file_button {
+/* #file_button {
 	background-color: #028651;
 	height: 50px;
 	color: white;
     font-weight: 400;
-}
+} */
 
 .error_next_box {
     margin-top: 9px;
-    font-size: 12px;
+    font-size: 15px;
     color: red;    
     display: none;
 }
@@ -106,7 +106,7 @@ h3 {
 
 #joinButton {
     width: 100%;
-    padding: 21px 0 17px;
+    padding: 17px 0 17px;
 
     border: 0;
     cursor: pointer;
@@ -114,6 +114,7 @@ h3 {
     background-color: #028651;
     font-size: 20px;
     font-weight: 400;
+    margin-bottom: 50px;
 }
 
 select {
@@ -128,4 +129,18 @@ select {
     border: none;
     cursor: default;
 }
+
+#file_hidden {
+	visibility: hidden;
+}
+
+#file_button {
+	background-color: #028651;
+	padding-top: 15px;
+	height: 50px;
+	color: white;
+    font-weight: 400;
+    text-align: center;
+}
+
 
