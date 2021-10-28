@@ -88,7 +88,7 @@
                 </ul>
             </div>
         </div>
-        <!--ㅎㅎㅎ  ㅀㅎㅎ-->
+        <!--ㅎㅎㅎ  ㅀㅎㅎ ㅎㅎㅎㅎ-->
         <div class="row property__gallery">
             <div class="col-lg-3 col-md-4 col-sm-6 mix women">
                 <div class="product__item">
