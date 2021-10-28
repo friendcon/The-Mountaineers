@@ -28,7 +28,7 @@ public class MainController {
 
 	@RequestMapping(value = { "/", "/main" }, method = RequestMethod.GET)
 	public String Main(Model model) {
-
+//ㅎㅎㅎ
 		if (service.count() == 0) {
 			int page = 1; // 페이지 초기값
 			try {
