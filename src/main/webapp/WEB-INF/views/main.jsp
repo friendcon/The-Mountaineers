@@ -16,7 +16,7 @@
                     <div class="categories__item categories__large__item set-bg"
                     data-setbg="/resources/img/categories/category-1.jpg">
                     <div class="categories__text">
-                        <h1>Women’s fashion</h1>
+                        <h1>Womenâs fashion</h1>
                         <p>Sitamet, consectetur adipiscing elit, sed do eiusmod tempor incidid-unt labore
                         edolore magna aliquapendisse ultrices gravida.</p>
                         <a href="#">Shop now</a>
@@ -28,7 +28,7 @@
                     <div class="col-lg-6 col-md-6 col-sm-6 p-0">
                         <div class="categories__item set-bg" data-setbg="/resources/img/categories/category-2.jpg">
                             <div class="categories__text">
-                                <h4>Men’s fashion</h4>
+                                <h4>Menâs fashion</h4>
                                 <p>358 items</p>
                                 <a href="#">Shop now</a>
                             </div>
@@ -37,7 +37,7 @@
                     <div class="col-lg-6 col-md-6 col-sm-6 p-0">
                         <div class="categories__item set-bg" data-setbg="/resources/img/categories/category-3.jpg">
                             <div class="categories__text">
-                                <h4>Kid’s fashion</h4>
+                                <h4>Kidâs fashion</h4>
                                 <p>273 items</p>
                                 <a href="#">Shop now</a>
                             </div>
@@ -80,14 +80,15 @@
             <div class="col-lg-8 col-md-8">
                 <ul class="filter__controls">
                     <li class="active" data-filter="*">All</li>
-                    <li data-filter=".women">Women’s</li>
-                    <li data-filter=".men">Men’s</li>
-                    <li data-filter=".kid">Kid’s</li>
+                    <li data-filter=".women">Womenâs</li>
+                    <li data-filter=".men">Menâs</li>
+                    <li data-filter=".kid">Kidâs</li>
                     <li data-filter=".accessories">Accessories</li>
                     <li data-filter=".cosmetic">Cosmetics</li>
                 </ul>
             </div>
         </div>
+        <!--ㅎㅎㅎ  -->
         <div class="row property__gallery">
             <div class="col-lg-3 col-md-4 col-sm-6 mix women">
                 <div class="product__item">
