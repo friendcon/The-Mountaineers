@@ -4,6 +4,7 @@ import lombok.Data;
 
 @Data
 public class MountainInfoVO {
+	private int mntino;
 	private int mntilistno;
 	private String mntiname;
 	private String mntidetails;

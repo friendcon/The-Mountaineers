@@ -34,5 +34,19 @@
 		)
 	</insert>
 	
+	<select id="list" resultType="com.themountaineers.domain.MountainInfoVO">
+		<![CDATA[
+		SELECT mntino,mntilistno,mntiname,mntidetails,mntiadminnum,mntiadd,mntihigh
+		FROM mountain_info
+		ORDER BY mntino
+		LIMIT #{pageStart}, #{perPageNum}	
+		]]>
+	</select>
+	
+	<select id="listImg" resultType="com.themountaineers.domain.MountainInfoImgVO">
+		SELECT mntilistno,mnti_i_route
+		FROM mountain_info_img
+	</select>
+	
 
 </mapper>

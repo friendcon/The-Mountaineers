@@ -6,5 +6,5 @@ import lombok.Data;
 public class MountainInfoImgVO {
 	private String mntilistno;
 	private String mnti_i_name;
-	private String mnti_i_route;	
+	private String mnti_i_route;
 }

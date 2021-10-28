@@ -1,7 +1,10 @@
 package com.themountaineers.service;
 
+import java.util.List;
+
 import org.springframework.stereotype.Service;
 
+import com.themountaineers.domain.Criteria;
 import com.themountaineers.domain.MountainInfoImgVO;
 import com.themountaineers.domain.MountainInfoVO;
 import com.themountaineers.mapper.MountainInfoMapper;
@@ -30,6 +33,16 @@ public class MountainInfoImple implements MountainInfoService{
 	@Override
 	public int insertImg(MountainInfoImgVO vo) {
 		return mapper.insertImg(vo);
+	}
+
+	@Override
+	public List<MountainInfoVO> list(Criteria cri) {
+		return mapper.list(cri);
+	}
+
+	@Override
+	public List<MountainInfoImgVO> listImg() {
+		return mapper.listImg();
 	}
 
 }

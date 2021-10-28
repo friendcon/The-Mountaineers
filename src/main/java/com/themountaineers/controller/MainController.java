@@ -65,6 +65,8 @@ public class MainController {
 						vo.setMntiadd(getTagValue("mntiadd", eElement));
 						vo.setMntihigh(getTagValue("mntihigh", eElement));
 
+						service.insert(vo);
+						
 						String x=getTagValue("mntilistno", eElement);
 
 						String url2 = "http://apis.data.go.kr/1400000/service/cultureInfoService/mntInfoImgOpenAPI?mntiListNo="
@@ -96,10 +98,7 @@ public class MainController {
 								voimg.setMnti_i_route("https://www.forest.go.kr/images/data/down/mountain/"+getTagValue("imgfilename", eElement2));
 								
 								service.insertImg(voimg);
-//								
-//								log.info("이미지:" + getTagValue("imgfilename", eElement2));
-//								log.info("이미지 산이름:" + getTagValue("imgname", eElement2));
-//								log.info("이미지 산 번호:" + getTagValue("imgno", eElement2));
+
 							}
 						} else {
 							log.info("이미지 없음");
@@ -110,7 +109,7 @@ public class MainController {
 
 					page++;
 					log.info("page number : " + page);
-					if (page > 5) {
+					if (page > 470) {
 						break;
 					}
 				} // while end
