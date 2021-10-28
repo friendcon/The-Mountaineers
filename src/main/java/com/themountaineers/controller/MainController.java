@@ -25,16 +25,16 @@ import lombok.extern.log4j.Log4j;
 public class MainController {
 
 	private MountainInfoService service;
-//¤¾¤¾
+//ã…ã…
 	@RequestMapping(value = { "/", "/main" }, method = RequestMethod.GET)
 	public String Main(Model model) {
-//¤¾¤¾¤¾
+//ã…ã…ã…
 		if (service.count() == 0) {
-			int page = 1; // ÆäÀÌÁö ÃÊ±â°ª
+			int page = 1; // í˜ì´ì§€ ì´ˆê¸°ê°’
 			try {
 				while (true) {
-					// log.info("ÆäÀÌÁö ¹øÈ£ ¸î¹ø"+page);
-					// parsingÇÒ url ÁöÁ¤(API Å° Æ÷ÇÔÇØ¼­)
+					// log.info("í˜ì´ì§€ ë²ˆí˜¸ ëª‡ë²ˆ"+page);
+					// parsingí•  url ì§€ì •(API í‚¤ í¬í•¨í•´ì„œ)
 					String url = "http://apis.data.go.kr/1400000/service/cultureInfoService/mntInfoOpenAPI?serviceKey=B9teqawS%2BW6wyM%2Bfz1XRrGd4aRFEyNVe0eTEHjSYgd%2FCq4kVruxy3KkWhgf4WtaMdEG%2FqnKCXqb2B7M9o7DwXA%3D%3D&pageNo="
 							+ page;
 
@@ -47,16 +47,16 @@ public class MainController {
 					// System.out.println("Root element :" +
 					// doc.getDocumentElement().getNodeName());
 
-					// ÆÄ½ÌÇÒ tag
+					// íŒŒì‹±í•  tag
 					NodeList nList = doc.getElementsByTagName("item");
-					System.out.println("ÆÄ½ÌÇÒ ¸®½ºÆ® ¼ö : " + nList.getLength());
+					System.out.println("íŒŒì‹±í•  ë¦¬ìŠ¤íŠ¸ ìˆ˜ : " + nList.getLength());
 
 					for (int temp = 0; temp < nList.getLength(); temp++) {
 						Node nNode = nList.item(temp);
 
 						Element eElement = (Element) nNode;
 
-						log.info("µî·Ï »êÀÌ¸§  : " + getTagValue("mntiname", eElement));
+						log.info("ë“±ë¡ ì‚°ì´ë¦„  : " + getTagValue("mntiname", eElement));
 						MountainInfoVO vo = new MountainInfoVO();
 						vo.setMntilistno(Integer.parseInt(getTagValue("mntilistno", eElement)));
 						vo.setMntiname(getTagValue("mntiname", eElement));
@@ -83,9 +83,9 @@ public class MainController {
 						// System.out.println("Root element :" +
 						// doc.getDocumentElement().getNodeName());
 
-						// ÆÄ½ÌÇÒ tag
+						// íŒŒì‹±í•  tag
 						NodeList nListImg = doc2.getElementsByTagName("item");
-						log.info("ÆÄ½ÌÇÒ ÀÌ¹ÌÁö ¼ö : " + nListImg.getLength());
+						log.info("íŒŒì‹±í•  ì´ë¯¸ì§€ ìˆ˜ : " + nListImg.getLength());
 
 						if (nListImg.getLength() != 0) {
 							for (int temp2 = 0; temp2 < nListImg.getLength(); temp2++) {
@@ -101,7 +101,7 @@ public class MainController {
 
 							}
 						} else {
-							log.info("ÀÌ¹ÌÁö ¾øÀ½");
+							log.info("ì´ë¯¸ì§€ ì—†ìŒ");
 						}
 
 					} // for end
@@ -124,7 +124,7 @@ public class MainController {
 
 	}
 
-	// tag°ªÀÇ Á¤º¸¸¦ °¡Á®¿À´Â ¸Ş¼Òµå
+	// tagê°’ì˜ ì •ë³´ë¥¼ ê°€ì ¸ì˜¤ëŠ” ë©”ì†Œë“œ
 	private static String getTagValue(String tag, Element eElement) {
 		NodeList nlList = eElement.getElementsByTagName(tag).item(0).getChildNodes();
 		Node nValue = (Node) nlList.item(0);
@@ -133,3 +133,4 @@ public class MainController {
 		return nValue.getNodeValue();
 	}
 }
+
