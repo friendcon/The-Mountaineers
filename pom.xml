@@ -183,7 +183,7 @@
 		    <artifactId>spring-test</artifactId>
 		    <version>${org.springframework-version}</version>
 		</dependency>
-		
+    
 		<!-- 스프링 시큐리티 부분 -->
 		<!-- https://mvnrepository.com/artifact/org.springframework.security/spring-security-web -->
 		<dependency>
@@ -212,6 +212,13 @@
 			<artifactId>spring-security-taglibs</artifactId>
 			<version>5.0.6.RELEASE</version>
 		</dependency>
+
+		<dependency>
+		    <groupId>org.jsoup</groupId>
+		    <artifactId>jsoup</artifactId>
+		    <version>1.13.1</version>
+		</dependency>     
+		   
 		        
 	</dependencies>
     <build>
