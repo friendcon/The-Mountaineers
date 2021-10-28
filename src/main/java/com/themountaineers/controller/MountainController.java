@@ -30,7 +30,7 @@ public class MountainController {
 		model.addAttribute("list", service.list(cri));
 		model.addAttribute("pageMaker", pageMaker);
 		model.addAttribute("listImg",service.listImg());
-		
+		//¤¾¤¾
 	}
 	
 }
