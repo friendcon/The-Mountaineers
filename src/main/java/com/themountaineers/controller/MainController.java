@@ -25,7 +25,7 @@ import lombok.extern.log4j.Log4j;
 public class MainController {
 
 	private MountainInfoService service;
-
+//ぞぞ
 	@RequestMapping(value = { "/", "/main" }, method = RequestMethod.GET)
 	public String Main(Model model) {
 //ぞぞぞ
