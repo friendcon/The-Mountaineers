@@ -1,5 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib uri="http://www.springframework.org/security/tags" prefix="security" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -12,9 +14,9 @@
 <body>
 	<jsp:include page="../common/header.jsp"></jsp:include>
 	
-	<div class="container mt-5">
-		<div id="logo" >
-			<a><img src="/resources/img/greenlogo.JPG"></a>
+	<div class="container mt-4">
+		<div class="mb-3" id="logo">
+			<a><img src="/resources/img/TheMountaineers.png"></a>
 		</div>
 		<div id="join-content" class="content center-block mb-5">
 			<form action="/member/new" method="post">
