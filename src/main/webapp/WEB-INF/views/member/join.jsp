@@ -26,7 +26,7 @@
 						<input type="text" id="mem_id" name="mem_id" class="int" maxlength="30">
 						<span class="step_url">@themountaineers.com</span>
 					</span>
-					<span class="error_next_box"></span>
+					<div class="error_next_box"></div>
 				</div>
 				
 				<div>
@@ -36,7 +36,7 @@
 					<span class="box">
 						<input type="password" id="mem_pwd" name="mem_pwd" class="int" maxlength="30">
 					</span>
-					<span class="error_next_box"></span>
+					<div class="error_next_box"></div>
 				</div>
 				
 				<div>
@@ -46,7 +46,7 @@
 					<span class="box">
 						<input type="password" id="mem_pwd_check" name="mem_pwd_check" class="int" maxlength="30">
 					</span>
-					<span class="error_next_box"></span>
+					<div class="error_next_box"></div>
 				</div>
 				
 				<div>
@@ -56,7 +56,7 @@
 					<span class="box">
 						<input type="text" id="mem_name" name="mem_name" class="int" maxlength="30">
 					</span>
-					<span class="error_next_box"></span>
+					<div class="error_next_box"></div>
 				</div>
 				
 				<div>
@@ -96,7 +96,7 @@
 							</span>
 						</div>
 					</div>
-					<span class="error_next_box"></span>
+					<div class="error_next_box"></div>
 				</div>
 				
 				<div>
@@ -105,9 +105,9 @@
 					</h3>
 					<span class="box">
 						<input type="text" id="mem_phone" name="mem_phone" class="int" maxlength="13"
-						placeholder="전화번호 입력">
+						placeholder="전화번호 입력(010-0000-0000 형식으로 입력하세요)">
 					</span>
-					<span class="error_next_box"></span>
+					<div class="error_next_box"></div>
 				</div>
 				
 				<div>
@@ -118,7 +118,7 @@
 						<input type="text" id="mem_email" name="mem_email" class="int" maxlength="50"
 						placeholder="이메일 입력">
 					</span>
-					<span class="error_next_box"></span>
+					<div class="error_next_box"></div>
 				</div>
 				
 				<div>
@@ -129,7 +129,7 @@
 						<input type="text" id="mem_address" name="mem_address" class="int" maxlength="50"
 						placeholder="주소 입력">
 					</span>
-					<span class="error_next_box"></span>
+					<div class="error_next_box"></div>
 				</div>
 				
 				
@@ -150,7 +150,7 @@
 							</span>
 						</div>
 					</div>
-					<span class="error_next_box"></span>
+					<div class="error_next_box"></div>
 				</div>
 				
 				<div class="btn_area">

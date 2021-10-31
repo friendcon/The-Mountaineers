@@ -5,6 +5,7 @@ import javax.xml.parsers.DocumentBuilderFactory;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.w3c.dom.Document;
@@ -23,18 +24,21 @@ import lombok.extern.log4j.Log4j;
 @Log4j
 @AllArgsConstructor
 public class MainController {
-
-	private MountainInfoService service;
-//ㅎㅎ
+	@RequestMapping( value = {"/"}, method = RequestMethod.GET)
+	public String Main() {
+		return "main";
+	}
+/*	private MountainInfoService service;
+//�뀕�뀕
 	@RequestMapping(value = { "/", "/main" }, method = RequestMethod.GET)
 	public String Main(Model model) {
-//ㅎㅎㅎ
+//�뀕�뀕�뀕
 		if (service.count() == 0) {
-			int page = 1; // 페이지 초기값
+			int page = 1; // �럹�씠吏� 珥덇린媛�
 			try {
 				while (true) {
-					// log.info("페이지 번호 몇번"+page);
-					// parsing할 url 지정(API 키 포함해서)
+					// log.info("�럹�씠吏� 踰덊샇 紐뉖쾲"+page);
+					// parsing�븷 url 吏��젙(API �궎 �룷�븿�빐�꽌)
 					String url = "http://apis.data.go.kr/1400000/service/cultureInfoService/mntInfoOpenAPI?serviceKey=B9teqawS%2BW6wyM%2Bfz1XRrGd4aRFEyNVe0eTEHjSYgd%2FCq4kVruxy3KkWhgf4WtaMdEG%2FqnKCXqb2B7M9o7DwXA%3D%3D&pageNo="
 							+ page;
 
@@ -47,16 +51,16 @@ public class MainController {
 					// System.out.println("Root element :" +
 					// doc.getDocumentElement().getNodeName());
 
-					// 파싱할 tag
+					// �뙆�떛�븷 tag
 					NodeList nList = doc.getElementsByTagName("item");
-					System.out.println("파싱할 리스트 수 : " + nList.getLength());
+					System.out.println("�뙆�떛�븷 由ъ뒪�듃 �닔 : " + nList.getLength());
 
 					for (int temp = 0; temp < nList.getLength(); temp++) {
 						Node nNode = nList.item(temp);
 
 						Element eElement = (Element) nNode;
 
-						log.info("등록 산이름  : " + getTagValue("mntiname", eElement));
+						log.info("�벑濡� �궛�씠由�  : " + getTagValue("mntiname", eElement));
 						MountainInfoVO vo = new MountainInfoVO();
 						vo.setMntilistno(Integer.parseInt(getTagValue("mntilistno", eElement)));
 						vo.setMntiname(getTagValue("mntiname", eElement));
@@ -83,9 +87,9 @@ public class MainController {
 						// System.out.println("Root element :" +
 						// doc.getDocumentElement().getNodeName());
 
-						// 파싱할 tag
+						// �뙆�떛�븷 tag
 						NodeList nListImg = doc2.getElementsByTagName("item");
-						log.info("파싱할 이미지 수 : " + nListImg.getLength());
+						log.info("�뙆�떛�븷 �씠誘몄� �닔 : " + nListImg.getLength());
 
 						if (nListImg.getLength() != 0) {
 							for (int temp2 = 0; temp2 < nListImg.getLength(); temp2++) {
@@ -101,7 +105,7 @@ public class MainController {
 
 							}
 						} else {
-							log.info("이미지 없음");
+							log.info("�씠誘몄� �뾾�쓬");
 						}
 
 					} // for end
@@ -124,13 +128,13 @@ public class MainController {
 
 	}
 
-	// tag값의 정보를 가져오는 메소드
+	// tag媛믪쓽 �젙蹂대�� 媛��졇�삤�뒗 硫붿냼�뱶
 	private static String getTagValue(String tag, Element eElement) {
 		NodeList nlList = eElement.getElementsByTagName(tag).item(0).getChildNodes();
 		Node nValue = (Node) nlList.item(0);
 		if (nValue == null)
 			return null;
 		return nValue.getNodeValue();
-	}
+	}*/
 }
 
