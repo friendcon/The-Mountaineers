@@ -52,20 +52,12 @@
 				<span>|</span>
 				<a>비밀번호 찾기</a>
 				<span>|</span>
-				<a>회원가입</a>
+				<a href="/member/join">회원가입</a>
 			</div>
 			<div>
 				<hr>
 			</div>
 		</div>
 	</div>
-	
-	
-	
-	<!-- <form action="/login" method="post">
-		아이디 : <input type="text" name="username"><br>
-		비밀번호 : <input type="password" name="password"><br>
-		<button type="submit">로그인</button>
-	</form> -->
 </body>
 </html>

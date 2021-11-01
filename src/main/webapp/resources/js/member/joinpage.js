@@ -12,24 +12,55 @@ $(document).ready(function(){
 	var phone = $("#mem_phone");
 	var email = $("#mem_email");
 	
+	// 중복 아이디 체크
+	function checkDuplicateId(memberId) {
+		var result;
+		console.log(memberId);
+		$.ajax({
+			type: "get",
+			url:  "/member/idCheck",
+			dataType: "text",
+			data: {
+				id : memberId
+			},
+			async:false,
+			success: function(data) {
+				console.log("ss"+data);
+				result = data;
+			},
+			error: function(request, status, error){
+				alert("code:"+request.status+"\n"+"message:"+request.responseText+"\n"+"error:"+error);
+				console.log("error");
+			}
+		});
+		console.log(result);
+		return result;
+	}
+	
 	function checkMemberId() {
 		
-		var idPattern = /[a-z0-9-_]{5,20}/;
+		var idPattern = /^[a-z0-9-_]{5,20}/;
+
+		var same_id_message = "이미 사용중인 아이디입니다.";
 		var null_message = "아이디를 입력해주세요.";
 		var fail_message = "5~20자의 영어 소문자, 숫자와 특수기호(_, -) 만 사용 가능합니다.";
 		var success_message = "사용가능한 아이디입니다.";
 
-		if(id.val() == "") {
-			error[0].append(null_message);
+		if(checkDuplicateId(id.val()) == "notavailable") {
+			error[0].append(same_id_message);
 			id.parent("span").next().css("color", "red");
-		} else if(!idPattern.test(id.val())) {
-			error[0].append(fail_message);
-			id.parent("span").next().css("color", "red");
-		} else if(idPattern.test(id.val())) {
-			error[0].append(success_message);
-			id.parent("span").next().css("color", "#028651");
+		} else if(checkDuplicateId(id.val()) == "available"){
+			if(id.val() == "") {
+				error[0].append(null_message);
+				id.parent("span").next().css("color", "red");
+			} else if(!idPattern.test(id.val())) {
+				error[0].append(fail_message);
+				id.parent("span").next().css("color", "red");
+			} else if(idPattern.test(id.val())) {
+				error[0].append(success_message);
+				id.parent("span").next().css("color", "#028651");
+			}
 		}
-		
 	}
 	
 	function checkMemberPwd() {

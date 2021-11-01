@@ -7,4 +7,5 @@ public interface MemberService {
 	public MemberVO memberRead(String memberId);
 	public int memberModify(MemberVO member);
 	public int memberDelete(String memberId);
+	public String memberIdCheck(String memberId);
 }
