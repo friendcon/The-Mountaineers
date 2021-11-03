@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.themountaineers.mapper.ProfileMapper">
+	<insert id="profileInsert">
+		insert into profile 
+		(mem_id, profile_path, profile_name, profile_type)
+		values (#{mem_id}, #{profile_path}, #{profile_name}, #{profile_type})
+	</insert>
+	
+	<select id="profileCheck" resultType="String">
+		select mem_id from profile
+		where mem_id = #{mem_id}
+	</select>
+	
+	<update id="profileUpdate">
+		update profile
+		set profile_path = #{profile_path},
+		profile_name = #{profile_name},
+		profile_type = #{profile_type}
+		where mem_id = #{mem_id}
+	</update>
+</mapper>

@@ -85,6 +85,9 @@ public class MemberController {
 	public String memberJoin(MemberVO member) {
 		log.info("********** member join post **********");
 		log.info(member);
+		if(member.getProfile() != null){
+			log.info(member.getProfile());
+		}
 		log.info(service.memberjoin(member));
 		return "redirect:/member/fin";
 	}

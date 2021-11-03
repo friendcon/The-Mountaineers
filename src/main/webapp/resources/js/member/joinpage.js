@@ -1,5 +1,6 @@
 $(document).ready(function(){	
 	
+	// 회원가입
 	var error = $(".error_next_box"); // 에러 박스 배열
 	var id = $("#mem_id");
 	var pwd = $("#mem_pwd");
@@ -7,15 +8,16 @@ $(document).ready(function(){
 	var name = $("#mem_name");
 	var year = $("#mem_birth");
 	var month = $("#mem_month");
-	//var month_val = $("#mem_month option:selected").val();
 	var day = $("#mem_day");
 	var phone = $("#mem_phone");
 	var email = $("#mem_email");
-	
+	var formObject = $("form[role='form']");
+	var profile = $("input[type='file']");
+
 	// 중복 아이디 체크
 	function checkDuplicateId(memberId) {
 		var result;
-		console.log(memberId);
+		
 		$.ajax({
 			type: "get",
 			url:  "/member/idCheck",
@@ -25,18 +27,17 @@ $(document).ready(function(){
 			},
 			async:false,
 			success: function(data) {
-				console.log("ss"+data);
 				result = data;
 			},
 			error: function(request, status, error){
 				alert("code:"+request.status+"\n"+"message:"+request.responseText+"\n"+"error:"+error);
-				console.log("error");
 			}
 		});
-		console.log(result);
+		
 		return result;
 	}
 	
+	// 아이디 체크 : 중복 & 아이디 정규표현식
 	function checkMemberId() {
 		
 		var idPattern = /^[a-z0-9-_]{5,20}/;
@@ -143,30 +144,23 @@ $(document).ready(function(){
 		var month_val = $("#mem_month option:selected").val();
 
 		if(day.val() == "" || month_val == "월") {
-			console.log(day.val());
 			error[4].append(null_message);
 			$("#birth_wrap").next().css("color", "red");
 		} else if(month_val == 2){
 			if((year.val()%4 == 0) && (year.val() % 100 != 0) && (year.val() % 400 == 0)) {
 				if(day.val() > 29){
-					console.log("윤년");
 					error[4].append(fail_message);
 				}
 			} else {
-				console.log("윤년아님");
 				if(day.val() > 28){
 					error[4].append(fail_message);
 				}
 			}
 		} else if(set30.has(day.val())) {
-			console.log("30일");
 			if(day > 30) {
 				error[4].append(fail_message);
 			} 
 		} else {
-			console.log("31일");
-			console.log(month_val);
-			console.log(day.val());
 			if(day.val() > 31) {
 				error[4].append(fail_message);
 			}
@@ -195,6 +189,87 @@ $(document).ready(function(){
 			error[6].append(fail_message);
 		}
 	}
+	
+	function checkFileExtenstion(fileName, fileSize) {
+		
+		var filePattern = /(.*?)\.(png|jpg|jpeg|gif|JPG|JPEG|PNG|GIF)$/;
+		var fileMaxSize = 10485760; // 10MB
+		
+		console.log(fileName);
+		if(!filePattern.test(fileName)){
+			console.log("파일확장자");
+			return "fileextension";
+		} 
+		
+		if(fileSize >= fileMaxSize){
+			console.log("파일크기");
+			return "filesize";
+		}
+		return "possible";
+	}
+	
+	$("input[type='file']").on("change", function(e){
+		
+		var formData = new FormData();
+		var extension_message = "해당 확장자의 파일은 업로드 할 수 없습니다.";
+		var file_size_over_message = "파일 사이즈를 초과하였습니다. 10MB 크기 이하의 파일을 첨부하세요.";
+		var success_message = "해당 파일을 업로드 할 수 있습니다.";
+		
+		$(".profile_wrap").next().empty();
+		
+		var uploadFiles = $("input[type='file']");
+		var selectFile = uploadFiles[0].files;
+
+		console.log(selectFile);
+		if(checkFileExtenstion(selectFile[0].name, selectFile[0].size) == "filesize") {
+			error[8].append(file_size_over_message);
+			return false;
+		} else if(checkFileExtenstion(selectFile[0].name, selectFile[0].size) == "fileextension") {
+			error[8].append(extension_message);
+			return false;
+		} else if(id.val() == ""){
+			return false;
+		} else if(selectFile == null){
+			return false;
+		} else {
+			$(".profile_wrap").next().css("color", "#028651");
+			$("#mem_profile").val(selectFile[0].name);
+			error[8].append(success_message);
+			formData.append("uploadFile", selectFile[0]);
+			formData.append("memberId", id.val());
+		}
+		
+		$.ajax({
+			url: '/profile/upload',
+			processData: false,
+			contentType: false,
+			data: formData,
+			type: 'POST',
+			dataType: 'json',
+			async:false, 
+			success: function(result){
+				console.log(result);
+				fileResult = result
+			},
+			error: function(request, status, error){
+				console.log("code:"+request.status+"\n"+"message:"+request.responseText+"\n"+"error:"+error);
+			}
+		});
+	});
+	
+	$("#joinButton").on("click", function(e) {
+		e.preventDefault(); 
+		console.log("submit button clicked");
+		console.log("fileResult" + fileResult);
+		var inputHidden = "";
+		inputHidden += "<input type='hidden' name='profile.mem_id' value = '" + id.val() + "'>";
+		inputHidden += "<input type='hidden' name='profile.profile_path' value = '" + fileResult.profile_path + "'>";
+		inputHidden += "<input type='hidden' name='profile.profile_name' value = '" + fileResult.profile_name + "'>";
+		inputHidden += "<input type='hidden' name='profile.profile_type' value = '" + fileResult.profile_type + "'>";
+		
+		console.log(inputHidden);
+		formObject.append(inputHidden).submit();
+	})
 	
 	$("#mem_id").on("focusout", function(e){
 		checkMemberId();

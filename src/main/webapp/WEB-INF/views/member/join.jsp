@@ -19,7 +19,7 @@
 			<a><img src="/resources/img/TheMountaineers.png"></a>
 		</div>
 		<div id="join-content" class="content center-block mb-5">
-			<form action="/member/new" method="post">
+			<form role="form" action="/member/new" method="post" enctype="multipart/form-data">
 				<div>
 					<h3>
 						<label for="mem_id">아이디</label>
@@ -142,17 +142,21 @@
 					<div class="profile_wrap">
 						<div class="profile_path">
 							<span class="box">
-								<input type="text" id="mem_profile" name="mem_img" class="int">
+								<input type="text" id="mem_profile" name="mem_img" class="int" readonly >
 							</span>
 						</div>
 						<div class="profile_button">
 							<span>
-								<label class="int" for="file_hidden" id="file_button">프로필 사진 첨부</label>
-								<input class="int" id="file_hidden" type="file" multiple>
+								<label class="int" for="file_hidden" id="file_label">프로필 사진 첨부</label>
+								<input type="file" class="file_button please" id="file_hidden" name="uploadFile">
+								<!-- <input type="file" class="file_button please" name="uploadFile"> -->
 							</span>
 						</div>
 					</div>
-					<div class="error_next_box"></div>
+					<div class="error_next_box mb-3"></div>
+					<div class="uploadResult">
+						
+					</div>
 				</div>
 				
 				<div class="btn_area">

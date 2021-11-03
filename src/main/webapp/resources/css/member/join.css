@@ -76,8 +76,8 @@ h3 {
 }
 
 .profile_path {
-	width: 85%;
 	display: table-cell;
+	width: 85%;
 }
 
 .profile_button {
@@ -103,7 +103,7 @@ h3 {
 }
 
 .btn_area {
-    margin: 30px 0 91px;
+    margin: 10px 0 91px;
 }
 
 #joinButton {
@@ -133,10 +133,10 @@ select {
 }
 
 #file_hidden {
-	visibility: hidden;
+	display: none;
 }
 
-#file_button {
+#file_label {
 	background-color: #028651;
 	padding-top: 15px;
 	height: 50px;
@@ -144,5 +144,6 @@ select {
     font-weight: 400;
     text-align: center;
 }
+
 
 

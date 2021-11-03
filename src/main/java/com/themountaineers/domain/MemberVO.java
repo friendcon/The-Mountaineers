@@ -19,5 +19,8 @@ public class MemberVO {
 	private String mem_month;
 	private String mem_day;
 	
+	private ProfileVO profile;
+	
 	private List<AuthVO> authList;
+	
 }
