@@ -31,6 +31,15 @@ Created: Colorib
         }
     });
 
+	/*var selectmenu = $(".active").text();
+	alert(selectmenu);
+	$(".header__menu li").on("click", function(){
+		alert('asdasdasd');
+		console.log($(this).text());
+		//$(".header__menu .active").removeClass("active");
+		$(this).addClass('active');
+	});*/
+	
     /*------------------
         Background Set
     --------------------*/
