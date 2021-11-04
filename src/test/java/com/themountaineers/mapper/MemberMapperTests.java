@@ -25,7 +25,7 @@ public class MemberMapperTests {
 	@Setter(onMethod_ = @Autowired)
 	private MemberMapper mapper;
 	
-	private String memberId = "sleep1015";
+	private String memberId = "sleep1027";
 	
 	/*@Test
 	public void memberInsertTest() {
@@ -48,10 +48,10 @@ public class MemberMapperTests {
 		log.info(mapper.memberAuthInsert(memberId));
 	}*/
 	
-	@Test
+	/*@Test
 	public void memberReadTest() {
 		log.info(mapper.memberRead("sleep1025"));
-	}
+	}*/
 	
 	/*@Test
 	public void memberUpdateTest() {
@@ -65,5 +65,10 @@ public class MemberMapperTests {
 	/*@Test
 	public void memberDeleteTest() {
 		log.info(mapper.memberDelete(memberId));
+	}*/
+	
+	/*@Test
+	public void memberIdCheckTest() {
+		log.info(mapper.memberIdCheck(memberId));
 	}*/
 }

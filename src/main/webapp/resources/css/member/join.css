@@ -6,7 +6,7 @@ body {
 }
 
 h3 {
-    margin: 19px 0 8px;
+    margin: 10px 0 8px;
     font-size: 14px;
     font-weight: 700;
 }
@@ -76,8 +76,8 @@ h3 {
 }
 
 .profile_path {
-	width: 85%;
 	display: table-cell;
+	width: 85%;
 }
 
 .profile_button {
@@ -86,27 +86,29 @@ h3 {
 	padding-left: 10px;
 }
 
-#file_button {
+/* #file_button {
 	background-color: #028651;
 	height: 50px;
 	color: white;
     font-weight: 400;
-}
+} */
 
 .error_next_box {
-    margin-top: 9px;
-    font-size: 12px;
-    color: red;    
-    display: none;
+/*     margin-top: 9px; */
+    font-size: 15px;
+    color: red;
+    padding-top: 10px; 
+    padding-left: 10px;
+    /* display: none; */
 }
 
 .btn_area {
-    margin: 30px 0 91px;
+    margin: 10px 0 91px;
 }
 
 #joinButton {
     width: 100%;
-    padding: 21px 0 17px;
+    padding: 17px 0 17px;
 
     border: 0;
     cursor: pointer;
@@ -114,6 +116,7 @@ h3 {
     background-color: #028651;
     font-size: 20px;
     font-weight: 400;
+    margin-bottom: 50px;
 }
 
 select {
@@ -128,4 +131,19 @@ select {
     border: none;
     cursor: default;
 }
+
+#file_hidden {
+	display: none;
+}
+
+#file_label {
+	background-color: #028651;
+	padding-top: 15px;
+	height: 50px;
+	color: white;
+    font-weight: 400;
+    text-align: center;
+}
+
+
 

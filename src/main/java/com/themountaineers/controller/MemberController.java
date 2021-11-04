@@ -1,5 +1,7 @@
 package com.themountaineers.controller;
 
+import java.util.Map;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -9,6 +11,8 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.themountaineers.domain.MemberVO;
 import com.themountaineers.service.MemberService;
@@ -52,6 +56,21 @@ public class MemberController {
 		log.info("********** member logout **********");
 	}
 	
+	@ResponseBody
+	@GetMapping("/idCheck")
+	public String memberIdCheck(@RequestParam Map<String, Object> param) {
+		log.info("********** member id check **********");
+		String memberId = (String) param.get("id");
+		log.info("id : " + memberId);
+		String checkId = service.memberIdCheck(memberId);
+		log.info("result : " + checkId);
+		if(checkId != null) {
+			return "notavailable";
+		} else {
+			return "available";
+		}
+	}
+	
 	// 회원가입 관련 페이지
 	@GetMapping("/join")
 	public void memberJoin() {
@@ -66,6 +85,9 @@ public class MemberController {
 	public String memberJoin(MemberVO member) {
 		log.info("********** member join post **********");
 		log.info(member);
+		if(member.getProfile() != null){
+			log.info(member.getProfile());
+		}
 		log.info(service.memberjoin(member));
 		return "redirect:/member/fin";
 	}

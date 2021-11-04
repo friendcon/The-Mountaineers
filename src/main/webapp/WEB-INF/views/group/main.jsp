@@ -5,7 +5,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>The Mountaineers | 로그인 </title>
+<title>The Mountaineers | 그룹 메인 </title>
 	<jsp:include page="../common/head.jsp"></jsp:include>
 	<link href="../../resources/css/member/login.css" rel="stylesheet" type="text/css">
 	<jsp:include page="../common/script.jsp"></jsp:include>

@@ -22,9 +22,9 @@ public class MemberServiceTests {
 	@Setter(onMethod_ = @Autowired)
 	private MemberService service;
 	
-	private String memberId = "sleep1019";
+	private String memberId = "sleep1027";
 	
-	@Test
+	/*@Test
 	public void memberJoinTest() {
 		MemberVO member = new MemberVO();
 		member.setMem_id(memberId);
@@ -33,13 +33,13 @@ public class MemberServiceTests {
 		member.setMem_email("sleep1015@gmail.com");
 		member.setMem_phone("010-1234-5678");
 		member.setMem_birth("1999");
-		member.setMem_img("c://user");
+		//member.setMem_img("c://user");
 		member.setMem_address("¼­¿ï½Ã");
 		member.setMem_month("12");
 		member.setMem_day("25");
 		log.info(service.memberjoin(member));
 	}
-
+*/
 	/*@Test
 	public void memberReadTest() {
 		log.info(mapper.memberRead(memberId));
@@ -55,5 +55,10 @@ public class MemberServiceTests {
 	/*@Test
 	public void memberDeleteTest() {
 		log.info(mapper.memberDelete(memberId));
+	}*/
+	
+	/*@Test
+	public void memberIdCheckTest() {
+		log.info(service.memberIdCheck(memberId));
 	}*/
 }

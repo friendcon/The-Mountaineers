@@ -11,4 +11,6 @@ public interface MemberMapper {
 	public int memberUpdate(MemberVO member); // 회원 정보 수정
 	public int memberDelete(String memberId); // 회원 탈퇴
 	public String memberPwRead(String memberId); // 비밀번호
+	
+	public String memberIdCheck(String memberId); // 아이디 중복 체크
 }

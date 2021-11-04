@@ -1,21 +1,25 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib uri="http://www.springframework.org/security/tags" prefix="security" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
 	<title>The Mountaineers | 회원가입 </title>
 	<jsp:include page="../common/head.jsp"></jsp:include>
 	<link href="../../resources/css/member/join.css" rel="stylesheet" type="text/css">
+	<jsp:include page="../common/script.jsp"></jsp:include>
+	<script type="text/javascript" src="../../resources/js/member/joinpage.js"></script>
 </head>
 <body>
 	<jsp:include page="../common/header.jsp"></jsp:include>
 	
-	<div class="container mt-5">
-		<div id="logo" >
-			<a><img src="/resources/img/greenlogo.JPG"></a>
+	<div class="container mt-4">
+		<div class="mb-3" id="logo">
+			<a><img src="/resources/img/TheMountaineers.png"></a>
 		</div>
 		<div id="join-content" class="content center-block mb-5">
-			<form action="/member/new" method="post">
+			<form role="form" action="/member/new" method="post" enctype="multipart/form-data">
 				<div>
 					<h3>
 						<label for="mem_id">아이디</label>
@@ -24,7 +28,7 @@
 						<input type="text" id="mem_id" name="mem_id" class="int" maxlength="30">
 						<span class="step_url">@themountaineers.com</span>
 					</span>
-					<span class="error_next_box"></span>
+					<div class="error_next_box"></div>
 				</div>
 				
 				<div>
@@ -34,27 +38,17 @@
 					<span class="box">
 						<input type="password" id="mem_pwd" name="mem_pwd" class="int" maxlength="30">
 					</span>
-					<span class="error_next_box"></span>
+					<div class="error_next_box"></div>
 				</div>
 				
 				<div>
 					<h3>
-						<label for="mem_profile">프로필사진</label>
+						<label for="mem_pwd_check">비밀번호 확인</label>
 					</h3>
-					<div class="profile_wrap">
-						<div class="profile_path">
-							<span class="box">
-								<input type="text" id="mem_profile" name="mem_img" class="int">
-							</span>
-						</div>
-						<div class="profile_button">
-							<span>
-							<!-- <span class="box"> -->
-								<input class="int" id="file_button" type="button" value="프로필 사진 첨부">
-							</span>
-						</div>
-					</div>
-					<span class="error_next_box"></span>
+					<span class="box">
+						<input type="password" id="mem_pwd_check" name="mem_pwd_check" class="int" maxlength="30">
+					</span>
+					<div class="error_next_box"></div>
 				</div>
 				
 				<div>
@@ -64,7 +58,7 @@
 					<span class="box">
 						<input type="text" id="mem_name" name="mem_name" class="int" maxlength="30">
 					</span>
-					<span class="error_next_box"></span>
+					<div class="error_next_box"></div>
 				</div>
 				
 				<div>
@@ -104,7 +98,7 @@
 							</span>
 						</div>
 					</div>
-					<span class="error_next_box"></span>
+					<div class="error_next_box"></div>
 				</div>
 				
 				<div>
@@ -113,9 +107,9 @@
 					</h3>
 					<span class="box">
 						<input type="text" id="mem_phone" name="mem_phone" class="int" maxlength="13"
-						placeholder="전화번호 입력">
+						placeholder="전화번호 입력(010-0000-0000 형식으로 입력하세요)">
 					</span>
-					<span class="error_next_box"></span>
+					<div class="error_next_box"></div>
 				</div>
 				
 				<div>
@@ -126,7 +120,7 @@
 						<input type="text" id="mem_email" name="mem_email" class="int" maxlength="50"
 						placeholder="이메일 입력">
 					</span>
-					<span class="error_next_box"></span>
+					<div class="error_next_box"></div>
 				</div>
 				
 				<div>
@@ -137,7 +131,32 @@
 						<input type="text" id="mem_address" name="mem_address" class="int" maxlength="50"
 						placeholder="주소 입력">
 					</span>
-					<span class="error_next_box"></span>
+					<div class="error_next_box"></div>
+				</div>
+				
+				
+				<div>
+					<h3>
+						<label for="mem_profile">프로필사진</label>
+					</h3>
+					<div class="profile_wrap">
+						<div class="profile_path">
+							<span class="box">
+								<input type="text" id="mem_profile" name="mem_img" class="int" readonly >
+							</span>
+						</div>
+						<div class="profile_button">
+							<span>
+								<label class="int" for="file_hidden" id="file_label">프로필 사진 첨부</label>
+								<input type="file" class="file_button please" id="file_hidden" name="uploadFile">
+								<!-- <input type="file" class="file_button please" name="uploadFile"> -->
+							</span>
+						</div>
+					</div>
+					<div class="error_next_box mb-3"></div>
+					<div class="uploadResult">
+						
+					</div>
 				</div>
 				
 				<div class="btn_area">
