@@ -231,10 +231,10 @@
 								<img src="${listImg.mnti_i_route }" 
 								style="width: 100%; height: 100%;">
 								</c:when>
-								<%-- <c:when test="${mntilistno!=listImg.mntilistno }">
+								<c:when test="${mntilistno!=listImg.mntilistno }">
 								<img src="/resources/img/noimg.jpg" 
 								style="width: 100%; height: 100%;">
-								</c:when> --%>
+								</c:when>
 							</c:choose>
 							
 							

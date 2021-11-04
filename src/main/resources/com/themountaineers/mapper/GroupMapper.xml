@@ -3,5 +3,37 @@
         PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.themountaineers.mapper.GroupMapper">
+	<!-- 그룹 생성 -->
+	<insert id="groupInsert" parameterType="com.themountaineers.domain.GroupVO">
+		insert into climbgroup
+		(group_name, group_content,
+		group_count, group_open)
+		values
+		(
+			#{group_name}, #{group_content},
+			#{group_count}, #{group_open}
+		)
+		
+		<selectKey keyProperty="group_no" order="AFTER" resultType="int">
+			select  LAST_INSERT_ID()
+		</selectKey>
+	</insert>
 	
+	<!-- 그룹 해시태크 생성 -->
+	<insert id="groupHashInsert" parameterType="java.util.List">
+		insert into grouphash
+		(group_no, hash_num)
+		values
+		<foreach collection="list" item="item" separator=",">
+			(#{item.group_no}, #{item.hash_num})
+		</foreach>
+	</insert>
+	
+	<!-- 그룹 멤버 생성 -->
+	<insert id="groupMemberInsert">
+		insert into groupmember
+		(group_no, mem_id, groupmem_auth)
+		values
+		(#{group_no}, #{mem_id}, #{groupmem_auth})
+	</insert>
 </mapper>
