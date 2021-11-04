@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.themountaineers.mapper.MemberMapper">
+
+	<resultMap type="com.themountaineers.domain.MemberVO" id="memberMap">
+		<id property="mem_id" column="mem_id"/>
+		<result property="mem_id" column="mem_id"/>
+		<result property="mem_pwd" column="mem_pwd"/>
+		<result property="mem_name" column="mem_name"/>
+		<result property="mem_email" column="mem_email"/>
+		<result property="mem_birth" column="mem_birth"/>
+		<result property="mem_phone" column="mem_phone"/>
+		<result property="mem_joindate" column="mem_joindate"/>
+		<result property="mem_address" column="mem_address"/>
+		<!-- <result property="mem_img" column="mem_img"/> -->
+		<result property="mem_month" column="mem_month"/>
+		<result property="mem_day" column="mem_day"/>
+		<collection property="authList" resultMap="authMap" />
+	</resultMap>
+	
+	<resultMap type="com.themountaineers.domain.AuthVO" id="authMap">
+		<result property="mem_id" column="mem_id"/>
+		<result property="auth" column="auth"/>
+	</resultMap>
+	
+	<!-- 회원 가입  -->
+	<insert id="memberInsert">
+		insert into member(mem_name, mem_id, mem_pwd,
+		mem_email, mem_birth, mem_phone, mem_joindate, 
+		mem_address, mem_month, mem_day)
+		values
+		(
+			#{mem_name}, #{mem_id}, #{mem_pwd}, #{mem_email}, #{mem_birth}, 
+			#{mem_phone}, now(), #{mem_address}, #{mem_month}, #{mem_day}
+		)
+	</insert>
+	
+	<!-- 중복 아이디 체크 -->
+	<select id="memberIdCheck" resultType="String">
+		select mem_id from member where mem_id = #{memberId}
+	</select> 
+	
+	<!-- 회원정보 조회 -->
+	<select id="memberRead" resultType="com.themountaineers.domain.MemberVO" resultMap="memberMap">
+		select 
+		mem.mem_id, mem_pwd, mem_name, mem_email, mem_birth, mem_joindate,
+		mem_phone, mem_address, mem_month, mem_day, a.auth
+		from member mem
+		left outer join auth a 
+		on a.mem_id = mem.mem_id
+		where mem.mem_id = #{memberId}
+	</select>
+	
+	<!-- 회원 권한 추가 -->
+	<insert id="memberAuthInsert">
+		insert into auth
+		(
+			mem_id, auth
+		)
+		values
+		(
+			#{mem_id}, 'ROLE_MEMBER'
+		)
+	</insert>
+	
+	<!-- 회원정보 수정 -->
+	<!-- <update id="memberUpdate">
+		update member
+		set mem_name = #{mem_name}, 
+		mem_email = #{mem_email}, 
+		mem_birth = #{mem_birth}, 
+		mem_phone = #{mem_phone}, 
+		mem_address = #{mem_address}, 
+		mem_img = #{mem_img}
+		where mem_id = #{mem_id}
+	</update>
+	
+	<delete id="memberDelete">
+		delete from member
+		where mem_id = #{mem_id}
+	</delete> -->
+</mapper>

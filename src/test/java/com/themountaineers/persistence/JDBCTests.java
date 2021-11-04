@@ -22,7 +22,7 @@ public class JDBCTests {
 	@Test
 	public void testConnection() {
 		try(Connection con = DriverManager.getConnection(
-				"jdbc:mysql://127.0.0.1:3306/themountaineers?useSSL=false&serverTimezone=UTC"
+				"jdbc:mysql://127.0.0.1:3306/themountaineers?allowPublicKeyRetrieval=true&useSSL=false&serverTimezone=UTC"
 				, "root"
 				, "1234"
 				)){
