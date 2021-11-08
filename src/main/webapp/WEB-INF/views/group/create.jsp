@@ -2,6 +2,7 @@
 	pageEncoding="UTF-8"%>
 
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib uri="http://www.springframework.org/security/tags" prefix="security"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
@@ -10,6 +11,8 @@
 <title>Insert title here</title>
 <jsp:include page="../common/head.jsp"></jsp:include>
 <link href="../../resources/css/group/groupcreate.css" rel="stylesheet" type="text/css">
+<jsp:include page="../common/script.jsp"></jsp:include>
+<script type="text/javascript" src="../../resources/js/group/create_page.js"></script>
 </head>
 <body>
 	<jsp:include page="../common/header.jsp"></jsp:include>
@@ -45,7 +48,7 @@
 						<hr>
 					</div>
 				</div>
-				<form>
+				<form action="/group/new" method="post">
 					<div class="row group_input">
 						<h3>
 							<label for="group_name">그룹 이름</label>
@@ -78,27 +81,76 @@
 					</div>
 					<div class="row group_input">
 						<h3>
+							<label for="group_count">그룹 공개 여부</label>
+						</h3>
+						<span class="box int_id">
+							<div class="row">
+								<div class="col-lg-6 text-center mt-1">
+									<input name="group_open" id="groupopen" type="radio" value="0"/>
+									<label for="groupopen">&nbsp;&nbsp;그룹 공개</label>
+								</div>
+								<div class="col-lg-6 text-center mt-1">
+									<input name="group_open" id="groupclose" type="radio" value="1"/>
+									<label for="groupclose">&nbsp;&nbsp;그룹 비공개</label>
+								</div>
+							</div>
+						</span>
+						<div class="error_next_box"></div>
+					</div>
+					<div class="row group_input">
+						<h3>
 							<label for="group_count">그룹성향</label>
 							<p>&nbsp;나와 비슷한 산행 성향을 가진 그룹원을 모집하기를 원한다면, 그룹 성향을 선택해주세요!</p>
 						</h3>
-						<div>
-							<label class="check_box_label" for="nightclimb"><input type="checkbox" id="nightclimb" value="1">야간산행</label>
-							<label class="check_box_label" for="morningclimb"><input type="checkbox" id="morningclimb" value="2">아침산행</label>
-							<label class="check_box_label" for="weekendclimb"><input type="checkbox" id="weekendclimb" value="3">주말산행</label>
-							<label class="check_box_label" for="weekdayclimb"><input type="checkbox" id="weekdayclimb" value="4">평일산행</label>
-							<label class="check_box_label" for="food"><input type="checkbox" id="food" value="5">맛집탐방</label>
-							<label class="check_box_label" for="community"><input type="checkbox" id="community" value="6">친목</label>
-							<label class="check_box_label" for="tracking"><input type="checkbox" id="tracking" value="7">트래킹</label>
-							<label class="check_box_label" for="bagpacking"><input type="checkbox" id="bagpacking" value="8">백패킹</label>
-							<label class="check_box_label" for="climbing"><input type="checkbox" id="climbing" value="9">클라이밍</label>
-							<label class="check_box_label" for="climb"><input type="checkbox" id="climb" value="10">등산</label>
-							<label class="check_box_label" for="easy"><input type="checkbox" id="easy" value="11">초보자</label>
-							<label class="check_box_label" for="middle"><input type="checkbox" id="middle" value="12">중급자</label>
-							<label class="check_box_label" for="difficult"><input type="checkbox" id="difficult" value="13">고급자</label>
-							<label class="check_box_label" for="camping"><input type="checkbox" id="camping" value="14">캠핑</label>
+						<div class="for_check_box">
+							<label class="check_box_label" for="nightclimb">
+								<input type="checkbox" name="hashList" id="nightclimb" value="1">야간산행
+							</label>
+							<label class="check_box_label" for="morningclimb">
+								<input type="checkbox" name="hashList" id="morningclimb" value="2">아침산행
+							</label>
+							<label class="check_box_label" for="weekendclimb">
+								<input type="checkbox" name="hashList" id="weekendclimb" value="3">주말산행
+							</label>
+							<label class="check_box_label" for="weekdayclimb">
+								<input type="checkbox" name="hashList" id="weekdayclimb" value="4">평일산행
+							</label>
+							<label class="check_box_label" for="food">
+								<input type="checkbox" name="hashList" id="food" value="5">맛집탐방
+							</label>
+							<label class="check_box_label" for="community">
+								<input type="checkbox" name="hashList" id="community" value="6">친목
+							</label>
+							<label class="check_box_label" for="tracking">
+								<input type="checkbox" name="hashList" id="tracking" value="7">트래킹
+							</label>
+							<label class="check_box_label" for="bagpacking">
+								<input type="checkbox" name="hashList" id="bagpacking" value="8">백패킹
+							</label>
+							<label class="check_box_label" for="climbing">
+								<input type="checkbox" name="hashList" id="climbing" value="9">클라이밍
+							</label>
+							<label class="check_box_label" for="climb">
+								<input type="checkbox" name="hashList" id="climb" value="10">등산
+							</label>
+							<label class="check_box_label" for="easy">
+								<input type="checkbox" name="hashList" id="easy" value="11">초보자
+							</label>
+							<label class="check_box_label" for="middle">
+								<input type="checkbox" name="hashList" id="middle" value="12">중급자
+							</label>
+							<label class="check_box_label" for="difficult">
+								<input type="checkbox" name="hashList" id="difficult" value="13">고급자
+							</label>
+							<label class="check_box_label" for="camping">
+								<input type="checkbox" name="hashList" id="camping" value="14">캠핑
+							</label>
 						</div>
-						
-						<div class="error_next_box"></div>
+					</div>
+					<div class="btn_area">
+						<button type="submit" id="createButton">
+							<span>그룹생성하기</span>
+						</button>
 					</div>
 				</form>
 			</div>

@@ -15,6 +15,10 @@ input[type=checkbox] {
   display: none;
 }
 
+.error_next_box {
+	padding-left: 5px;
+	padding-top: 10px;
+}
 
 .check_box_label {
   /* display: flex; */
@@ -36,7 +40,7 @@ input[type=checkbox] {
 
 .group_input {
 	margin-left: 20px;
-	margin-bottom: 20px;
+	/* margin-bottom: 10px; */
 	margin-right: 20px;
 }
 
@@ -50,12 +54,41 @@ h3 {
 .box {
     display: block;
     width: 100%;
-    height: 51px;
+    height: 100%;
     border: solid 1px #dadada;
     padding: 10px 14px 10px 14px;
     box-sizing: border-box;
     background: #fff;
     position: relative;
+}
+
+.for_check_box {
+    display: block;
+    width: 100%;
+    height: 150px;
+    border: solid 1px #dadada;
+    padding: 10px 14px 10px 14px;
+    box-sizing: border-box;
+    background: #fff;
+    position: relative;
+}
+
+.btn_area {
+    margin-top: 40px;
+    margin-left:20px;
+    margin-right:20px;
+}
+
+#createButton {
+    width: 100%;
+    padding: 17px 0 17px;
+    border: 0;
+    cursor: pointer;
+    color: #fff;
+    background-color: #028651;
+    font-size: 20px;
+    font-weight: 400;
+    margin-bottom: 50px;
 }
 
 .int {

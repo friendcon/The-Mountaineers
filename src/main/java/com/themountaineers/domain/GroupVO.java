@@ -1,5 +1,7 @@
 package com.themountaineers.domain;
 
+import java.util.List;
+
 import lombok.Data;
 
 @Data
@@ -10,4 +12,6 @@ public class GroupVO {
 	private int group_point;
 	private int group_count; // 그룹원 수
 	private int group_open;
+	
+	//private List<GroupHashVO> hashList;
 }

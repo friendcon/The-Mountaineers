@@ -7,7 +7,5 @@ import com.themountaineers.domain.GroupMemberVO;
 import com.themountaineers.domain.GroupVO;
 
 public interface GroupService {
-	public int groupInsert(GroupVO group, List<GroupHashVO> grouphash);
-	public int groupMemberInsert(GroupMemberVO groupmember);
-	
+	public int groupInsert(GroupVO group, String memberId, List<Integer> groupHashList);
 }
