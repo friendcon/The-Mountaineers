@@ -68,7 +68,7 @@ $(document).ready(function(){
 		var pwdPattern = /^(?=.*[a-z])(?=.*[0-9])(?=.*[!@#$%^&*()-_=+])[a-zA-Z0-9!@#$%^&*()-_=+]{8,20}/;
 			
 		var null_message = "비밀번호를 입력해주세요.";
-		var fail_message = "8~20자 영문 소문자, 특수문자를 사용하세요.";
+		var fail_message = "8~20자 영문 소문자, 숫자, 특수문자를 사용하세요.";
 		var success_message = "사용 가능한 비밀번호입니다";
 
 		if(pwd.val() == ""){

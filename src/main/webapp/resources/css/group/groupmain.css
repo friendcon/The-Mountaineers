@@ -1,0 +1,196 @@
+@CHARSET "UTF-8";
+
+.create_content{
+	margin-top: 10px;
+}
+
+.box {
+    display: block;
+    width: 100%;
+    height: 60%;
+    border: solid 1px #dadada;
+    padding: 10px 14px 10px 14px;
+    box-sizing: border-box;
+    background: #fff;
+    position: relative;
+}
+
+.group_container {
+	float: left;
+	width: 33%;
+	padding: 3% 1% 0px 2%;
+/* 	padding-right: 2%;
+	padding-left: 3%; */
+}
+
+.group_img {
+    display: table;
+    width: 100%;
+    height: 160px;
+    border: solid 1px #dadada;
+    box-sizing: border-box;
+    background: #fff;
+    position: relative;
+    margin-left: 1px;
+}
+
+.group_content_box {
+	display: table;
+    width: 100%;
+    height: 90px;
+    margin-left: 1px;
+    border-left: solid;
+    border-left-color: #dadada;
+    border-left-width: 1px;
+    border-right: solid;
+    border-right-color: #dadada;
+    border-right-width: 1px;
+    border-bottom: solid;
+    border-bottom-color: #dadada;
+    border-bottom-width: 1px; */
+    box-sizing: border-box;
+    background: #fff;
+    position: relative;
+}
+
+.int {
+    display: block;
+    position: relative;
+    width: 100%;
+    height: 29px;
+    border: none;
+    background: #fff;
+    font-size: 15px;
+}
+
+#group_search {
+	padding-right: 40px;
+}
+
+.searchButton {
+    width: 30px;
+    height: 20px;
+    display: inline-block;
+    position: absolute;
+    top: 50%;
+    right: 16px;
+    margin-top: -10px;
+    cursor: pointer;
+    border: 0;
+    outline: 0;
+    background-color: white;
+}
+
+.buttonimg {
+	width: 25px;
+}
+.swiper-container {
+        width: 100%;
+        height: 100%;
+}
+      
+.swiper {
+        width: 100%;
+        height: 70%;
+      }
+
+.swiper-slide {
+        text-align: center;
+        font-size: 18px;
+        background: #fff;
+
+        /* Center slide text vertically */
+        display: -webkit-box;
+        display: -ms-flexbox;
+        display: -webkit-flex;
+        display: flex;
+        -webkit-box-pack: center;
+        -ms-flex-pack: center;
+        -webkit-justify-content: center;
+        justify-content: center;
+        -webkit-box-align: center;
+        -ms-flex-align: center;
+        -webkit-align-items: center;
+        align-items: center;
+}
+
+.swiper-slide img {
+        display: block;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+}
+
+/* 체크박스 디자인 */
+
+.for_check_box {
+	display: block;
+    width: 100%;
+    height: 425px;
+    border: solid 1px #dadada;
+    padding: 10px 14px 10px 14px;
+    box-sizing: border-box;
+    background: #fff;
+    position: relative;
+}
+
+/* 체크박스 디자인 없애기 */
+input[type=checkbox] {
+  display: none;
+}
+
+h5 > label {
+    margin: 10px 0 8px;
+    font-size: 16px;
+    font-weight: 700;
+}
+
+/* 연령대 라벨 디자인 */
+#age, #region, #time, #type, #features, #grade {
+  align-items: center;
+  position: relative;
+  width: fit-content;
+  color: #ffffff;
+  box-sizing: border-box;
+  border: solid 1px;
+  padding: 10px 14px 10px 14px;
+  border-radius: 40px 40px 40px 40px;
+  font-weight: 400;
+  margin: 3px 0 3px 5px;
+  text-align: left;
+  cursor: pointer;
+}
+
+#age{
+	border-color: #FFA000;
+	background-color: #FFA000;
+}
+
+#region {
+	border-color: #FF7F7F;
+	background-color: #FF7F7F;
+}
+
+#time {
+	border-color:#eecc42;
+	background-color: #eecc42;
+}
+
+#type{
+	border-color:#81c784;
+	background-color: #81c784;
+}
+
+.grade_container {
+	/* margin-left: 194px; */
+}
+
+#features {
+	border-color: #8C9EFF;
+	background-color: #8C9EFF;
+}
+
+#grade{
+	border-color: #9575cd;
+	background-color: #9575cd;	
+}

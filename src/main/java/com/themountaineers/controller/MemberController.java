@@ -30,11 +30,6 @@ public class MemberController {
 	@Setter(onMethod_ = @Autowired)
 	private MemberService service;
 	
-	@GetMapping("/oauth/kakao")
-	public void memberOAuthKakao() {
-		
-	}
-	
 	// 회원 권한 거부시 이동 페이지
 	@GetMapping("/login")
 	public void memberLogin(String error, String logout, Model model) {

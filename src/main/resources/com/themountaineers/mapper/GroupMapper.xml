@@ -3,5 +3,71 @@
         PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.themountaineers.mapper.GroupMapper">
+	<!-- 그룹 생성 -->
+	<insert id="groupInsert" parameterType="com.themountaineers.domain.GroupVO">
+		insert into climbgroup
+		(group_name, group_content,
+		group_count, group_open)
+		values
+		(
+			#{group_name}, #{group_content},
+			#{group_count}, #{group_open}
+		)
+		
+		<selectKey keyProperty="group_no" order="AFTER" resultType="int">
+			select  LAST_INSERT_ID()
+		</selectKey>
+	</insert>
 	
+	<!-- 그룹 해시태크 생성 -->
+	<insert id="groupHashInsert" parameterType="java.util.List">
+		insert into grouphash
+		(group_no, hash_num)
+		values
+		<foreach collection="list" item="item" separator=",">
+			(#{item.group_no}, #{item.hash_num})
+		</foreach>
+	</insert>
+	
+	<!-- 그룹 멤버 생성 -->
+	<insert id="groupMemberInsert">
+		insert into groupmember
+		(group_no, mem_id, groupmem_auth)
+		values
+		(#{group_no}, #{mem_id}, #{groupmem_auth})
+	</insert>
+	
+	<!-- 그룹 전체 조회 -->
+	<resultMap type="com.themountaineers.domain.GroupVO" id="groupTotalResult">
+		<id property="group_no" column="group_no"/>
+		<result property="group_name" column="group_name"/>
+		<result property="group_content" column="group_content"/>
+		<result property="group_point" column="group_point"/>
+		<result property="group_open" column="group_open"/>
+		<association property="profile" resultMap="profileMap"></association>
+		<collection property="groupHashList" resultMap="hashMap"></collection>
+	</resultMap>
+
+	<resultMap type="com.themountaineers.domain.GroupHashVO" id="hashMap">
+		<result property="group_no" column="group_no"/>
+		<result property="hash_num" column="hash_num"/>
+	</resultMap>
+	
+	<resultMap type="com.themountaineers.domain.GroupProfileVO" id="profileMap">
+		<id property="uuid" column="group_uuid"/>
+		<result property="group_photo_path" column="group_photo_path"/>
+		<result property="group_photo_name" column="group_photo_name"/>
+		<result property="group_photo_type" column="group_photo_type"/>
+		<result property="group_no" column="group_no"/>
+	</resultMap>
+	
+	<!-- 진짜 그룹 전체 가져오기  -->
+	<select id="groupTotalSelect" resultMap="groupTotalResult">
+		select g.group_no, group_name, group_content, 
+		group_point, group_count, group_open, p.group_uuid,
+		p.group_photo_path, p.group_photo_name,
+		p.group_photo_type, h.hash_num
+		from climbgroup g, grouphash h, groupphoto p 
+		where g.group_no = h.group_no;
+	</select>
 </mapper>
