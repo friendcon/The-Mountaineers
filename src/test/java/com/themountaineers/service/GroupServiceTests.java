@@ -50,4 +50,9 @@ public class GroupServiceTests {
 		groupmember.setGroupmem_auth(3);
 		groupmember.setMem_id("mount1027");
 	}*/
+	
+	/*@Test
+	public void groupTotalTest() {
+		service.groupTotal().forEach(group -> log.info(group));
+	}*/
 }

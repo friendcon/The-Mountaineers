@@ -36,4 +36,38 @@
 		values
 		(#{group_no}, #{mem_id}, #{groupmem_auth})
 	</insert>
+	
+	<!-- 그룹 전체 조회 -->
+	<resultMap type="com.themountaineers.domain.GroupVO" id="groupTotalResult">
+		<id property="group_no" column="group_no"/>
+		<result property="group_name" column="group_name"/>
+		<result property="group_content" column="group_content"/>
+		<result property="group_point" column="group_point"/>
+		<result property="group_open" column="group_open"/>
+		<association property="profile" resultMap="profileMap"></association>
+		<collection property="groupHashList" resultMap="hashMap"></collection>
+	</resultMap>
+
+	<resultMap type="com.themountaineers.domain.GroupHashVO" id="hashMap">
+		<result property="group_no" column="group_no"/>
+		<result property="hash_num" column="hash_num"/>
+	</resultMap>
+	
+	<resultMap type="com.themountaineers.domain.GroupProfileVO" id="profileMap">
+		<id property="uuid" column="group_uuid"/>
+		<result property="group_photo_path" column="group_photo_path"/>
+		<result property="group_photo_name" column="group_photo_name"/>
+		<result property="group_photo_type" column="group_photo_type"/>
+		<result property="group_no" column="group_no"/>
+	</resultMap>
+	
+	<!-- 진짜 그룹 전체 가져오기  -->
+	<select id="groupTotalSelect" resultMap="groupTotalResult">
+		select g.group_no, group_name, group_content, 
+		group_point, group_count, group_open, p.group_uuid,
+		p.group_photo_path, p.group_photo_name,
+		p.group_photo_type, h.hash_num
+		from climbgroup g, grouphash h, groupphoto p 
+		where g.group_no = h.group_no;
+	</select>
 </mapper>

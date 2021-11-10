@@ -55,4 +55,11 @@ public class GroupMapperTests {
 		groupmember.setMem_id("sleep1027");
 		mapper.groupMemberInsert(groupmember);
 	}*/
+	
+	/*@Test
+	public void groupTotalSelectTest(){
+		mapper.groupTotalSelect().forEach(group -> log.info(group));
+		List<GroupVO> list = mapper.groupTotalSelect();
+		list.get(0).getGroupHashList().forEach(hash -> log.info("hash!!" + hash));
+	}*/
 }

@@ -48,5 +48,10 @@ public class GroupServiceImpl implements GroupService {
 		int query4 = profilemapper.insertGroupProfile(group.getProfile());
 		return query1*query2*query3*query4;
 	}
+
+	@Override
+	public List<GroupVO> groupTotal() {
+		return mapper.groupTotalSelect();
+	}
 	
 }
