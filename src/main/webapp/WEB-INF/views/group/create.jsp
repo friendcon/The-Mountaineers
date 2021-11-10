@@ -8,7 +8,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>Insert title here</title>
+<title>The Mountaineers | Group Create</title>
 <jsp:include page="../common/head.jsp"></jsp:include>
 <link href="../../resources/css/group/groupcreate.css" rel="stylesheet" type="text/css">
 <jsp:include page="../common/script.jsp"></jsp:include>
@@ -48,7 +48,7 @@
 						<hr>
 					</div>
 				</div>
-				<form action="/group/new" method="post">
+				<form role="form" action="/group/new" method="post">
 					<div class="row group_input">
 						<h3>
 							<label for="group_name">그룹 이름</label>
@@ -147,6 +147,31 @@
 							</label>
 						</div>
 					</div>
+					
+					<div class="row group_input mt-2">
+						<h3>
+							<label for="group_profile">프로필사진</label>
+						</h3>
+						<div class="profile_wrap">
+							<div class="profile_path">
+								<span class="box">
+									<input type="text" id="group_profile" name="group_img" class="int" readonly >
+								</span>
+							</div>
+							<div class="profile_button">
+								<span>
+									<label class="int" for="file_hidden" id="file_label">프로필 사진 첨부</label>
+									<input type="file" class="file_button please" id="file_hidden" name="uploadFile">
+								</span>
+							</div>
+						</div>
+						<div class="error_next_box mb-3"></div>
+						<div class="uploadResult">
+							
+						</div>
+					</div>
+					
+					
 					<div class="btn_area">
 						<button type="submit" id="createButton">
 							<span>그룹생성하기</span>

@@ -10,4 +10,5 @@ public interface GroupMapper {
 	public int groupInsert(GroupVO group);
 	public int groupHashInsert(List<GroupHashVO> grouphash);
 	public int groupMemberInsert(GroupMemberVO groupmember);
+	
 }

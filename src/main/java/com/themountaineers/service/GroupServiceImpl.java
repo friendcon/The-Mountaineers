@@ -5,11 +5,13 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import com.themountaineers.domain.GroupHashVO;
 import com.themountaineers.domain.GroupMemberVO;
 import com.themountaineers.domain.GroupVO;
 import com.themountaineers.mapper.GroupMapper;
+import com.themountaineers.mapper.GroupProfileMapper;
 
 import lombok.AllArgsConstructor;
 import lombok.Setter;
@@ -23,10 +25,15 @@ public class GroupServiceImpl implements GroupService {
 	@Setter(onMethod_ = @Autowired)
 	private GroupMapper mapper;
 	
+	@Setter(onMethod_ = @Autowired)
+	private GroupProfileMapper profilemapper;
+	
+	@Transactional
 	@Override
 	public int groupInsert(GroupVO group, String memberId, List<Integer> groupHashList) {
 		int query1 = mapper.groupInsert(group);
 		
+		group.getProfile().setGroup_no(group.getGroup_no());
 		List<GroupHashVO> hashList = new ArrayList<GroupHashVO>();
 		for(int hashNum : groupHashList) {
 			hashList.add(new GroupHashVO(group.getGroup_no(), hashNum));
@@ -38,7 +45,8 @@ public class GroupServiceImpl implements GroupService {
 		groupmember.setGroupmem_auth(1);
 		groupmember.setMem_id(memberId);
 		int query3 = mapper.groupMemberInsert(groupmember);
-		return query1*query2*query3;
+		int query4 = profilemapper.insertGroupProfile(group.getProfile());
+		return query1*query2*query3*query4;
 	}
 	
 }

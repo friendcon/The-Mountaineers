@@ -45,8 +45,7 @@ public class GroupController {
 		log.info("********** 그룹 생성 post **********");
 		log.info(principal.getName());
 		log.info(group);
-		List<GroupHashVO> hashList = new ArrayList<>();
-		
+
 		String memberId = principal.getName();
 		
 		service.groupInsert(group, memberId, groupHashList);

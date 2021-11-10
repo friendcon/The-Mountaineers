@@ -104,3 +104,32 @@ h3 {
 .box.int_id {
     padding-right: 110px;
 }
+
+#file_hidden {
+	display: none;
+}
+
+#file_label {
+	background-color: #028651;
+	padding-top: 15px;
+	height: 50px;
+	color: white;
+    font-weight: 400;
+    text-align: center;
+}
+
+.profile_wrap {
+    display: table;
+    width: 100%;
+}
+
+.profile_path {
+	display: table-cell;
+	width: 70%;
+}
+
+.profile_button {
+	width: 30%;
+	display: table-cell;
+	padding-left: 10px;
+}

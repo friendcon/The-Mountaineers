@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.themountaineers.mapper.GroupProfileMapper">
+	<insert id="insertGroupProfile" >
+		insert into groupphoto
+		(
+			group_uuid, group_photo_path, group_photo_name, 
+			group_photo_type, group_no
+		)
+		values
+		(
+			#{uuid}, #{group_photo_path}, #{group_photo_name},
+			#{group_photo_type}, #{group_no}
+		)
+	</insert>
+</mapper>

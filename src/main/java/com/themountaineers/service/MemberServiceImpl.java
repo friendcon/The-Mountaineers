@@ -27,8 +27,8 @@ public class MemberServiceImpl implements MemberService {
 	@Setter(onMethod_ = @Autowired)
 	private BCryptPasswordEncoder encoder;
 	
-	@Override
 	@Transactional
+	@Override
 	public int memberjoin(MemberVO member) {
 		member.setMem_pwd(encoder.encode(member.getMem_pwd()));
 		int insertQuery = mapper.memberInsert(member);
