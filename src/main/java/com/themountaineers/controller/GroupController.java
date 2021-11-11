@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import com.themountaineers.domain.GroupHashVO;
 import com.themountaineers.domain.GroupMemberVO;
+import com.themountaineers.domain.GroupProfileVO;
 import com.themountaineers.domain.GroupVO;
 import com.themountaineers.service.GroupService;
 import com.themountaineers.service.MemberService;
@@ -34,7 +35,23 @@ public class GroupController {
 	@GetMapping("/main")
 	public void groupMain(Model model) {
 		log.info("********** 그룹 메인 페이지**********");
+		
+		
+		List<GroupProfileVO> profiles = new ArrayList<>();
+		for(GroupVO vo : service.groupTotal()){
+			profiles.add(vo.getProfile());
+		}
+		
+		List<String> thumPath = new ArrayList<>();
+		for(GroupProfileVO profile : profiles) {
+			String totalPath = "C:upload\\group\\profile\\";
+			totalPath += profile.getGroup_photo_path();
+			totalPath += "\\thum_" + profile.getGroup_photo_name();
+			thumPath.add(totalPath);
+		}
+		
 		model.addAttribute("groups", service.groupTotal());
+		model.addAttribute("thumlist", thumPath);
 	}
 	
 	@GetMapping("/create")
@@ -49,6 +66,13 @@ public class GroupController {
 		log.info(group);
 
 		String memberId = principal.getName();
+
+		GroupProfileVO profile = new GroupProfileVO();
+		profile.setGroup_photo_name("noimage");
+		profile.setGroup_photo_path("noimage");
+		profile.setGroup_photo_type("noimage");
+		profile.setUuid("noimage");
+		group.setProfile(profile);
 		
 		service.groupInsert(group, memberId, groupHashList);
 		
