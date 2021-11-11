@@ -103,48 +103,134 @@
 							<p>&nbsp;나와 비슷한 산행 성향을 가진 그룹원을 모집하기를 원한다면, 그룹 성향을 선택해주세요!</p>
 						</h3>
 						<div class="for_check_box">
-							<label class="check_box_label" for="nightclimb">
-								<input type="checkbox" name="hashList" id="nightclimb" value="1">야간산행
-							</label>
-							<label class="check_box_label" for="morningclimb">
-								<input type="checkbox" name="hashList" id="morningclimb" value="2">아침산행
-							</label>
-							<label class="check_box_label" for="weekendclimb">
-								<input type="checkbox" name="hashList" id="weekendclimb" value="3">주말산행
-							</label>
-							<label class="check_box_label" for="weekdayclimb">
-								<input type="checkbox" name="hashList" id="weekdayclimb" value="4">평일산행
-							</label>
-							<label class="check_box_label" for="food">
-								<input type="checkbox" name="hashList" id="food" value="5">맛집탐방
-							</label>
-							<label class="check_box_label" for="community">
-								<input type="checkbox" name="hashList" id="community" value="6">친목
-							</label>
-							<label class="check_box_label" for="tracking">
-								<input type="checkbox" name="hashList" id="tracking" value="7">트래킹
-							</label>
-							<label class="check_box_label" for="bagpacking">
-								<input type="checkbox" name="hashList" id="bagpacking" value="8">백패킹
-							</label>
-							<label class="check_box_label" for="climbing">
-								<input type="checkbox" name="hashList" id="climbing" value="9">클라이밍
-							</label>
-							<label class="check_box_label" for="climb">
-								<input type="checkbox" name="hashList" id="climb" value="10">등산
-							</label>
-							<label class="check_box_label" for="easy">
-								<input type="checkbox" name="hashList" id="easy" value="11">초보자
-							</label>
-							<label class="check_box_label" for="middle">
-								<input type="checkbox" name="hashList" id="middle" value="12">중급자
-							</label>
-							<label class="check_box_label" for="difficult">
-								<input type="checkbox" name="hashList" id="difficult" value="13">고급자
-							</label>
-							<label class="check_box_label" for="camping">
-								<input type="checkbox" name="hashList" id="camping" value="14">캠핑
-							</label>
+							<h5 class="create_content">&nbsp;&nbsp;아래 관심 있는 #해시태그를 선택하시면, 해시태그와 관련된 그룹을 확인하실 수 있습니다.</h5>
+								<div class="region_container ml-2 mt-1">
+									<h5>
+										<label for="group_profile">지역</label>
+									</h5>
+									<label class="check_box_label region" id="region" for="seoul">
+										<input type="checkbox" name="hashList" id="seoul" value="1">서울
+									</label>
+									<label class="check_box_label region" id="region" for="gygi">
+										<input type="checkbox" name="hashList" id="gygi" value="2">경기
+									</label>
+									<label class="check_box_label region" id="region" for="incheon">
+										<input type="checkbox" name="hashList" id="incheon" value="3">인천
+									</label>
+									<label class="check_box_label region" id="region" for="daejeon">
+										<input type="checkbox" name="hashList" id="daejeon" value="4">대전
+									</label>
+									<label class="check_box_label region" id="region" for="daegu">
+										<input type="checkbox" name="hashList" id="daegu" value="5">대구
+									</label>
+									<label class="check_box_label region" id="region" for="Chungcheong">
+										<input type="checkbox" name="hashList" id="Chungcheong" value="6">충청
+									</label>
+									<label class="check_box_label region" id="region" for="Gyeongsang-do">
+										<input type="checkbox" name="hashList" id="Gyeongsang-do" value="7">경상
+									</label>
+									<label class="check_box_label region" id="region" for="Jeolla-do">
+										<input type="checkbox" name="hashList" id="Jeolla-do" value="8">전라
+									</label>
+									<label class="check_box_label region" id="region" for="Gwangju">
+										<input type="checkbox" name="hashList" id="Gwangju" value="9">광주
+									</label>
+									<label class="check_box_label region" id="region" for="Ulsan">
+										<input type="checkbox" name="hashList" id="Ulsan" value="10">울산
+									</label>
+									<label class="check_box_label region" id="region" for="busan">
+										<input type="checkbox" name="hashList" id="busan" value="11">부산
+									</label>
+									<label class="check_box_label region" id="region" for="jeju">
+										<input type="checkbox" name="hashList" id="jeju" value="12">제주
+									</label>
+								</div>
+								<div class="age_container ml-2 mt-1">
+									<h5>
+										<label for="group_profile">그룹 연령대</label>
+									</h5>
+									<label class="check_box_label age" id="age" for="10age">
+										<input type="checkbox" name="hashList" id="10age" value="13">10대
+									</label>
+									<label class="check_box_label age" id="age" for="20age">
+										<input type="checkbox" name="hashList" id="20age" value="14">20대
+									</label>
+									<label class="check_box_label age" id="age" for="30age">
+										<input type="checkbox" name="hashList" id="30age" value="15">30대
+									</label>
+									<label class="check_box_label age" id="age" for="40age">
+										<input type="checkbox" name="hashList" id="40age" value="16">40대
+									</label>
+									<label class="check_box_label age" id="age" for="50age">
+										<input type="checkbox" name="hashList" id="50age" value="17">50대
+									</label>
+									<label class="check_box_label age" id="age" for="60age">
+										<input type="checkbox" name="hashList" id="60age" value="18">60대
+									</label>
+								</div>
+								<div class="row">
+									<div class="time_container ml-4 mt-1">
+										<h5>
+											<label for="group_profile">시간대별</label>
+										</h5>
+										<label class="check_box_label time" id="time" for="morning">
+											<input type="checkbox" name="hashList" id="morning" value="19">아침산행
+										</label>
+										<label class="check_box_label time" id="time" for="weekday">
+											<input type="checkbox" name="hashList" id="weekday" value="20">평일산행
+										</label>
+										<label class="check_box_label time" id="time" for="night">
+											<input type="checkbox" name="hashList" id="night" value="21">야간산행
+										</label>
+										<label class="check_box_label time" id="time" for="weekend">
+											<input type="checkbox" name="hashList" id="weekend" value="22">주말산행
+										</label>
+									</div>
+									<div class="type_container ml-2 mt-1">
+										<h5>
+											<label for="group_profile">그룹 타입</label>
+										</h5>
+										<label class="check_box_label type" id="type" for="tracking">
+											<input type="checkbox" name="hashList" id="tracking" value="23">트래킹
+										</label>
+										<label class="check_box_label type" id="type" for="bagpacking">
+											<input type="checkbox" name="hashList" id="bagpacking" value="24">백패킹
+										</label>
+										<label class="check_box_label type" id="type" for="climbing">
+											<input type="checkbox" name="hashList" id="climbing" value="25">클라이밍
+										</label>
+										<label class="check_box_label type" id="type" for="climb">
+											<input type="checkbox" name="hashList" id="climb" value="26">등산
+										</label>
+									</div>
+								</div>
+								<div class="row mb-1">
+									<div class="feature_container ml-4 mt-1">
+										<h5>
+											<label for="group_profile">그룹 특성</label>
+										</h5>
+										<label class="check_box_label features" id="features" for="community">
+											<input type="checkbox" name="hashList" id="community" value="27">친목
+										</label>
+										<label class="check_box_label features" id="features" for="food">
+											<input type="checkbox" name="hashList" id="food" value="28">맛집 탐방
+										</label>
+									</div>
+									<div class="grade_container ml-4 mt-1">
+										<h5>
+											<label for="group_profile">등산 난이도</label>
+										</h5>
+										<label class="check_box_label grade" id="grade" for="easy">
+											<input type="checkbox" name="hashList" id="easy" value="29">초급자
+										</label>
+										<label class="check_box_label grade" id="grade" for="middle">
+											<input type="checkbox" name="hashList" id="middle" value="30">중급자
+										</label>
+										<label class="check_box_label grade" id="grade" for="difficult">
+											<input type="checkbox" name="hashList" id="difficult" value="31">고급자
+										</label>
+									</div>
+								</div>
 						</div>
 					</div>
 					

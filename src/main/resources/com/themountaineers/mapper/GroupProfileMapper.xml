@@ -15,4 +15,8 @@
 			#{group_photo_type}, #{group_no}
 		)
 	</insert>
+	<select id="groupProfileSelect" resultType="com.themountaineers.domain.GroupProfileVO">
+		select * from groupphoto
+		where group_no = #{group_no}
+	</select>
 </mapper>

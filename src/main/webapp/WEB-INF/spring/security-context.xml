@@ -10,7 +10,10 @@
 	<bean id="customLogoutSuccess" class="com.themountaineers.security.CustomLogoutSuccessHandler" />
 	<bean id="customUserDetailService" class="com.themountaineers.security.CustomUserDetailService" />
 	<bean id="customAccessDenied" class="com.themountaineers.security.CustomAccessDeniedHandler" />
-
+	<bean id="egovStrictHttpFirewall" class="org.springframework.security.web.firewall.StrictHttpFirewall">
+		<property name="allowSemicolon" value="true"/>
+	</bean>
+	
 	<security:http auto-config="true" use-expressions="true">
 		<security:intercept-url pattern="/**" access="permitAll"/>
 		<security:form-login login-page="/member/login" authentication-success-handler-ref="customLoginSuccess"/>
@@ -24,4 +27,6 @@
 			<security:password-encoder ref="bcryptPasswordEncoder"/>
 		</security:authentication-provider>
 	</security:authentication-manager>
+	
+	<security:http-firewall ref="egovStrictHttpFirewall"/>
 </beans>

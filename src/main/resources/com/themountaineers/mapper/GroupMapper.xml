@@ -44,6 +44,7 @@
 		<result property="group_content" column="group_content"/>
 		<result property="group_point" column="group_point"/>
 		<result property="group_open" column="group_open"/>
+		<result property="group_level" column="group_level"/>
 		<association property="profile" resultMap="profileMap"></association>
 		<collection property="groupHashList" resultMap="hashMap"></collection>
 	</resultMap>
@@ -63,18 +64,13 @@
 	
 	<!-- 진짜 그룹 전체 가져오기  -->
 	<select id="groupTotalSelect" resultMap="groupTotalResult">
-		<!-- select g.group_no, group_name, group_content, 
-		group_point, group_count, group_open, p.group_uuid,
-		p.group_photo_path, p.group_photo_name,
-		p.group_photo_type, h.hash_num
-		from climbgroup g, grouphash h, groupphoto p 
-		where g.group_no = h.group_no order by g.group_no desc, h.hash; -->
 		select g.group_no, group_name, group_content, 
-		group_point, group_count, group_open, p.group_uuid,
+		group_point, group_count, group_open, group_level, p.group_uuid,
 		p.group_photo_path, p.group_photo_name,
 		p.group_photo_type, h.hash_num
 		from climbgroup g, grouphash h, groupphoto p 
 		where g.group_no = h.group_no and g.group_no = p.group_no
         order by g.group_no desc, h.hash_num asc;
 	</select>
+	
 </mapper>

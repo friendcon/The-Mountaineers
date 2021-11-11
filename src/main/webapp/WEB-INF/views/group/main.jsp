@@ -9,7 +9,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <link href="../../resources/css/group/groupmain.css" rel="stylesheet" type="text/css">
-<title>The Mountaineers | Group Search</title>
+<title>The Mountaineers | Group Main</title>
 <jsp:include page="../common/head.jsp"></jsp:include>
 <jsp:include page="../common/script.jsp"></jsp:include>
 <link rel="stylesheet" href="https://unpkg.com/swiper@7/swiper-bundle.min.css"/>
@@ -47,7 +47,7 @@
 			<div class="col-lg-9 col-md-9">
 				<div class="row create_header">
 					<div class="col-lg-12">
-						<h2>Group Search</h2>
+						<h2>Group Main</h2>
 						<h5 class="create_content">&nbsp;&nbsp;나에게 꼭 맞는 등산 그룹을 찾아보세요!</h5>
 						<hr>
 					</div>
@@ -92,61 +92,64 @@
 									<h5>
 										<label for="group_profile">지역</label>
 									</h5>
-									<label class="check_box_label" id="region" for="seoul">
+									<label class="check_box_label region" id="region" for="seoul">
 										<input type="checkbox" name="hashList" id="seoul" value="1">서울
 									</label>
-									<label class="check_box_label" id="region" for="gygi">
-										<input type="checkbox" name="hashList" id="gygi" value="1">경기
+									<label class="check_box_label region" id="region" for="gygi">
+										<input type="checkbox" name="hashList" id="gygi" value="2">경기
 									</label>
-									<label class="check_box_label" id="region" for="incheon">
-										<input type="checkbox" name="hashList" id="incheon" value="1">인천
+									<label class="check_box_label region" id="region" for="incheon">
+										<input type="checkbox" name="hashList" id="incheon" value="3">인천
 									</label>
-									<label class="check_box_label" id="region" for="daejeon">
-										<input type="checkbox" name="hashList" id="daejeon" value="1">대전
+									<label class="check_box_label region" id="region" for="daejeon">
+										<input type="checkbox" name="hashList" id="daejeon" value="4">대전
 									</label>
-									<label class="check_box_label" id="region" for="daegu">
-										<input type="checkbox" name="hashList" id="daegu" value="1">대구
+									<label class="check_box_label region" id="region" for="daegu">
+										<input type="checkbox" name="hashList" id="daegu" value="5">대구
 									</label>
-									<label class="check_box_label" id="region" for="Chungcheong">
-										<input type="checkbox" name="hashList" id="Chungcheong" value="1">충청
+									<label class="check_box_label region" id="region" for="Chungcheong">
+										<input type="checkbox" name="hashList" id="Chungcheong" value="6">충청
 									</label>
-									<label class="check_box_label" id="region" for="Gyeongsang-do">
-										<input type="checkbox" name="hashList" id="Gyeongsang-do" value="1">경상
+									<label class="check_box_label region" id="region" for="Gyeongsang-do">
+										<input type="checkbox" name="hashList" id="Gyeongsang-do" value="7">경상
 									</label>
-									<label class="check_box_label" id="region" for="Jeolla-do">
-										<input type="checkbox" name="hashList" id="Jeolla-do" value="1">전라
+									<label class="check_box_label region" id="region" for="Jeolla-do">
+										<input type="checkbox" name="hashList" id="Jeolla-do" value="8">전라
 									</label>
-									<label class="check_box_label" id="region" for="Gwangju">
-										<input type="checkbox" name="hashList" id="Gwangju" value="1">광주
+									<label class="check_box_label region" id="region" for="Gwangju">
+										<input type="checkbox" name="hashList" id="Gwangju" value="9">광주
 									</label>
-									<label class="check_box_label" id="region" for="Ulsan">
-										<input type="checkbox" name="hashList" id="Ulsan" value="1">울산
+									<label class="check_box_label region" id="region" for="Ulsan">
+										<input type="checkbox" name="hashList" id="Ulsan" value="10">울산
 									</label>
-									<label class="check_box_label" id="region" for="busan">
-										<input type="checkbox" name="hashList" id="busan" value="1">부산
+									<label class="check_box_label region" id="region" for="busan">
+										<input type="checkbox" name="hashList" id="busan" value="11">부산
+									</label>
+									<label class="check_box_label region" id="region" for="jeju">
+										<input type="checkbox" name="hashList" id="jeju" value="12">제주
 									</label>
 								</div>
 								<div class="age_container ml-2 mt-1">
 									<h5>
 										<label for="group_profile">그룹 연령대</label>
 									</h5>
-									<label class="check_box_label" id="age" for="10age">
-										<input type="checkbox" name="hashList" id="10age" value="1">10대
+									<label class="check_box_label age" id="age" for="10age">
+										<input type="checkbox" name="hashList" id="10age" value="13">10대
 									</label>
-									<label class="check_box_label" id="age" for="20age">
-										<input type="checkbox" name="hashList" id="20age" value="1">20대
+									<label class="check_box_label age" id="age" for="20age">
+										<input type="checkbox" name="hashList" id="20age" value="14">20대
 									</label>
-									<label class="check_box_label" id="age" for="30age">
-										<input type="checkbox" name="hashList" id="30age" value="1">30대
+									<label class="check_box_label age" id="age" for="30age">
+										<input type="checkbox" name="hashList" id="30age" value="15">30대
 									</label>
-									<label class="check_box_label" id="age" for="40age">
-										<input type="checkbox" name="hashList" id="40age" value="1">40대
+									<label class="check_box_label age" id="age" for="40age">
+										<input type="checkbox" name="hashList" id="40age" value="16">40대
 									</label>
-									<label class="check_box_label" id="age" for="50age">
-										<input type="checkbox" name="hashList" id="50age" value="1">50대
+									<label class="check_box_label age" id="age" for="50age">
+										<input type="checkbox" name="hashList" id="50age" value="17">50대
 									</label>
-									<label class="check_box_label" id="age" for="60age">
-										<input type="checkbox" name="hashList" id="60age" value="1">60대
+									<label class="check_box_label age" id="age" for="60age">
+										<input type="checkbox" name="hashList" id="60age" value="18">60대
 									</label>
 								</div>
 								<div class="row">
@@ -154,34 +157,34 @@
 										<h5>
 											<label for="group_profile">시간대별</label>
 										</h5>
-										<label class="check_box_label" id="time" for="morning">
-											<input type="checkbox" name="hashList" id="morning" value="1">아침산행
+										<label class="check_box_label time" id="time" for="morning">
+											<input type="checkbox" name="hashList" id="morning" value="19">아침산행
 										</label>
-										<label class="check_box_label" id="time" for="weekday">
-											<input type="checkbox" name="hashList" id="weekday" value="1">평일산행
+										<label class="check_box_label time" id="time" for="weekday">
+											<input type="checkbox" name="hashList" id="weekday" value="20">평일산행
 										</label>
-										<label class="check_box_label" id="time" for="night">
-											<input type="checkbox" name="hashList" id="night" value="1">야간산행
+										<label class="check_box_label time" id="time" for="night">
+											<input type="checkbox" name="hashList" id="night" value="21">야간산행
 										</label>
-										<label class="check_box_label" id="time" for="weekend">
-											<input type="checkbox" name="hashList" id="weekend" value="1">주말산행
+										<label class="check_box_label time" id="time" for="weekend">
+											<input type="checkbox" name="hashList" id="weekend" value="22">주말산행
 										</label>
 									</div>
 									<div class="type_container ml-2 mt-1">
 										<h5>
 											<label for="group_profile">그룹 타입</label>
 										</h5>
-										<label class="check_box_label" id="type" for="tracking">
-											<input type="checkbox" name="hashList" id="tracking" value="1">트래킹
+										<label class="check_box_label type" id="type" for="tracking">
+											<input type="checkbox" name="hashList" id="tracking" value="23">트래킹
 										</label>
-										<label class="check_box_label" id="type" for="bagpacking">
-											<input type="checkbox" name="hashList" id="bagpacking" value="1">백패킹
+										<label class="check_box_label type" id="type" for="bagpacking">
+											<input type="checkbox" name="hashList" id="bagpacking" value="24">백패킹
 										</label>
-										<label class="check_box_label" id="type" for="climbing">
-											<input type="checkbox" name="hashList" id="climbing" value="1">클라이밍
+										<label class="check_box_label type" id="type" for="climbing">
+											<input type="checkbox" name="hashList" id="climbing" value="25">클라이밍
 										</label>
-										<label class="check_box_label" id="type" for="climb">
-											<input type="checkbox" name="hashList" id="climb" value="1">등산
+										<label class="check_box_label type" id="type" for="climb">
+											<input type="checkbox" name="hashList" id="climb" value="26">등산
 										</label>
 									</div>
 								</div>
@@ -190,25 +193,25 @@
 										<h5>
 											<label for="group_profile">그룹 특성</label>
 										</h5>
-										<label class="check_box_label" id="features" for="community">
-											<input type="checkbox" name="hashList" id="community" value="1">친목
+										<label class="check_box_label features" id="features" for="community">
+											<input type="checkbox" name="hashList" id="community" value="27">친목
 										</label>
-										<label class="check_box_label" id="features" for="food">
-											<input type="checkbox" name="hashList" id="food" value="1">맛집 탐방
+										<label class="check_box_label features" id="features" for="food">
+											<input type="checkbox" name="hashList" id="food" value="28">맛집 탐방
 										</label>
 									</div>
 									<div class="grade_container ml-4 mt-1">
 										<h5>
 											<label for="group_profile">등산 난이도</label>
 										</h5>
-										<label class="check_box_label" id="grade" for="easy">
-											<input type="checkbox" name="hashList" id="easy" value="1">초급자
+										<label class="check_box_label grade" id="grade" for="easy">
+											<input type="checkbox" name="hashList" id="easy" value="29">초급자
 										</label>
-										<label class="check_box_label" id="grade" for="middle">
-											<input type="checkbox" name="hashList" id="middle" value="1">중급자
+										<label class="check_box_label grade" id="grade" for="middle">
+											<input type="checkbox" name="hashList" id="middle" value="30">중급자
 										</label>
-										<label class="check_box_label" id="grade" for="difficult">
-											<input type="checkbox" name="hashList" id="difficult" value="1">고급자
+										<label class="check_box_label grade" id="grade" for="difficult">
+											<input type="checkbox" name="hashList" id="difficult" value="31">고급자
 										</label>
 									</div>
 								</div>
@@ -233,34 +236,19 @@
 			<div class="col-lg-3"></div>
 			<div class="col-lg-9">
 				<h5>그룹 목록</h5>
-				<div class="group_container">
-					<span class="group_img">
-					
-					</span>
-					<span class="group_content_box">
-					</span>
-				</div>
-				<div class="group_container">
-					<span class="group_img">
-					
-					</span>
-					<span class="group_content_box">
-					</span>
-				</div>
-				<div class="group_container">
-					<span class="group_img">
-					
-					</span>
-					<span class="group_content_box">
-					</span>
-				</div>
-				<div class="group_container">
-					<span class="group_img">
-					
-					</span>
-					<span class="group_content_box">
-					</span>
-				</div>
+				<c:forEach var="groupone" items="${groups }" varStatus="status">
+					<div class="group_container">
+						<div class="group_img">
+							<img class="group_profile_image" name="group_profile_image" src="/group/getImg/${groupone.group_no }" />
+						</div>
+						<div class="group_content_box">
+							<h5><a href=""> ${groupone.group_name } </a></h5>
+							<c:if test="${groupone.group_level } ">
+							</c:if>
+							<label>${groupone.group_level }</label>
+						</div>
+					</div>
+				</c:forEach>
 			</div>
 		</div>
 	</div>

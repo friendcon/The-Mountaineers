@@ -57,5 +57,10 @@ public class GroupServiceImpl implements GroupService {
 	public List<GroupVO> groupTotal() {
 		return mapper.groupTotalSelect();
 	}
+
+	@Override
+	public GroupProfileVO groupProfileGet(int group_no) {
+		return profilemapper.groupProfileSelect(group_no);
+	}
 	
 }

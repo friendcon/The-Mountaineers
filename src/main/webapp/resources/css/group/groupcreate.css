@@ -62,7 +62,7 @@ h3 {
     position: relative;
 }
 
-.for_check_box {
+/* .for_check_box {
     display: block;
     width: 100%;
     height: 150px;
@@ -71,10 +71,9 @@ h3 {
     box-sizing: border-box;
     background: #fff;
     position: relative;
-}
+} */
 
 .btn_area {
-    margin-top: 40px;
     margin-left:20px;
     margin-right:20px;
 }
@@ -132,4 +131,79 @@ h3 {
 	width: 30%;
 	display: table-cell;
 	padding-left: 10px;
+}
+
+/* 체크박스 디자인 */
+
+.for_check_box {
+	display: block;
+    width: 100%;
+    height: 480px;
+    border: solid 1px #dadada;
+    padding: 10px 14px 10px 14px;
+    box-sizing: border-box;
+    background: #fff;
+    position: relative;
+}
+
+/* 체크박스 디자인 없애기 */
+input[type=checkbox] {
+  display: none;
+}
+
+h5 > label {
+    margin: 10px 0 8px;
+    font-size: 16px;
+    font-weight: 700;
+}
+
+/* 연령대 라벨 디자인 */
+#age, #region, #time, #type, #features, #grade {
+  align-items: center;
+  position: relative;
+  width: fit-content;
+  color: #ffffff;
+  box-sizing: border-box;
+  border: solid 1px;
+  padding: 10px 14px 10px 14px;
+  border-radius: 40px 40px 40px 40px;
+  font-weight: 400;
+  margin: 3px 0 3px 5px;
+  text-align: left;
+  cursor: pointer;
+}
+
+#age{
+	border-color: #FFA000;
+	background-color: #FFA000;
+}
+
+
+#region {
+	border-color: #FF7F7F;
+	background-color: #FF7F7F;
+}
+
+#time {
+	border-color:#eecc42;
+	background-color: #eecc42;
+}
+
+#type{
+	border-color:#81c784;
+	background-color: #81c784;
+}
+
+.grade_container {
+	/* margin-left: 194px; */
+}
+
+#features {
+	border-color: #8C9EFF;
+	background-color: #8C9EFF;
+}
+
+#grade{
+	border-color: #9575cd;
+	background-color: #9575cd;	
 }

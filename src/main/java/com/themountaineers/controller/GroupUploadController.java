@@ -22,6 +22,7 @@ import com.themountaineers.domain.GroupProfileVO;
 import lombok.AllArgsConstructor;
 import lombok.extern.log4j.Log4j;
 import net.coobird.thumbnailator.Thumbnailator;
+import net.coobird.thumbnailator.Thumbnails;
 
 @Log4j
 @Controller
@@ -69,7 +70,10 @@ public class GroupUploadController {
 			if(checkImageType(saveFile)) {
 				FileOutputStream thumnail = new FileOutputStream(new File(uploadPath,
 						"thum_" + uploadFileName));
-				Thumbnailator.createThumbnail(uploadFile.getInputStream(), thumnail, 100, 100);
+				/*Thumbnailator.createThumbnail(uploadFile.getInputStream(), thumnail, 100, 100);
+				thumnail.close();*/
+				Thumbnails.of(uploadFile.getInputStream())
+				.scale(0.45).outputFormat(extension).toOutputStream(thumnail);
 				thumnail.close();
 			}
 		} catch (Exception e) {
