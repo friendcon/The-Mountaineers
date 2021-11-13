@@ -1,5 +1,9 @@
 package com.themountaineers.mapper;
 
+import static org.hamcrest.CoreMatchers.is;
+import static org.hamcrest.CoreMatchers.nullValue;
+import static org.junit.Assert.assertThat;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -62,4 +66,15 @@ public class GroupMapperTests {
 		List<GroupVO> list = mapper.groupTotalSelect();
 		list.get(0).getGroupHashList().forEach(hash -> log.info("hash!!" + hash));
 	}*/
+	
+	@Test
+	public void groupTotalSelectHashTest() {
+		List<Integer> hashList = new ArrayList<>();
+		//assertThat(hashList, is(nullValue()));
+		log.info("Å©±â : " + hashList.size());
+		/*hashList.add(3);
+		hashList.add(4);
+		hashList.add(14);*/
+		log.info(mapper.groupTotalSelect(hashList));
+	}
 }

@@ -54,8 +54,8 @@ public class GroupServiceImpl implements GroupService {
 	}
 
 	@Override
-	public List<GroupVO> groupTotal() {
-		return mapper.groupTotalSelect();
+	public List<GroupVO> groupTotal(List<Integer> hashList) {
+		return mapper.groupTotalSelect(hashList);
 	}
 
 	@Override

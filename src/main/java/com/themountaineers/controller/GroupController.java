@@ -52,35 +52,20 @@ public class GroupController {
 		IOUtils.copy(fileUrl.openStream(), response.getOutputStream());
 	}
 	
-	
-	
 	@GetMapping("/main")
-	public void groupMain(Model model) {
+	public void groupMain(Model model, @RequestParam(value="hashList", required=false) List<Integer> hashList) {
 		log.info("********** 그룹 메인 페이지**********");
 		
 		
 		List<GroupProfileVO> profiles = new ArrayList<>();
-		for(GroupVO vo : service.groupTotal()){
+		
+		List<GroupVO> groupList = service.groupTotal(hashList);
+		
+		for(GroupVO vo : groupList){
 			profiles.add(vo.getProfile());
 		}
 		
-		/*List<String> thumPath = new ArrayList<>();
-		for(GroupProfileVO profile : profiles) {
-			//String totalPath = "C:upload\\group\\profile\\";
-			String totalPath = "";
-			
-			if(profile.getGroup_photo_name().equals("noimage")){
-				totalPath += "\\thum_noimage.jpg";
-				thumPath.add(totalPath);
-			} else {
-				totalPath += profile.getGroup_photo_path();
-				totalPath += "\\thum_" + profile.getGroup_photo_name();
-				thumPath.add(totalPath);
-			}
-		}*/
-		
-		model.addAttribute("groups", service.groupTotal());
-		//model.addAttribute("thumlist", thumPath);
+		model.addAttribute("groups", groupList);
 	}
 	
 	@GetMapping("/create")

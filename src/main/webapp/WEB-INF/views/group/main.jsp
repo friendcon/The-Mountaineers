@@ -243,9 +243,16 @@
 						</div>
 						<div class="group_content_box">
 							<h5><a href=""> ${groupone.group_name } </a></h5>
-							<c:if test="${groupone.group_level } ">
+							<c:if test="${groupone.group_level eq 1}">
+								<label class="level1">Level 1</label>
 							</c:if>
-							<label>${groupone.group_level }</label>
+							<c:if test="${groupone.group_level eq 2}">
+								<label class="level2">Level 2</label>
+							</c:if>
+							<c:if test="${groupone.group_level eq 3}">
+								<label class="level3">Level 3</label>
+							</c:if>
+							<p>${groupone.group_content }</p>
 						</div>
 					</div>
 				</c:forEach>
