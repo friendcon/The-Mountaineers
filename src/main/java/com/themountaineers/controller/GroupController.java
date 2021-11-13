@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.themountaineers.domain.GroupHashVO;
 import com.themountaineers.domain.GroupMemberVO;
@@ -66,6 +67,22 @@ public class GroupController {
 		}
 		
 		model.addAttribute("groups", groupList);
+	}
+	
+	@GetMapping("/getlist")
+	public @ResponseBody List<GroupVO> groupGetList(Model model, @RequestParam(value="hashList[]", required=false) List<Integer> hashList){
+		List<GroupProfileVO> profiles = new ArrayList<>();
+		
+		List<Integer> list = hashList;
+		
+		log.info("¿©±â¾ß" + list);
+		List<GroupVO> groups = service.groupTotal(list);
+		groups.forEach(group -> log.info(group.getGroup_no()));
+		for(GroupVO vo : groups){
+			profiles.add(vo.getProfile());
+		}
+		
+		return groups;
 	}
 	
 	@GetMapping("/create")

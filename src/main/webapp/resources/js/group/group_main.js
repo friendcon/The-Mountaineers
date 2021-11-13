@@ -1,5 +1,7 @@
 
 $(document).ready(function(){
+	
+	var append_here = $('.append_here');
 	var swiper = new Swiper(".mySwiper", {
 		cssMode: true,
 		autoplay: {
@@ -16,6 +18,51 @@ $(document).ready(function(){
         mousewheel: true,
         keyboard: true,
 	});
+	
+	$(".check_box_label").on("change", function(e){
+		var hashLists = [];
+		$('input[type="checkbox"]:checked').each(function(){
+			hashLists.push($(this).val());
+		});
+		
+		console.log("list : " + hashLists);
+		$.ajax({
+			url: '/group/getlist',
+			type: 'GET',
+			data: {
+				"hashList" : hashLists
+			},
+			dataType : "json",
+			success: function(result){
+				console.log(result);
+				var addGroupHtml = "";
+				var group_list_container = $('group_list_container');
+
+				$('.group_container').remove();
+
+				for(var i=0; i<result.length; i++) {
+					addGroupHtml += "<div class='group_container'><div class='group_img'>";
+					addGroupHtml += "<img class='group_profile_image' name='group_profile_image' src='/group/getImg/";
+					addGroupHtml += result[i].group_no;
+					addGroupHtml += "'/></div><div class='group_content_box'><h5><a href=''>";
+					addGroupHtml += result[i].group_name;
+					addGroupHtml += "</a></h5>";
+					addGroupHtml += "<label class='level";
+					addGroupHtml += result[i].group_level;
+					addGroupHtml += "'> Level ";
+					addGroupHtml += result[i].group_level;
+					addGroupHtml += "</label><p>"
+					addGroupHtml += result[i].group_content;
+					addGroupHtml += "</p></div></div>"
+				}
+				//console.log(addGroupHtml);
+				append_here.empty();
+				$(".append_here").append(addGroupHtml);
+
+			}
+		})
+		
+	})
 	
 	$(".region").on("change", function(e){
 		var obj = $(this).children("input");

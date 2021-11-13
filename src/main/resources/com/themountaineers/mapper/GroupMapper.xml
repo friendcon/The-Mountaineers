@@ -71,10 +71,10 @@
 		p.group_photo_type, h.hash_num
 		from climbgroup g, grouphash h, groupphoto p 
 		where g.group_no = h.group_no and g.group_no = p.group_no
-		<if test="hashList != null">
+		<if test="list != null">
 			and g.group_no = (select hash.group_no from group_hash_view hash
 			<where>
-				<foreach collection="hashList" item="hash">
+				<foreach collection="list" item="hash">
 					<trim prefix="and">
 						find_in_set(#{hash}, hash_list)
 					</trim>

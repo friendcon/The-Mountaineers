@@ -235,27 +235,30 @@
 		<div class="row mt-2">
 			<div class="col-lg-3"></div>
 			<div class="col-lg-9">
-				<h5>그룹 목록</h5>
-				<c:forEach var="groupone" items="${groups }" varStatus="status">
-					<div class="group_container">
-						<div class="group_img">
-							<img class="group_profile_image" name="group_profile_image" src="/group/getImg/${groupone.group_no }" />
+				<h5 class="group_list_container">그룹 목록</h5>
+				<div class="append_here">
+					<c:forEach var="groupone" items="${groups }" varStatus="status">
+						<div class="group_container">
+							<div class="group_img">
+								<img class="group_profile_image" name="group_profile_image" src="/group/getImg/${groupone.group_no }" />
+							</div>
+							<div class="group_content_box">
+								<h5><a href=""> ${groupone.group_name } </a></h5>
+								<c:if test="${groupone.group_level eq 1}">
+									<label class="level1">Level 1</label>
+								</c:if>
+								<c:if test="${groupone.group_level eq 2}">
+									<label class="level2">Level 2</label>
+								</c:if>
+								<c:if test="${groupone.group_level eq 3}">
+									<label class="level3">Level 3</label>
+								</c:if>
+								<p>${groupone.group_content }</p>
+							</div>
 						</div>
-						<div class="group_content_box">
-							<h5><a href=""> ${groupone.group_name } </a></h5>
-							<c:if test="${groupone.group_level eq 1}">
-								<label class="level1">Level 1</label>
-							</c:if>
-							<c:if test="${groupone.group_level eq 2}">
-								<label class="level2">Level 2</label>
-							</c:if>
-							<c:if test="${groupone.group_level eq 3}">
-								<label class="level3">Level 3</label>
-							</c:if>
-							<p>${groupone.group_content }</p>
-						</div>
-					</div>
-				</c:forEach>
+					</c:forEach>
+				</div>
+				<%-- <jsp:include page="grouplist.jsp"></jsp:include> --%>
 			</div>
 		</div>
 	</div>
