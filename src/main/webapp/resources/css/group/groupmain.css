@@ -4,6 +4,14 @@
 	margin-top: 10px;
 }
 
+.paging-container{
+	margin-top: 50px;
+}
+
+.group_content_box h5{
+	font-size: 16px;
+}
+
 .box {
     display: block;
     width: 100%;
@@ -16,11 +24,13 @@
 }
 
 .group_container {
-	float: left;
-	width: 33%;
+	/* float: left; */
+	display: inline-block;
+	width: 30%;
 	padding: 3% 1% 0px 2%;
 /* 	padding-right: 2%;
 	padding-left: 3%; */
+	position: sta
 }
 
 .group_img {
@@ -36,7 +46,8 @@
 }
 
 .group_profile_image{
-	position: absolute; top:0; left: 0;
+	position: absolute;
+	top:0; left: 0;
 	width: 100%;
 	height: 100%;
 	object-fit:cover;
@@ -45,7 +56,8 @@
 .group_content_box {
 	display: table;
     width: 100%;
-    height: 130px;
+    /* height: 130px; */
+    height: 150px;
     margin-left: 1px;
     border-left: solid;
     border-left-color: #dadada;
@@ -58,7 +70,7 @@
     border-bottom-width: 1px; */
     box-sizing: border-box;
     background: #fff;
-    position: relative;
+    position: static;
 }
 
 .group_content_box > h5 {

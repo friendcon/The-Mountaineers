@@ -72,9 +72,9 @@ public class GroupMapperTests {
 		List<Integer> hashList = new ArrayList<>();
 		//assertThat(hashList, is(nullValue()));
 		log.info("Å©±â : " + hashList.size());
-		/*hashList.add(3);
+		hashList.add(3);
 		hashList.add(4);
-		hashList.add(14);*/
-		log.info(mapper.groupTotalSelect(hashList));
+		hashList.add(14);
+		mapper.groupTotalSelect(hashList).forEach(group -> log.info(group));
 	}
 }

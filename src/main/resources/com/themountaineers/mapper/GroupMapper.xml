@@ -45,14 +45,15 @@
 		<result property="group_point" column="group_point"/>
 		<result property="group_open" column="group_open"/>
 		<result property="group_level" column="group_level"/>
+		<result property="groupHashList" column="hash_list" />
 		<association property="profile" resultMap="profileMap"></association>
-		<collection property="groupHashList" resultMap="hashMap"></collection>
+		<!-- <collection property="groupHashList" resultMap="hashMap"></collection> -->
 	</resultMap>
 
-	<resultMap type="com.themountaineers.domain.GroupHashVO" id="hashMap">
+	<!-- <resultMap type="com.themountaineers.domain.GroupHashVO" id="hashMap">
 		<result property="group_no" column="group_no"/>
 		<result property="hash_num" column="hash_num"/>
-	</resultMap>
+	</resultMap> -->
 	
 	<resultMap type="com.themountaineers.domain.GroupProfileVO" id="profileMap">
 		<id property="uuid" column="group_uuid"/>
@@ -65,7 +66,7 @@
 	<!-- 진짜 그룹 전체 가져오기  -->
 	<select id="groupTotalSelect" resultMap="groupTotalResult"
 	parameterType="java.util.List">
-		select g.group_no, group_name, group_content, 
+		<!-- select g.group_no, group_name, group_content, 
 		group_point, group_count, group_open, group_level, p.group_uuid,
 		p.group_photo_path, p.group_photo_name,
 		p.group_photo_type, h.hash_num
@@ -83,7 +84,26 @@
 			</where>
 			)
 		</if>
-        order by g.group_no desc, h.hash_num asc;
+        order by g.group_no desc, h.hash_num asc; -->
+        select g.group_no, group_name, group_content, 
+		group_point, group_count, group_open, group_level, p.group_uuid,
+		p.group_photo_path, p.group_photo_name,
+		p.group_photo_type, v.hash_list as hash_list
+		from climbgroup g, group_hash_view v, groupphoto p 
+		where g.group_no = v.group_no and g.group_no = p.group_no
+		<if test="list != null">
+				<foreach collection="list" item="hash">
+					and find_in_set(#{hash}, v.hash_list)
+				</foreach>
+		</if>
+        order by g.group_no desc; 
 	</select>
 	
+	<!-- 현재 커서 가져오기 -->
+	<select id="currentCursor">
+		select min(aa) from (select distinct(g.group_no) as aa
+		from climbgroup g, grouphash h, groupphoto p 
+		where g.group_no = h.group_no and g.group_no = p.group_no
+        order by g.group_no desc, h.hash_num asc limit 0,5) a ;
+	</select>
 </mapper>

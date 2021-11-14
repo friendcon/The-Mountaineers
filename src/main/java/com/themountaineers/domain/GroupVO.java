@@ -15,5 +15,6 @@ public class GroupVO {
 	private int group_level;
 	
 	private GroupProfileVO profile;
-	private List<GroupHashVO> groupHashList;
+	//private List<GroupHashVO> groupHashList;
+	private String groupHashList;
 }

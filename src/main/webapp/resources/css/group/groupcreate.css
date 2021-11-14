@@ -8,6 +8,7 @@
 
 .create_content{
 	margin-top: 10px;
+	font-size: 16px;
 }
 
 /* 체크박스 디자인 없애기 */
@@ -138,7 +139,7 @@ h3 {
 .for_check_box {
 	display: block;
     width: 100%;
-    height: 480px;
+    height: 620px;
     border: solid 1px #dadada;
     padding: 10px 14px 10px 14px;
     box-sizing: border-box;

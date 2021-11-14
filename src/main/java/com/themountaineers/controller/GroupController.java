@@ -35,6 +35,8 @@ import lombok.extern.log4j.Log4j;
 @RequestMapping("/group/*")
 public class GroupController {
 	
+	private static final int PAGESIZE = 9;
+	
 	@Setter(onMethod_ = @Autowired)
 	private GroupService service;
 	
@@ -64,6 +66,7 @@ public class GroupController {
 		
 		for(GroupVO vo : groupList){
 			profiles.add(vo.getProfile());
+			//log.info(vo.getGroupHashList());
 		}
 		
 		model.addAttribute("groups", groupList);
@@ -98,12 +101,14 @@ public class GroupController {
 
 		String memberId = principal.getName();
 
-		GroupProfileVO profile = new GroupProfileVO();
-		profile.setGroup_photo_name("noimage");
-		profile.setGroup_photo_path("noimage");
-		profile.setGroup_photo_type("noimage");
-		profile.setUuid("noimage");
-		group.setProfile(profile);
+		if(group.getProfile() == null) {
+			GroupProfileVO profile = new GroupProfileVO();
+			profile.setGroup_photo_name("noimage");
+			profile.setGroup_photo_path("noimage");
+			profile.setGroup_photo_type("noimage");
+			profile.setUuid("noimage" + group.getGroup_no());
+			group.setProfile(profile);
+		}
 		
 		service.groupInsert(group, memberId, groupHashList);
 		
