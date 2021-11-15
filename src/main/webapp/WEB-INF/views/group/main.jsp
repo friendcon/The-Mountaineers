@@ -236,8 +236,8 @@
 			<div class="col-lg-3"></div>
 			<div class="col-lg-9">
 				<h5 class="group_list_container">그룹 목록</h5>
-				<div class="append_here" id="append_here">
 				<input type='hidden' class='lastGroup' name='lastGroup' value='0'> 
+				<div class="append_here" id="append_here">
 					<c:forEach var="groupone" items="${groups }" varStatus="status">
 						<div class="group_container" data-groupno = "${groupone.group_no }">
 							<div class="group_img">
