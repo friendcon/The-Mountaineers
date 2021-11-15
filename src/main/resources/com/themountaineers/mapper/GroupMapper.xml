@@ -82,7 +82,7 @@
 				and g.group_no < #{lastGroup}
         	]]>
 		</if>
-        order by g.group_no desc limit 9; 
+        order by g.group_no desc limit 6; 
 	</select>
 	
 	

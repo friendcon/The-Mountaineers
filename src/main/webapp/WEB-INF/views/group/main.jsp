@@ -236,9 +236,10 @@
 			<div class="col-lg-3"></div>
 			<div class="col-lg-9">
 				<h5 class="group_list_container">그룹 목록</h5>
-				<div class="append_here">
+				<div class="append_here" id="append_here">
+				<input type='hidden' class='lastGroup' name='lastGroup' value='0'> 
 					<c:forEach var="groupone" items="${groups }" varStatus="status">
-						<div class="group_container">
+						<div class="group_container" data-groupno = "${groupone.group_no }">
 							<div class="group_img">
 								<img class="group_profile_image" name="group_profile_image" src="/group/getImg/${groupone.group_no }" />
 							</div>
@@ -261,52 +262,6 @@
 				<%-- <jsp:include page="grouplist.jsp"></jsp:include> --%>
 			</div>
 		</div>
-		<div class="row paging_container">
-			<div class="col-lg-3"></div>
-			<!-- <div class="col-lg-9 paging-container">
-				<div class="dataTables_paginate paging_simple_numbers" id="dataTable_paginate">
-					<ul class="pagination justify-content-center">
-						<li class="paginate_button page-item previous disabled" id="dataTable_previous">
-							<a href="#" aria-controls="dataTable" data-dt-idx="0" tabindex="0" class="page-link">Previous</a>
-						</li>
-						<li class="paginate_button page-item active">
-							<a href="#" aria-controls="dataTable" data-dt-idx="1" tabindex="0" class="page-link">1</a>
-						</li>
-						<li class="paginate_button page-item ">
-							<a href="#" aria-controls="dataTable" data-dt-idx="2" tabindex="0" class="page-link">2</a>
-						</li>
-						<li class="paginate_button page-item ">
-							<a href="#" aria-controls="dataTable" data-dt-idx="3" tabindex="0" class="page-link">3</a>
-						</li>
-						<li class="paginate_button page-item ">
-							<a href="#" aria-controls="dataTable" data-dt-idx="4" tabindex="0" class="page-link">4</a>
-						</li>
-						<li class="paginate_button page-item ">
-							<a href="#" aria-controls="dataTable" data-dt-idx="5" tabindex="0" class="page-link">5</a>
-						</li>
-						<li class="paginate_button page-item ">
-							<a href="#" aria-controls="dataTable" data-dt-idx="6" tabindex="0" class="page-link">6</a>
-						</li>
-						<li class="paginate_button page-item ">
-							<a href="#" aria-controls="dataTable" data-dt-idx="6" tabindex="0" class="page-link">7</a>
-						</li>
-						<li class="paginate_button page-item ">
-							<a href="#" aria-controls="dataTable" data-dt-idx="6" tabindex="0" class="page-link">8</a>
-						</li>
-						<li class="paginate_button page-item ">
-							<a href="#" aria-controls="dataTable" data-dt-idx="6" tabindex="0" class="page-link">9</a>
-						</li>
-						<li class="paginate_button page-item ">
-							<a href="#" aria-controls="dataTable" data-dt-idx="6" tabindex="0" class="page-link">10</a>
-						</li>
-						<li class="paginate_button page-item next" id="dataTable_next">
-							<a href="#" aria-controls="dataTable" data-dt-idx="7" tabindex="0" class="page-link">Next</a>
-						</li>
-					</ul>
-				</div>
-			</div> -->
-		</div>
-		
 	</div>
 	</section>
 	<!-- Shop Section End -->

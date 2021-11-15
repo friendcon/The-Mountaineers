@@ -1,12 +1,12 @@
 
 $(document).ready(function(){
-	
+	let scroll_end = false;
 	var append_here = $('.append_here');
+	
 	var swiper = new Swiper(".mySwiper", {
 		cssMode: true,
 		autoplay: {
 		 	delay: 3000,
-		 	//disableOnInteraction: false,
 		 },
         navigation: {
           nextEl: ".swiper-button-next",
@@ -19,27 +19,36 @@ $(document).ready(function(){
         keyboard: true,
 	});
 	
-	$(".check_box_label").on("change", function(e){
+	function getGroupList() {
+		if(scroll_end == true) {
+			return;
+		}
+		
 		var hashLists = [];
+		var lastone = $('input[type="hidden"]').val();
+		console.log("마지막 요소 : " + lastone);
+		if(lastone == 0){
+			lastone = $('.group_container:last').data("groupno");
+			console.log("처리후 마지막 요소: " + lastone); 
+		}
+		
+		
 		$('input[type="checkbox"]:checked').each(function(){
 			hashLists.push($(this).val());
 		});
-		
-		console.log("list : " + hashLists);
+
 		$.ajax({
 			url: '/group/getlist',
 			type: 'GET',
 			data: {
-				"hashList" : hashLists
+				"hashList" : hashLists,
+				"lastGroup" : lastone
 			},
 			dataType : "json",
 			success: function(result){
-				console.log(result);
 				var addGroupHtml = "";
 				var group_list_container = $('group_list_container');
-
-				$('.group_container').remove();
-
+				
 				for(var i=0; i<result.length; i++) {
 					addGroupHtml += "<div class='group_container'><div class='group_img'>";
 					addGroupHtml += "<img class='group_profile_image' name='group_profile_image' src='/group/getImg/";
@@ -55,13 +64,34 @@ $(document).ready(function(){
 					addGroupHtml += result[i].group_content;
 					addGroupHtml += "</p></div></div>"
 				}
-				//console.log(addGroupHtml);
-				append_here.empty();
+
+				var lastGroupNo = result[result.length-1].group_no;
+
+				$('input[type="hidden"]').val(lastGroupNo);
 				$(".append_here").append(addGroupHtml);
 
+				if(result.length < 6) {
+					scroll_end = true;
+				}
 			}
 		})
-		
+	}
+	
+	$(document).on("scroll", function(e){
+
+		var documentHight = $(this).height(); // 문서 높이
+		var windowHight = $(window).height();
+		var scrollTop = $(this).scrollTop();
+
+		if(windowHight + scrollTop > documentHight -381){
+			getGroupList();
+		}
+	})
+	
+	$(".check_box_label").on("change", function(e){
+		// 체크할때마다 페이징 처음부터 해야함
+		$('input[type="hidden"]').val(0);
+		getGroupList();
 	})
 	
 	$(".region").on("change", function(e){

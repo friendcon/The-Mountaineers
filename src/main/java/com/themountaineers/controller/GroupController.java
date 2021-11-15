@@ -57,18 +57,22 @@ public class GroupController {
 	
 	@GetMapping("/main")
 	public void groupMain(Model model, @RequestParam(value="hashList", required=false) List<Integer> hashList,
-			@RequestParam(value="lastGroup", required=false) Integer lastGroup) {
+			@RequestParam(value="lastGroup", required=false) String lastGroup) {
 		log.info("********** 그룹 메인 페이지**********");
 		
-		log.info("lastGroup : " + lastGroup);
 		
+		log.info("해시 : " + hashList);
+		log.info("마지막 그룹 : " + lastGroup);
 		List<GroupProfileVO> profiles = new ArrayList<>();
+		int lastCursor = 0;
 		
 		if(lastGroup == null) {
-			lastGroup = 0;
-		}	
+			lastCursor = 0;
+		} else {
+			lastCursor = Integer.parseInt(lastGroup);
+		}
 		
-		List<GroupVO> groupList = service.groupTotal(hashList, lastGroup);
+		List<GroupVO> groupList = service.groupTotal(hashList, lastCursor);
 		
 		for(GroupVO vo : groupList){
 			profiles.add(vo.getProfile());
@@ -80,17 +84,21 @@ public class GroupController {
 	@GetMapping("/getlist")
 	public @ResponseBody List<GroupVO> groupGetList(Model model, 
 			@RequestParam(value="hashList[]", required=false) List<Integer> hashList,
-			@RequestParam(value="lastGroup") Integer lastGroup){
+			@RequestParam(value="lastGroup", required=false) String lastGroup){
 		List<GroupProfileVO> profiles = new ArrayList<>();
-		
 		List<Integer> list = hashList;
+		int lastCursor = Integer.parseInt(lastGroup);
+		
+		log.info("해시 : " + hashList);
+		log.info("마지막 그룹 : " + lastGroup);
 		
 		if(lastGroup == null) {
-			lastGroup = 0;
+			lastCursor = 0;
+		} else {
+			lastCursor = Integer.parseInt(lastGroup);
 		}
-		
-		log.info("여기야" + list);
-		List<GroupVO> groups = service.groupTotal(list, lastGroup);
+
+		List<GroupVO> groups = service.groupTotal(list, lastCursor);
 		groups.forEach(group -> log.info(group.getGroup_no()));
 		for(GroupVO vo : groups){
 			profiles.add(vo.getProfile());
