@@ -56,30 +56,41 @@ public class GroupController {
 	}
 	
 	@GetMapping("/main")
-	public void groupMain(Model model, @RequestParam(value="hashList", required=false) List<Integer> hashList) {
+	public void groupMain(Model model, @RequestParam(value="hashList", required=false) List<Integer> hashList,
+			@RequestParam(value="lastGroup", required=false) Integer lastGroup) {
 		log.info("********** 그룹 메인 페이지**********");
 		
+		log.info("lastGroup : " + lastGroup);
 		
 		List<GroupProfileVO> profiles = new ArrayList<>();
 		
-		List<GroupVO> groupList = service.groupTotal(hashList);
+		if(lastGroup == null) {
+			lastGroup = 0;
+		}	
+		
+		List<GroupVO> groupList = service.groupTotal(hashList, lastGroup);
 		
 		for(GroupVO vo : groupList){
 			profiles.add(vo.getProfile());
-			//log.info(vo.getGroupHashList());
 		}
 		
 		model.addAttribute("groups", groupList);
 	}
 	
 	@GetMapping("/getlist")
-	public @ResponseBody List<GroupVO> groupGetList(Model model, @RequestParam(value="hashList[]", required=false) List<Integer> hashList){
+	public @ResponseBody List<GroupVO> groupGetList(Model model, 
+			@RequestParam(value="hashList[]", required=false) List<Integer> hashList,
+			@RequestParam(value="lastGroup") Integer lastGroup){
 		List<GroupProfileVO> profiles = new ArrayList<>();
 		
 		List<Integer> list = hashList;
 		
+		if(lastGroup == null) {
+			lastGroup = 0;
+		}
+		
 		log.info("여기야" + list);
-		List<GroupVO> groups = service.groupTotal(list);
+		List<GroupVO> groups = service.groupTotal(list, lastGroup);
 		groups.forEach(group -> log.info(group.getGroup_no()));
 		for(GroupVO vo : groups){
 			profiles.add(vo.getProfile());
@@ -94,7 +105,8 @@ public class GroupController {
 	}
 	
 	@PostMapping("/new")
-	public String groupNew(GroupVO group, Principal principal, @RequestParam("hashList") List<Integer> groupHashList){
+	public String groupNew(GroupVO group, Principal principal, 
+			@RequestParam("hashList") List<Integer> groupHashList){
 		log.info("********** 그룹 생성 post **********");
 		log.info(principal.getName());
 		log.info(group);

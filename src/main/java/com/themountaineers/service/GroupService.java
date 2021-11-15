@@ -9,6 +9,6 @@ import com.themountaineers.domain.GroupVO;
 
 public interface GroupService {
 	public int groupInsert(GroupVO group, String memberId, List<Integer> groupHashList);
-	public List<GroupVO> groupTotal(List<Integer> hashList);
+	public List<GroupVO> groupTotal(List<Integer> hashList, int lastGroup);
 	public GroupProfileVO groupProfileGet(int group_no);
 }

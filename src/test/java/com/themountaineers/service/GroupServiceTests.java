@@ -54,10 +54,10 @@ public class GroupServiceTests {
 	@Test
 	public void groupTotalTest() {
 		List<Integer> hashList = new ArrayList<>();
-		hashList.add(3);
+		/*hashList.add(3);
 		hashList.add(4);
-		hashList.add(14);
-		service.groupTotal(hashList).forEach(group -> log.info(group));
+		hashList.add(14);*/
+		service.groupTotal(hashList, 0).forEach(group -> log.info(group));
 	}
 	
 }
