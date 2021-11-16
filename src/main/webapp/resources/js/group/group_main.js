@@ -2,6 +2,7 @@
 $(document).ready(function(){
 	let scroll_end = false;
 	let hashLists = [];
+	let keyword = "";
 	let hashSet = new Set();
 	var append_here = $('.append_here');
 	
@@ -28,7 +29,8 @@ $(document).ready(function(){
 		}
 		
 		console.log("list : " + hashLists);
-
+		
+		console.log("keyword : " + keyword);
 		var lastone = $('input[type="hidden"]').val();
 		console.log("마지막 요소 : " + lastone);
 
@@ -42,7 +44,8 @@ $(document).ready(function(){
 			type: 'GET',
 			data: {
 				"hashList" : hashLists,
-				"lastGroup" : lastone
+				"lastGroup" : lastone,
+				"keyword" : keyword
 			},
 			dataType : "json",
 			cache: false,
@@ -69,14 +72,16 @@ $(document).ready(function(){
 					addGroupHtml += "</p></div></div>"
 				}
 
+				if(result.length < 6) {
+					scroll_end = true;
+				}
+				
 				var lastGroupNo = result[result.length-1].group_no;
 
 				$('input[type="hidden"]').val(lastGroupNo);
 				$(".append_here").append(addGroupHtml);
 
-				if(result.length < 6) {
-					scroll_end = true;
-				}
+				
 			},
 			error: function(request, status, error){
 				alert("에러");
@@ -92,6 +97,16 @@ $(document).ready(function(){
 			hashLists.push($(this).val());
 		});
 	}
+	
+	$(".searchButton").on("click", function(e){
+		scroll_end = false;
+		getCheckBox();
+		keyword = $("input[id='group_search']").val();
+		console.log(keyword);
+		$(".append_here").empty();
+		$('input[type="hidden"]').val(0);
+		getGroupList();
+	})
 	
 	$(window).on("scroll", function(e){
 		var max_height = $(document).height(); // 문서 높이
@@ -109,7 +124,6 @@ $(document).ready(function(){
 		if(obj.is(":checked")) {
 			$(this).css("background-color", "#ffa8a8");
 			$(this).css("border-color", "#ffa8a8");
-			//hashSet.add(obj.val());
 			$(".append_here").empty();
 			$('input[type="hidden"]').val(0);
 			getGroupList();
@@ -117,7 +131,6 @@ $(document).ready(function(){
 		} else {
 			$(this).css("background-color", "#FF7F7F");
 			$(this).css("border-color", "#FF7F7F");
-			//hashSet.delete(obj.val());
 			$(".append_here").empty();
 			$('input[type="hidden"]').val(0);
 			getGroupList();
@@ -132,7 +145,6 @@ $(document).ready(function(){
 		if(obj.is(":checked")) {
 			$(this).css("background-color", "#ffd793");
 			$(this).css("border-color", "#ffd793");
-			//hashSet.add(obj.val());
 			$(".append_here").empty();
 			$('input[type="hidden"]').val(0);
 			getGroupList();
@@ -140,7 +152,6 @@ $(document).ready(function(){
 		} else {
 			$(this).css("background-color", "#FFA000");
 			$(this).css("border-color", "#FFA000");
-			//hashSet.delete(obj.val());
 			$(".append_here").empty();
 			$('input[type="hidden"]').val(0);
 			getGroupList();
@@ -155,7 +166,6 @@ $(document).ready(function(){
 		if(obj.is(":checked")) {
 			$(this).css("background-color", "#f7e7a6");
 			$(this).css("border-color", "#f7e7a6");
-			//hashSet.push(obj.val());
 			$(".append_here").empty();
 			$('input[type="hidden"]').val(0);
 			getGroupList();
@@ -163,7 +173,6 @@ $(document).ready(function(){
 		} else {
 			$(this).css("background-color", "#eecc42");
 			$(this).css("border-color", "#eecc42");
-			//hashSet.delete(obj.val());
 			$(".append_here").empty();
 			$('input[type="hidden"]').val(0);
 			getGroupList();
@@ -178,7 +187,6 @@ $(document).ready(function(){
 		if(obj.is(":checked")) {
 			$(this).css("background-color", "#a0d6a4");
 			$(this).css("border-color", "#a0d6a4");
-			//hashSet.add(obj.val());
 			$(".append_here").empty();
 			$('input[type="hidden"]').val(0);
 			getGroupList();
@@ -186,7 +194,6 @@ $(document).ready(function(){
 		} else {
 			$(this).css("background-color", "#81c784");
 			$(this).css("border-color", "#81c784");
-			//hashSet.delete(obj.val());
 			$(".append_here").empty();
 			$('input[type="hidden"]').val(0);
 			getGroupList();
@@ -201,7 +208,6 @@ $(document).ready(function(){
 		if(obj.is(":checked")) {
 			$(this).css("background-color", "#bbc6ff");
 			$(this).css("border-color", "#bbc6ff");
-			//hashSet.add(obj.val());
 			$(".append_here").empty();
 			$('input[type="hidden"]').val(0);
 			getGroupList();
@@ -209,7 +215,6 @@ $(document).ready(function(){
 		} else {
 			$(this).css("background-color", "#8C9EFF");
 			$(this).css("border-color", "#8C9EFF");
-			//hashSet.delete(obj.val());
 			$(".append_here").empty();
 			$('input[type="hidden"]').val(0);
 			getGroupList();
@@ -224,7 +229,6 @@ $(document).ready(function(){
 		if(obj.is(":checked")) {
 			$(this).css("background-color", "#c5b3e3");
 			$(this).css("border-color", "#c5b3e3");
-			//hashSet.add(obj.val());
 			$(".append_here").empty();
 			$('input[type="hidden"]').val(0);
 			getGroupList();
@@ -232,7 +236,6 @@ $(document).ready(function(){
 		} else {
 			$(this).css("background-color", "#9575cd");
 			$(this).css("border-color", "#9575cd");
-			//hashSet.delete(obj.val());
 			$(".append_here").empty();
 			$('input[type="hidden"]').val(0);
 			getGroupList();

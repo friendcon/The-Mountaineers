@@ -57,7 +57,8 @@ public class GroupServiceTests {
 		/*hashList.add(3);
 		hashList.add(4);
 		hashList.add(14);*/
-		service.groupTotal(hashList, 0).forEach(group -> log.info(group));
+		String keyword = "ÀÎÃµ";
+		service.groupTotal(hashList, 0, keyword).forEach(group -> log.info(group));
 	}
 	
 }

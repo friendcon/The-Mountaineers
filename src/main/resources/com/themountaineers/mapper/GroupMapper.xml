@@ -82,6 +82,9 @@
 				and g.group_no < #{lastGroup}
         	]]>
 		</if>
+		<if test="keyword != null">
+			and (g.group_name like CONCAT('%',#{keyword},'%') or g.group_content like CONCAT('%',#{keyword},'%'))
+		</if>
         order by g.group_no desc limit 6; 
 	</select>
 	

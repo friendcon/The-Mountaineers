@@ -224,7 +224,7 @@
 			<div class="col-lg-3"></div>
 			<div class="col-lg-9">
 				<span class="box">
-							<input type="text" id="group_search" name="group_search" class="int" maxlength="30"
+							<input type="text" id="group_search" name="keyword" class="int" maxlength="30"
 							placeholder="검색어를 입력하세요.">
 							<button class="searchButton"><img class="buttonimg" src="../../resources/img/button/search.png"></button>
 							

@@ -35,10 +35,33 @@ import lombok.extern.log4j.Log4j;
 @RequestMapping("/group/*")
 public class GroupController {
 	
+	
 	private static final int PAGESIZE = 9;
 	
 	@Setter(onMethod_ = @Autowired)
 	private GroupService service;
+	
+	private String keywordNULL(String keyword){
+		if(keyword == null) {
+			keyword = "";
+		}
+		return keyword;
+	}
+	
+	private int cursorNULL(Integer lastGroup){
+		if(lastGroup == null) {
+			return 0;
+		} else {
+			return lastGroup;
+		}
+	}
+	
+	private List<Integer> hashNULL(List<Integer> hashList){
+		if(hashList == null) {
+			hashList = new ArrayList<>();
+		}
+		return hashList;
+	}
 	
 	@GetMapping("/getImg/{group_no}")
 	public void groupGetImg(@PathVariable("group_no") int group_no, HttpServletResponse response) throws Exception {
@@ -58,33 +81,20 @@ public class GroupController {
 	@GetMapping("/main")
 	public void groupMain(Model model, 
 			@RequestParam(value="hashList[]", required=false) List<Integer> hashList,
-			@RequestParam(value="lastGroup", required=false) Integer lastGroup) {
+			@RequestParam(value="lastGroup", required=false) Integer lastGroup,
+			@RequestParam(value="keyword", required=false) String keyword) {
+		
 		log.info("********** 그룹 메인 페이지**********");
-		
-		
-		// log.info("해시 : " + hashList);
 		log.info("마지막 그룹 : " + lastGroup);
+		
 		List<GroupProfileVO> profiles = new ArrayList<>();
-		// hashList = new ArrayList<>();
-		int lastCursor;
-		if(lastGroup == null) {
-			lastCursor = 0;
-		} else {
-			lastCursor = lastGroup;
-		}
-		
-		
-		if(hashList == null) {
-			hashList = new ArrayList<>();
-		}
-		
-		/*if(lastGroup == null) {
-			lastCursor = 0;
-		} else {
-			lastCursor = Integer.parseInt(lastGroup);
-		}*/
+
+		int lastCursor = cursorNULL(lastGroup);
+		keyword = "";
+		hashList = hashNULL(hashList);
+
 		log.info(hashList);
-		List<GroupVO> groupList = service.groupTotal(hashList, lastCursor);
+		List<GroupVO> groupList = service.groupTotal(hashList, lastCursor, keyword);
 		
 		for(GroupVO vo : groupList){
 			profiles.add(vo.getProfile());
@@ -96,36 +106,22 @@ public class GroupController {
 	@GetMapping("/getlist")
 	public @ResponseBody List<GroupVO> groupGetList(Model model, 
 			@RequestParam(value="hashList[]", required=false) List<Integer> hashList,
-			@RequestParam(value="lastGroup", required=false) Integer lastGroup){
+			@RequestParam(value="lastGroup", required=false) Integer lastGroup,
+			@RequestParam(value="keyword", required=false) String keyword){
 		log.info("********** get list **********");
 		List<GroupProfileVO> profiles = new ArrayList<>();
 		List<Integer> list = hashList;
 		
-		int lastCursor;
+		int lastCursor = cursorNULL(lastGroup);
+		keyword = keywordNULL(keyword);
+		hashList = hashNULL(hashList);
 		
-		if(lastGroup == null) {
-			lastCursor = 0;
-		} else {
-			lastCursor = lastGroup;
-		}
-		
-		if(hashList == null) {
-			hashList = new ArrayList<>();
-			log.info("시발");
-		}
 		log.info(hashList);
 		log.info("마지막 그룹 : " + lastGroup);
 		
-		/*if(lastGroup == null) {
-			lastCursor = 0;
-		} else {
-			lastCursor = Integer.parseInt(lastGroup);
-		}*/
-		
-		
-
-		List<GroupVO> groups = service.groupTotal(list, lastCursor);
+		List<GroupVO> groups = service.groupTotal(list, lastCursor, keyword);
 		groups.forEach(group -> log.info(group.getGroup_no()));
+		
 		for(GroupVO vo : groups){
 			profiles.add(vo.getProfile());
 		}

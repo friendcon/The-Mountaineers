@@ -14,5 +14,6 @@ public interface GroupMapper {
 	public int groupHashInsert(List<GroupHashVO> grouphash);
 	public int groupMemberInsert(GroupMemberVO groupmember);
 	public List<GroupVO> groupTotalSelect(@Param("hashList") List<Integer> hashList,
-			@Param("lastGroup") int lastGroup);
+			@Param("lastGroup") int lastGroup,
+			@Param("keyword") String keyword);
 }
