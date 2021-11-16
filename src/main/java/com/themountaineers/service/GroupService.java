@@ -11,4 +11,6 @@ public interface GroupService {
 	public int groupInsert(GroupVO group, String memberId, List<Integer> groupHashList);
 	public List<GroupVO> groupTotal(List<Integer> hashList, int lastGroup, String keyword);
 	public GroupProfileVO groupProfileGet(int group_no);
+	public GroupVO groupView(int group_no);
+	public int groupMemCount(int group_no);
 }

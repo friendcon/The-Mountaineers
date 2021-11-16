@@ -51,14 +51,23 @@ public class GroupServiceTests {
 		groupmember.setMem_id("mount1027");
 	}*/
 	
-	@Test
+	/*@Test
 	public void groupTotalTest() {
 		List<Integer> hashList = new ArrayList<>();
-		/*hashList.add(3);
+		hashList.add(3);
 		hashList.add(4);
-		hashList.add(14);*/
+		hashList.add(14);
 		String keyword = "ÀÎÃµ";
 		service.groupTotal(hashList, 0, keyword).forEach(group -> log.info(group));
-	}
+	}*/
 	
+	@Test
+	public void groupViewTest(){
+		log.info(service.groupView(1));
+	}
+
+	/*@Test
+	public void groupMemCountTest(){
+		log.info(service.groupMemCount(1));
+	}*/
 }

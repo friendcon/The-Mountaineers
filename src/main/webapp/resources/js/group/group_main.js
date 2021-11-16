@@ -60,7 +60,8 @@ $(document).ready(function(){
 							"<div class='group_img'>";
 					addGroupHtml += "<img class='group_profile_image' name='group_profile_image' src='/group/getImg/";
 					addGroupHtml += result[i].group_no;
-					addGroupHtml += "'/></div><div class='group_content_box'><h5><a href=''>";
+					addGroupHtml += "'/></div><div class='group_content_box'><h5><a href='/group/view?group_no=" +
+							result[i].group_no + "'>";
 					addGroupHtml += result[i].group_name;
 					addGroupHtml += "</a></h5>";
 					addGroupHtml += "<label class='level";

@@ -16,4 +16,6 @@ public interface GroupMapper {
 	public List<GroupVO> groupTotalSelect(@Param("hashList") List<Integer> hashList,
 			@Param("lastGroup") int lastGroup,
 			@Param("keyword") String keyword);
+	public GroupVO groupView(int group_no);
+	public int groupMemberCount(int group_no);
 }

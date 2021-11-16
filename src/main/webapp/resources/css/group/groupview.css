@@ -1,0 +1,123 @@
+@CHARSET "UTF-8";
+/* @import url('https://fonts.googleapis.com/css2?family=Nanum+Gothic+Coding&display=swap');
+ */
+.group_information, .group_img_info, .group_content_info {
+    height: 200px;
+    border: solid 1px #dadada;
+    box-sizing: border-box;
+    background: #fff;
+}
+
+.group_information {
+	display: inline-block;
+	float: left;
+	width: 100%;
+	/* font-family: 'Nanum Gothic', sans-serif; */
+	padding: 20px 0px 20px 20px;
+}
+
+.group_img_info {
+	width: 280px;
+	height: 160px;
+	margin-right: 20px;
+	display: inline-block;
+	position: relative;
+}
+
+.group_profile_image{
+	position: absolute;
+	top:0; left: 0;
+	width: 100%;
+	height: 100%;
+	object-fit:cover;
+} 
+
+.group_content_info{
+	width: 450px;
+	height: 160px;
+	display: inline-block;
+	border-color: white;
+	position: relative;
+} 
+
+.group_name { 
+	font-size: 20px;
+	font-weight: bold;
+	color: black;
+}
+.group_content {
+	font-size: 13px;
+	margin: 8px 0px 0px 3px;
+}
+
+.group_level label {
+	padding: 1px 5px 0px 5px;
+	margin: 0px 0px 0px 3px;
+	font-size: 12px;
+	border-radius: 40px;
+	color: white;
+}
+
+.level1 {
+	border: solid 1px #7B1FA2;
+	background-color: #7B1FA2;
+}
+
+.level2 {
+	border: solid 1px #3f51b5;
+	background-color: #3f51b5;
+}
+
+.level3 {
+	border: solid 1px #e57373;
+	background-color: #e57373;
+}
+
+.group_count {
+	float: right;
+	font-size: 15px;
+	margin-top: 5px;
+}
+
+.group_point{
+	font-size: 15px;
+}
+
+.group_hash label {
+	padding: 1px 5px 0px 5px;
+	margin: 0px 0px 0px 3px;
+	font-size: 12px;
+	border-radius: 40px;
+	color: white;
+	text-align:center;
+}
+
+.age{
+	border-color: #FFA000;
+	background-color: #FFA000;
+}
+
+.region {
+	border-color: #FF7F7F;
+	background-color: #FF7F7F;
+}
+
+.time {
+	border-color:#eecc42;
+	background-color: #eecc42;
+}
+
+.type{
+	border-color:#81c784;
+	background-color: #81c784;
+}
+
+.features {
+	border-color: #8C9EFF;
+	background-color: #8C9EFF;
+}
+
+.grade{
+	border-color: #9575cd;
+	background-color: #9575cd;	
+}

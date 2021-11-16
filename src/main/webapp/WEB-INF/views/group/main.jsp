@@ -244,7 +244,7 @@
 								<img class="group_profile_image" name="group_profile_image" src="/group/getImg/${groupone.group_no }" />
 							</div>
 							<div class="group_content_box">
-								<h5><a href=""> ${groupone.group_name } </a></h5>
+								<h5><a href="/group/view?group_no=${groupone.group_no }"> ${groupone.group_name } </a></h5>
 								<c:if test="${groupone.group_level eq 1}">
 									<label class="level1">Level 1</label>
 								</c:if>
@@ -259,7 +259,6 @@
 						</div>
 					</c:forEach>
 				</div>
-				<%-- <jsp:include page="grouplist.jsp"></jsp:include> --%>
 			</div>
 		</div>
 	</div>

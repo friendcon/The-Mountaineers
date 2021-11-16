@@ -41,27 +41,6 @@ public class GroupController {
 	@Setter(onMethod_ = @Autowired)
 	private GroupService service;
 	
-	private String keywordNULL(String keyword){
-		if(keyword == null) {
-			keyword = "";
-		}
-		return keyword;
-	}
-	
-	private int cursorNULL(Integer lastGroup){
-		if(lastGroup == null) {
-			return 0;
-		} else {
-			return lastGroup;
-		}
-	}
-	
-	private List<Integer> hashNULL(List<Integer> hashList){
-		if(hashList == null) {
-			hashList = new ArrayList<>();
-		}
-		return hashList;
-	}
 	
 	@GetMapping("/getImg/{group_no}")
 	public void groupGetImg(@PathVariable("group_no") int group_no, HttpServletResponse response) throws Exception {
@@ -156,6 +135,35 @@ public class GroupController {
 		
 		return "redirect:/group/main";
 	}
+	
+	@GetMapping("/view")
+	public void groupView(Model model, @RequestParam("group_no") int group_no){
+		GroupVO group = service.groupView(group_no);
+		int memberCount  = service.groupMemCount(group_no);
+		model.addAttribute("group", group);
+		model.addAttribute("memcount", memberCount);
+	}
 
+	private String keywordNULL(String keyword){
+		if(keyword == null) {
+			keyword = "";
+		}
+		return keyword;
+	}
+	
+	private int cursorNULL(Integer lastGroup){
+		if(lastGroup == null) {
+			return 0;
+		} else {
+			return lastGroup;
+		}
+	}
+	
+	private List<Integer> hashNULL(List<Integer> hashList){
+		if(hashList == null) {
+			hashList = new ArrayList<>();
+		}
+		return hashList;
+	}
 
 }

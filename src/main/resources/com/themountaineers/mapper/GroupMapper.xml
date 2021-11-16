@@ -44,6 +44,7 @@
 		<result property="group_content" column="group_content"/>
 		<result property="group_point" column="group_point"/>
 		<result property="group_open" column="group_open"/>
+		<result property="group_count" column="group_count"/>
 		<result property="group_level" column="group_level"/>
 		<result property="groupHashList" column="hash_list" />
 		<association property="profile" resultMap="profileMap"></association>
@@ -66,8 +67,8 @@
 	<!-- 진짜 그룹 전체 가져오기  -->
 	<select id="groupTotalSelect" resultMap="groupTotalResult"
 	parameterType="map">
-        select g.group_no, group_name, group_content, 
-		group_point, group_count, group_open, group_level, p.group_uuid,
+        select g.group_no, g.group_name, g.group_content, 
+		g.group_point, g.group_count, g.group_open, g.group_level, p.group_uuid,
 		p.group_photo_path, p.group_photo_name,
 		p.group_photo_type, v.hash_list as hash_list
 		from climbgroup g, group_hash_view v, groupphoto p 
@@ -88,5 +89,21 @@
         order by g.group_no desc limit 6; 
 	</select>
 	
+	<!-- 그룹조회 -->
+	<select id="groupView" resultMap="groupTotalResult" parameterType="int">
+		select g.group_no, g.group_name, g.group_content, 
+		g.group_point, g.group_count, g.group_open, g.group_level, p.group_uuid,
+		p.group_photo_path, p.group_photo_name,
+		p.group_photo_type, v.hash_list as hash_list
+		from climbgroup g, group_hash_view v, groupphoto p 
+		where g.group_no = #{group_no} 
+		and v.group_no = #{group_no}
+		and p.group_no = #{group_no} 
+	</select>
 	
+	<!-- 그룹원 수 -->
+	<select id="groupMemberCount" parameterType="int" resultType="int">
+		select count(*) from groupmember 
+		where group_no = #{group_no}
+	</select>
 </mapper>

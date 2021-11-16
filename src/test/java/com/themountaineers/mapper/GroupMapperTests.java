@@ -67,14 +67,25 @@ public class GroupMapperTests {
 		list.get(0).getGroupHashList().forEach(hash -> log.info("hash!!" + hash));
 	}*/
 	
-	@Test
+	/*@Test
 	public void groupTotalSelectHashTest() {
 		List<Integer> hashList = new ArrayList<>();
 		//assertThat(hashList, is(nullValue()));
 		log.info("Å©±â : " + hashList.size());
-		/*hashList.add(3);
+		hashList.add(3);
 		hashList.add(4);
-		hashList.add(14);*/
-		mapper.groupTotalSelect(hashList, 11).forEach(group -> log.info(group));
+		hashList.add(14);
+		mapper.groupTotalSelect(hashList, 11, "").forEach(group -> log.info(group));
+	}*/
+	
+	/*@Test
+	public void groupViewTest(){
+		GroupVO vo = mapper.groupView(1);
+		log.info(vo);
+	}*/
+	
+	@Test
+	public void groupMemberCount(){
+		log.info(mapper.groupMemberCount(1));
 	}
 }

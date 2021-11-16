@@ -63,5 +63,14 @@ public class GroupServiceImpl implements GroupService {
 	public GroupProfileVO groupProfileGet(int group_no) {
 		return profilemapper.groupProfileSelect(group_no);
 	}
-	
+
+	@Override
+	public GroupVO groupView(int group_no) {
+		return mapper.groupView(group_no);
+	}
+
+	@Override
+	public int groupMemCount(int group_no) {
+		return mapper.groupMemberCount(group_no);
+	}
 }
