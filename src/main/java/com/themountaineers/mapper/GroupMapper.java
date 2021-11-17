@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.apache.ibatis.annotations.Param;
 
+import com.themountaineers.domain.GroupClimbVO;
 import com.themountaineers.domain.GroupHashVO;
 import com.themountaineers.domain.GroupMemberVO;
 import com.themountaineers.domain.GroupProfileVO;
@@ -18,4 +19,6 @@ public interface GroupMapper {
 			@Param("keyword") String keyword);
 	public GroupVO groupView(int group_no);
 	public int groupMemberCount(int group_no);
+	
+	public int groupScheduleInsert(GroupClimbVO schedule);
 }

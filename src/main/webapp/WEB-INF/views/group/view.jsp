@@ -8,13 +8,13 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-
+<link href="../../resources/fullcalendar/main.css" rel="stylesheet" />
 <link href="../../resources/css/group/groupview.css" rel="stylesheet" type="text/css">
 <title>The Mountaineers</title>
 <jsp:include page="../common/head.jsp"></jsp:include>
 <jsp:include page="../common/script.jsp"></jsp:include>
 <script type="text/javascript" src="../../resources/js/group/group_view.js"></script>
-
+<script type="text/javascript" src="../../resources/fullcalendar/main.js"></script>
 </head>
 <body>
 	<jsp:include page="../common/header.jsp"></jsp:include>
@@ -45,6 +45,7 @@
 			<div class="col-lg-9 col-md-9">
 				
 				<div class="group_information row ml-0">
+						<input type="hidden" name="group_no" value="${group.group_no}">
 						<div class="group_img_info">
 							<img class="group_profile_image" name="group_profile_image" src="/group/getImg/${group.group_no }" />
 						</div>
@@ -203,6 +204,24 @@
 								</c:forTokens>
 							</div>
 						</div>
+				</div>
+				<div class="row group_inner_container">
+					<div class="nav-container">
+						<span class="nav-menu notice">공지사항</span>
+						<span class="nav-menu schedule">산행일정</span>
+						<span class="nav-menu freeboard">자유게시판</span>
+					</div>
+					<div class="inner_content">
+							<p class="climb-calendar-label">산행일정</p>
+							<p class="climb-schedule-button">일정등록</p>
+							<div class="row claendar-container">
+								<div class="col-lg-1"></div>
+								<div class="col-lg-10" id="calendar">
+							
+								</div>
+								<div class="col-lg-1"></div>
+							</div>
+					</div>
 				</div>
 			</div>
 		</div>

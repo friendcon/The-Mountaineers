@@ -2,6 +2,7 @@ package com.themountaineers.service;
 
 import java.util.List;
 
+import com.themountaineers.domain.GroupClimbVO;
 import com.themountaineers.domain.GroupHashVO;
 import com.themountaineers.domain.GroupMemberVO;
 import com.themountaineers.domain.GroupProfileVO;
@@ -13,4 +14,5 @@ public interface GroupService {
 	public GroupProfileVO groupProfileGet(int group_no);
 	public GroupVO groupView(int group_no);
 	public int groupMemCount(int group_no);
+	public int groupScheduleInsert(GroupClimbVO schedule);
 }

@@ -1,0 +1,56 @@
+@CHARSET "UTF-8";
+.schedule-container {
+	width: 100%;
+ 	padding: 0 50px 0 50px; 
+}
+
+h3 {
+    margin: 10px 0 8px;
+    font-size: 14px;
+    font-weight: 700;
+}
+
+.int_content {
+	display: block;
+    position: relative;
+    width: 100%;
+    //height: 150px;
+    border: none;
+    background: #fff;
+    font-size: 15px;
+}
+
+#climb_content {
+	height: 100px;
+}
+
+.schedule {
+	padding-left: 5px;
+}
+.schedule_start{
+	display: inline-block;
+	width: 322px;
+	margin-right: 25px;
+}
+
+.schedule_finish{
+	display: inline-block;
+	width: 322px;
+	margin-left: 25px;
+}
+
+.sch_Reg_button {
+	padding-top: 20px;
+}
+
+#scheduleRegBtn {
+    width: 100%;
+    border: 0;
+    cursor: pointer;
+    color: #fff;
+    background-color: #028651;
+    font-size: 20px;
+    font-weight: 400;
+    margin-bottom: 50px;
+    height: 55px;
+}

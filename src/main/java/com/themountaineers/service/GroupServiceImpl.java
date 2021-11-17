@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import com.themountaineers.domain.GroupClimbVO;
 import com.themountaineers.domain.GroupHashVO;
 import com.themountaineers.domain.GroupMemberVO;
 import com.themountaineers.domain.GroupProfileVO;
@@ -72,5 +73,10 @@ public class GroupServiceImpl implements GroupService {
 	@Override
 	public int groupMemCount(int group_no) {
 		return mapper.groupMemberCount(group_no);
+	}
+
+	@Override
+	public int groupScheduleInsert(GroupClimbVO schedule) {
+		return mapper.groupScheduleInsert(schedule);
 	}
 }

@@ -106,4 +106,15 @@
 		select count(*) from groupmember 
 		where group_no = #{group_no}
 	</select>
+	
+	<!-- 그룹 스케줄 생성 -->
+	<insert id="groupScheduleInsert">
+		insert into groupclimbing
+		(group_no, start_date, finish_date, climb_title, climb_content)
+		values
+		(
+			#{group_no}, #{start_date}, #{finish_date},
+			#{climb_title}, #{climb_content}
+		)
+	</insert>
 </mapper>

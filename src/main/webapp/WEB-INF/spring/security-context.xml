@@ -15,7 +15,9 @@
 	</bean>
 	
 	<security:http auto-config="true" use-expressions="true">
+		<security:intercept-url pattern="/group/create" access="hasAnyRole('ROLE_MEMBER')"/>
 		<security:intercept-url pattern="/**" access="permitAll"/>
+		
 		<security:form-login login-page="/member/login" authentication-success-handler-ref="customLoginSuccess"/>
 		<security:logout logout-url="/member/logout" success-handler-ref="customLogoutSuccess" invalidate-session="true"/>
 		<security:access-denied-handler ref="customAccessDenied"/>

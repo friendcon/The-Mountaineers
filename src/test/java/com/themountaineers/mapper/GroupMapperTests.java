@@ -4,7 +4,9 @@ import static org.hamcrest.CoreMatchers.is;
 import static org.hamcrest.CoreMatchers.nullValue;
 import static org.junit.Assert.assertThat;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 import org.junit.Test;
@@ -13,6 +15,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
+import com.themountaineers.domain.GroupClimbVO;
 import com.themountaineers.domain.GroupHashVO;
 import com.themountaineers.domain.GroupMemberVO;
 import com.themountaineers.domain.GroupVO;
@@ -84,8 +87,20 @@ public class GroupMapperTests {
 		log.info(vo);
 	}*/
 	
-	@Test
+	/*@Test
 	public void groupMemberCount(){
 		log.info(mapper.groupMemberCount(1));
+	}*/
+	
+	@Test
+	public void groupScheduleInsertTest() {
+		GroupClimbVO vo = new GroupClimbVO();
+		vo.setGroup_no(1);
+		vo.setStart_date("2021/11/17");
+		vo.setFinish_date("2021/11/18");
+		vo.setClimb_title("북한산 등반");
+		vo.setClimb_content("불광역 3번출구에서 오전 10시에 만나요.");
+		
+		mapper.groupScheduleInsert(vo);
 	}
 }

@@ -18,6 +18,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.themountaineers.domain.GroupClimbVO;
 import com.themountaineers.domain.GroupHashVO;
 import com.themountaineers.domain.GroupMemberVO;
 import com.themountaineers.domain.GroupProfileVO;
@@ -142,6 +143,20 @@ public class GroupController {
 		int memberCount  = service.groupMemCount(group_no);
 		model.addAttribute("group", group);
 		model.addAttribute("memcount", memberCount);
+	}
+	
+	// 그룹생성 페이지
+	@GetMapping("/schedulePage")
+	public void groupScheduleCreate(Model model, @RequestParam("group_no") int group_no) {
+		log.info("그룹번호 : " + group_no);
+		model.addAttribute("group_no", group_no);
+	}
+	
+	@PostMapping("/scheduleCreate")
+	public String groupScheduleCreatePost(GroupClimbVO schedule){
+		service.groupScheduleInsert(schedule);
+		String group_no = schedule.getGroup_no() + "";
+		return "redirect:/group/view?group_no=" + group_no;
 	}
 
 	private String keywordNULL(String keyword){

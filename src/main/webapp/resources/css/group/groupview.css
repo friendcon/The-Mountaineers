@@ -121,3 +121,64 @@
 	border-color: #9575cd;
 	background-color: #9575cd;	
 }
+
+.nav-menu {
+	font-weight: 400;
+    line-height: 1.43;
+    letter-spacing: -.3px;
+    font-size: 14px;
+    display: inline-block;
+    padding: 16px 20px;
+    color: #343a40;
+    font-weight: 500;
+    border: solid 1px #dadada;
+	background: #fff;
+}
+
+.inner_content{
+	margin: -1px 11.7px 0px 11.7px;
+	border: solid 1px #dadada;
+	background: #fff;
+	width: 100%;
+	height: 800px;
+}
+
+.schedule {
+	margin-left: -5.4px;
+}
+
+.freeboard{
+	margin-left: -5.4px;
+}
+
+.nav-container {
+	margin-left: 11.7px;
+	margin-top: 30px;
+}
+
+.claendar-container{
+	padding-top: 10px;
+}
+
+#calendar {
+	height: 100%;
+}
+
+.climb-calendar-label {
+	padding: 40px 0 0 30px;
+	font-weight: bold;
+	display: inline-block;
+	font-size: 20px;
+}
+
+.climb-schedule-button{
+	float: right;
+	margin: 30px 60px 0 0;
+	padding: 5px 10px 5px 10px;
+	border: solid 1px #dadada;
+	background-color: #7e57c2;
+	border-radius: 40px;
+	font-weight: bold;
+	color: white;
+	/* display: inline-block; */
+}
