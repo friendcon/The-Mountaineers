@@ -2,7 +2,10 @@ package com.themountaineers.controller;
 
 import java.net.URL;
 import java.security.Principal;
+import java.text.SimpleDateFormat;
+import java.time.LocalDate;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 import javax.servlet.http.HttpServletResponse;
@@ -14,10 +17,12 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.google.gson.Gson;
 import com.themountaineers.domain.GroupClimbVO;
 import com.themountaineers.domain.GroupHashVO;
 import com.themountaineers.domain.GroupMemberVO;
@@ -145,6 +150,16 @@ public class GroupController {
 		model.addAttribute("memcount", memberCount);
 	}
 	
+	@GetMapping("/getSchedule")
+	public @ResponseBody List<GroupClimbVO> groupSchedule(@RequestParam("group_no") int group_no){
+		SimpleDateFormat format = new SimpleDateFormat("yyyy-MM");
+		Date time = new Date();
+		String month = format.format(time);
+		log.info(month);
+		List<GroupClimbVO> list = service.groupScheduleGet(group_no, month);
+		return list;
+	}
+
 	// 그룹생성 페이지
 	@GetMapping("/schedulePage")
 	public void groupScheduleCreate(Model model, @RequestParam("group_no") int group_no) {
@@ -154,6 +169,9 @@ public class GroupController {
 	
 	@PostMapping("/scheduleCreate")
 	public String groupScheduleCreatePost(GroupClimbVO schedule){
+		if(schedule.getFinish_date() == null) {
+			schedule.setFinish_date("donthave");
+		}
 		service.groupScheduleInsert(schedule);
 		String group_no = schedule.getGroup_no() + "";
 		return "redirect:/group/view?group_no=" + group_no;

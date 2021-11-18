@@ -15,4 +15,5 @@ public interface GroupService {
 	public GroupVO groupView(int group_no);
 	public int groupMemCount(int group_no);
 	public int groupScheduleInsert(GroupClimbVO schedule);
+	public List<GroupClimbVO> groupScheduleGet(int group_no, String month);
 }

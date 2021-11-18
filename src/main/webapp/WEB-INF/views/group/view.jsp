@@ -7,14 +7,17 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<link href="../../resources/fullcalendar/main.css" rel="stylesheet" />
-<link href="../../resources/css/group/groupview.css" rel="stylesheet" type="text/css">
-<title>The Mountaineers</title>
-<jsp:include page="../common/head.jsp"></jsp:include>
-<jsp:include page="../common/script.jsp"></jsp:include>
-<script type="text/javascript" src="../../resources/js/group/group_view.js"></script>
-<script type="text/javascript" src="../../resources/fullcalendar/main.js"></script>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+	<link href="../../resources/fullcalendar/main.css" rel="stylesheet" />
+	<link href="../../resources/css/group/groupview.css" rel="stylesheet" type="text/css">
+	<link href="../../resources/fullcalendar/main.min.css" rel="stylesheet" type="text/css">
+	<title>The Mountaineers</title>
+	<jsp:include page="../common/head.jsp"></jsp:include>
+	<jsp:include page="../common/script.jsp"></jsp:include>
+	<script src='https://cdn.jsdelivr.net/npm/moment@2.27.0/min/moment.min.js'></script>
+	<script type="text/javascript" src="../../resources/fullcalendar/main.min.js"></script>
+	<script type="text/javascript" src="../../resources/fullcalendar/locales-all.min.js"></script>
+	<script type="text/javascript" src="../../resources/js/group/group_view.js"></script>
 </head>
 <body>
 	<jsp:include page="../common/header.jsp"></jsp:include>
@@ -45,7 +48,10 @@
 			<div class="col-lg-9 col-md-9">
 				
 				<div class="group_information row ml-0">
-						<input type="hidden" name="group_no" value="${group.group_no}">
+						<div class="schedule-here">
+						</div>
+						
+						<input type="hidden" id="group_no" name="group_no" value="${group.group_no}">
 						<div class="group_img_info">
 							<img class="group_profile_image" name="group_profile_image" src="/group/getImg/${group.group_no }" />
 						</div>
@@ -217,7 +223,7 @@
 							<div class="row claendar-container">
 								<div class="col-lg-1"></div>
 								<div class="col-lg-10" id="calendar">
-							
+									
 								</div>
 								<div class="col-lg-1"></div>
 							</div>

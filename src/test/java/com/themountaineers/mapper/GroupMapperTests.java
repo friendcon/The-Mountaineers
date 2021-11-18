@@ -92,7 +92,7 @@ public class GroupMapperTests {
 		log.info(mapper.groupMemberCount(1));
 	}*/
 	
-	@Test
+	/*@Test
 	public void groupScheduleInsertTest() {
 		GroupClimbVO vo = new GroupClimbVO();
 		vo.setGroup_no(1);
@@ -102,5 +102,10 @@ public class GroupMapperTests {
 		vo.setClimb_content("불광역 3번출구에서 오전 10시에 만나요.");
 		
 		mapper.groupScheduleInsert(vo);
+	}*/
+	
+	@Test
+	public void groupScheduleGetTest(){
+		log.info(mapper.groupScheduleGet(21, "2021/11"));
 	}
 }

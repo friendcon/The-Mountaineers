@@ -21,4 +21,6 @@ public interface GroupMapper {
 	public int groupMemberCount(int group_no);
 	
 	public int groupScheduleInsert(GroupClimbVO schedule);
+	public List<GroupClimbVO> groupScheduleGet(@Param("group_no") int group_no
+			, @Param("month") String month);
 }

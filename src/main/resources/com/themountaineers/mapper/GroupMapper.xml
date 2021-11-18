@@ -117,4 +117,13 @@
 			#{climb_title}, #{climb_content}
 		)
 	</insert>
+	
+	<!-- 그룹 일정 가져오기 -->
+	<select id="groupScheduleGet" resultType="com.themountaineers.domain.GroupClimbVO">
+		select climb_no, climb_content, 
+		climb_title, start_date, finish_date
+		from groupclimbing 
+		where group_no = #{group_no} and
+		substring(start_date,1,7) = #{month};
+	</select>
 </mapper>

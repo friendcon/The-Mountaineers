@@ -61,13 +61,18 @@ public class GroupServiceTests {
 		service.groupTotal(hashList, 0, keyword).forEach(group -> log.info(group));
 	}*/
 	
-	@Test
+	/*@Test
 	public void groupViewTest(){
 		log.info(service.groupView(1));
-	}
+	}*/
 
 	/*@Test
 	public void groupMemCountTest(){
 		log.info(service.groupMemCount(1));
 	}*/
+	
+	@Test
+	public void groupScheduleGetTest() {
+		log.info(service.groupScheduleGet(21, "2021/11"));
+	}
 }
