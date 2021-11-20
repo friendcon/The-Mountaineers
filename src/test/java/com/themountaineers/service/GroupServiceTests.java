@@ -73,6 +73,6 @@ public class GroupServiceTests {
 	
 	@Test
 	public void groupScheduleGetTest() {
-		log.info(service.groupScheduleGet(21, "2021/11"));
+		log.info(service.groupScheduleGet(21));
 	}
 }

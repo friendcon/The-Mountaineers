@@ -81,7 +81,7 @@ public class GroupServiceImpl implements GroupService {
 	}
 
 	@Override
-	public List<GroupClimbVO> groupScheduleGet(int group_no, String month) {
-		return mapper.groupScheduleGet(group_no, month);
+	public List<GroupClimbVO> groupScheduleGet(int group_no) {
+		return mapper.groupScheduleGet(group_no);
 	}
 }

@@ -152,11 +152,8 @@ public class GroupController {
 	
 	@GetMapping("/getSchedule")
 	public @ResponseBody List<GroupClimbVO> groupSchedule(@RequestParam("group_no") int group_no){
-		SimpleDateFormat format = new SimpleDateFormat("yyyy-MM");
-		Date time = new Date();
-		String month = format.format(time);
-		log.info(month);
-		List<GroupClimbVO> list = service.groupScheduleGet(group_no, month);
+		List<GroupClimbVO> list = service.groupScheduleGet(group_no);
+		log.info(list);
 		return list;
 	}
 

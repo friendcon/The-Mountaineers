@@ -106,6 +106,6 @@ public class GroupMapperTests {
 	
 	@Test
 	public void groupScheduleGetTest(){
-		log.info(mapper.groupScheduleGet(21, "2021/11"));
+		log.info(mapper.groupScheduleGet(21));
 	}
 }
