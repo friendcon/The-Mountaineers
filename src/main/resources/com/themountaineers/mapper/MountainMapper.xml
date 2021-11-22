@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.themountaineers.mapper.MountainMapper">
+	<insert id="insertMountain" parameterType="java.util.List">
+		insert ignore into mountain
+		(
+			mountain_code, 
+			mountain_name, 
+			mountain_phone, 
+			mountain_hight, 
+			mountain_content, 
+			mountain_address
+		)
+		values 
+		<foreach collection="list" item="mountain" index="index" separator=",">
+		(
+			#{mountain.mountain_code,jdbcType=VARCHAR}, 
+			#{mountain.mountain_name,jdbcType=VARCHAR}, 
+			#{mountain.mountain_phone,jdbcType=VARCHAR}, 
+			#{mountain.mountain_hight,jdbcType=VARCHAR},
+			#{mountain.mountain_content,jdbcType=VARCHAR},
+			#{mountain.mountain_address,jdbcType=VARCHAR}
+		)
+		</foreach>
+	</insert>
+</mapper>

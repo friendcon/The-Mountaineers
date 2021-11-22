@@ -28,6 +28,11 @@ public class MainController {
 	public String Main() {
 		return "main";
 	}
+	
+	@RequestMapping( value = {"/map"}, method = RequestMethod.GET)
+	public String Map() {
+		return "map";
+	}
 /*	private MountainInfoService service;
 //�뀕�뀕
 	@RequestMapping(value = { "/", "/main" }, method = RequestMethod.GET)

@@ -33,6 +33,15 @@
 			<version>${org.springframework-version}</version>
 		</dependency>
 		
+		<!-- 좌표변환 -->
+		<!-- https://mvnrepository.com/artifact/org.locationtech.proj4j/proj4j -->
+		<dependency>
+		    <groupId>org.locationtech.proj4j</groupId>
+		    <artifactId>proj4j</artifactId>
+		    <version>1.1.1</version>
+		</dependency>
+
+		
 		<!-- json변환 -->
 		<dependency>
 		    <groupId>com.google.code.gson</groupId>
