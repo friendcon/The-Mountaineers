@@ -25,4 +25,10 @@
 		)
 		</foreach>
 	</insert>
+	
+	<select id="selectMountainCode" parameterType="String" resultType="String">
+		select mountain_code 
+		from mountain
+		where mountain_code = #{code}
+	</select>
 </mapper>
