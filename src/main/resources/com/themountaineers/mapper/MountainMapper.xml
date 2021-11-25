@@ -26,6 +26,33 @@
 		</foreach>
 	</insert>
 	
+	<insert id="insertMountainPath">
+		insert ignore into mountain_path
+		(
+			climb_path_num,
+			mountain_code,
+			climb_path_XY,
+			climb_path_difficult,
+			climb_path_uptime,
+			climb_path_downtime,
+			climb_path_length,
+			climb_path_name
+		)
+		values 
+		<foreach collection="list" item="path" index="index" separator=",">
+		(
+			#{path.climb_path_num,jdbcType=VARCHAR}, 
+			#{path.mountain_code,jdbcType=VARCHAR}, 
+			#{path.climb_path_XY,jdbcType=VARCHAR}, 
+			#{path.climb_path_difficult,jdbcType=VARCHAR},
+			#{path.climb_path_uptime,jdbcType=VARCHAR},
+			#{path.climb_path_downtime,jdbcType=VARCHAR},
+			#{path.climb_path_length,jdbcType=VARCHAR},
+			#{path.climb_path_name,jdbcType=VARCHAR}
+		)
+		</foreach>
+	</insert>
+	
 	<select id="selectMountainCode" parameterType="String" resultType="String">
 		select mountain_code 
 		from mountain

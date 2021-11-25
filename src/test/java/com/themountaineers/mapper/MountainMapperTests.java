@@ -9,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
+import com.themountaineers.domain.MountainPathVO;
 import com.themountaineers.domain.MountainVO;
 
 import lombok.Setter;
@@ -27,12 +28,12 @@ public class MountainMapperTests {
 		MountainVO mountain = new MountainVO();
 		MountainVO mountain2 = new MountainVO();
 		List<MountainVO> list = new ArrayList<MountainVO>();
-	/*	mountain.setMountain_address("222");
+		mountain.setMountain_address("222");
 		mountain.setMountain_code("1322");
 		mountain.setMountain_content("asdads");
 		mountain.setMountain_hight("ass");
 		mountain.setMountain_name("adsasdads");
-		mountain.setMountain_phone("asdasdasd");*/
+		mountain.setMountain_phone("asdasdasd");
 		
 		mountain2.setMountain_address("서울특별시 성북구 석관동");
 		mountain2.setMountain_code("112300301");
@@ -47,6 +48,35 @@ public class MountainMapperTests {
 		list.add(mountain2);
 		//list.add(mountain);
 		mapper.insertMountain(list);
+	}
+	
+	@Test
+	public void insertMountainPathTest() {
+		MountainPathVO path1 = new MountainPathVO();
+		MountainPathVO path2 = new MountainPathVO();
+		
+		path1.setClimb_path_difficult("112300301");
+		path1.setClimb_path_downtime("112300301");
+		path1.setClimb_path_length("112300301");
+		path1.setClimb_path_name("112300301");
+		path1.setClimb_path_num("112300301");
+		path1.setClimb_path_uptime("112300301");
+		path1.setClimb_path_XY("112300301");
+		path1.setMountain_code("112300301");
+		
+		path2.setClimb_path_difficult("112300301");
+		path2.setClimb_path_downtime("112300301");
+		path2.setClimb_path_length("112300301");
+		path2.setClimb_path_name("112300301");
+		path2.setClimb_path_num("112300302");
+		path2.setClimb_path_uptime("112300301");
+		path2.setClimb_path_XY("112300301");
+		path2.setMountain_code("112300301");
+		
+		List<MountainPathVO> pathList = new ArrayList<>();
+		pathList.add(path1);
+		pathList.add(path2);
+		mapper.insertMountainPath(pathList);
 	}
 	
 }

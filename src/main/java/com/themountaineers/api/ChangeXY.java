@@ -1,27 +1,31 @@
 package com.themountaineers.api;
 
+import org.locationtech.proj4j.BasicCoordinateTransform;
 import org.locationtech.proj4j.CRSFactory;
 import org.locationtech.proj4j.CoordinateReferenceSystem;
 import org.locationtech.proj4j.CoordinateTransform;
 import org.locationtech.proj4j.CoordinateTransformFactory;
+import org.locationtech.proj4j.Proj4jException;
 import org.locationtech.proj4j.ProjCoordinate;
+import org.springframework.security.config.annotation.web.configurers.HeadersConfigurer.ContentSecurityPolicyConfig;
 
 import com.mysql.cj.x.protobuf.MysqlxCrud.Projection;
+
+import net.coobird.thumbnailator.geometry.Position;
 
 public class ChangeXY {
 
 	public static void main(String[] args) {
 		CRSFactory crsFactory = new CRSFactory();
-		CoordinateReferenceSystem kakao = crsFactory.createFromName("EPSG:5181");
+
 		CoordinateReferenceSystem mountain = crsFactory.createFromName("EPSG:5186");
+		//CoordinateReferenceSystem kakao = crsFactory.createFromName("EPSG:5181");
+		CoordinateReferenceSystem kakao = crsFactory.createFromName("EPSG:4326");
+		CoordinateReferenceSystem KAKAO2 = crsFactory.createFromName("EPSG:5181");
 		
-		CoordinateTransformFactory ctFactory = new CoordinateTransformFactory();
-		
-		CoordinateTransform KakaoToMountain = ctFactory.createTransform(kakao, mountain);
-		ProjCoordinate result = new ProjCoordinate();
-		KakaoToMountain.transform(new ProjCoordinate(183871.98187484033, 553662.63450966775), result);
-		double realX = result.x;
-		double realY = result.y;
-		System.out.println(realX + ":" + realY);
+		BasicCoordinateTransform transform = new BasicCoordinateTransform(mountain, kakao);
+		ProjCoordinate srcCoord = new ProjCoordinate(183871.98187484033,553662.63450966775);
+		ProjCoordinate desCoord = new ProjCoordinate();
+		System.out.println(transform.transform(srcCoord, desCoord));
 	}
 }
