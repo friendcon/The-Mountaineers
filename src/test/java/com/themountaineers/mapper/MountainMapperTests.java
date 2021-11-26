@@ -23,7 +23,7 @@ public class MountainMapperTests {
 	@Setter(onMethod_ = @Autowired)
 	private MountainMapper mapper;
 	
-	@Test
+	/*@Test
 	public void insertMountainTest() {
 		MountainVO mountain = new MountainVO();
 		MountainVO mountain2 = new MountainVO();
@@ -49,7 +49,7 @@ public class MountainMapperTests {
 		//list.add(mountain);
 		mapper.insertMountain(list);
 	}
-	
+	*/
 	/*@Test
 	public void insertMountainPathTest() {
 		MountainPathVO path1 = new MountainPathVO();
@@ -79,9 +79,19 @@ public class MountainMapperTests {
 		mapper.insertMountainPath(pathList);
 	}*/
 	
-	@Test
+	/*@Test
 	public void selectMountainTest() {
 		List<MountainVO> mountain = mapper.selectMountain("nomountain", "");
 		log.info(mountain);
+	}*/
+	
+	/*@Test
+	public void getMountainNameCode() {
+		mapper.getMountainNameCode();
+	}*/
+	
+	@Test
+	public void MountainImgInsert() {
+		mapper.insertMountainImg("111100101", "dassda");
 	}
 }

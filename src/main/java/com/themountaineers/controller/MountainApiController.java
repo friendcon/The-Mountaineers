@@ -5,6 +5,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 import java.io.BufferedOutputStream;
 import java.io.BufferedReader;
 import java.io.ByteArrayInputStream;
+import java.io.DataOutputStream;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
@@ -143,6 +144,62 @@ public class MountainApiController {
 		}
 		String[] result = list.toArray(new String[list.size()]);
 		return result;
+	}
+	
+	@GetMapping("/getAndsaveImage")
+	public void getMountainImg() {
+		String clientId = "HQijGhUb20KYJUWhMrDy";
+        String clientSecret = "QaOssuka1q";
+        List<MountainVO> mountainList = mapper.getMountainNameCode();
+        int count = 0;
+        log.info(mountainList);
+        for(MountainVO mountain : mountainList) {
+        	
+        	try {
+                StringBuilder urlBuilder = new StringBuilder("https://openapi.naver.com/v1/search/image");
+                urlBuilder.append("?" + URLEncoder.encode("query","UTF-8") + "=");
+                urlBuilder.append(URLEncoder.encode(mountain.getMountain_name(), "UTF-8"));
+                urlBuilder.append("&" + URLEncoder.encode("display","UTF-8") + "=");
+                urlBuilder.append(URLEncoder.encode("10", "UTF-8"));
+
+                URL url = new URL(urlBuilder.toString());
+                HttpURLConnection con = (HttpURLConnection)url.openConnection();
+                log.info("url : " +url.toString());
+                con.setRequestMethod("GET");
+                con.setRequestProperty("X-Naver-Client-Id", clientId);
+                con.setRequestProperty("X-Naver-Client-Secret", clientSecret);
+
+                con.setDoOutput(true);
+
+                int responseCode = con.getResponseCode();
+                BufferedReader br;
+                if(responseCode==200) { // 정상 호출
+                    br = new BufferedReader(new InputStreamReader(con.getInputStream()));
+                } else {  // 에러 발생
+                	log.info("*******************************" + urlBuilder);
+                    br = new BufferedReader(new InputStreamReader(con.getErrorStream()));
+                }
+                String inputLine;
+                StringBuffer response = new StringBuffer();
+                while ((inputLine = br.readLine()) != null) {
+                    response.append(inputLine);
+                }
+                br.close();
+                System.out.println(response.toString());
+                Gson gson = new Gson();
+                JsonObject obj = gson.fromJson(response.toString(), JsonObject.class);
+                JsonObject finArr = obj.get("items").getAsJsonArray().get(0).getAsJsonObject();
+                String imgurl = finArr.get("thumbnail").getAsString();
+                log.info(mountain.getMountain_code() + " : " + imgurl);
+                log.info("code: " + mountain.getMountain_code());
+                String code = mountain.getMountain_code();
+                mapper.insertMountainImg(code, imgurl);
+
+            } catch (Exception e) {
+                System.out.println(e);
+            }
+        }
+        
 	}
 	
 	@GetMapping("/insertPath")

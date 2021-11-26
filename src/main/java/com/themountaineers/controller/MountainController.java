@@ -62,4 +62,9 @@ public class MountainController {
 		List<MountainVO> mountainList = service.getMountainList(lastMountain, keyword);
 		return mountainList;
 	}
+	
+	@GetMapping("/view")
+	public void mountainView(Model model, @RequestParam(value="mountain_code") String mountain_code) {
+		
+	}
 }

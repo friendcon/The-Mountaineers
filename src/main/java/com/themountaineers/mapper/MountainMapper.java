@@ -13,4 +13,7 @@ public interface MountainMapper {
 	public int insertMountainPath(List<MountainPathVO> pathList);
 	public List<MountainVO> selectMountain(@Param("lastmountain") String lastmountain, 
 			@Param("keyword") String keyword);
+	public List<MountainVO> getMountainNameCode();
+	public int insertMountainImg(@Param("mountain_code") String mountain_code,
+			@Param("mountain_img_src") String mountain_img_src);
 }

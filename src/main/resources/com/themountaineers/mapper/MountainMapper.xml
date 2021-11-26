@@ -61,24 +61,35 @@
 	
 	<select id="selectMountain" resultType="com.themountaineers.domain.MountainVO" 
 	parameterType="map">
-		select mountain_code, 
-			mountain_name, 
-			mountain_phone, 
-			mountain_hight, 
-			mountain_content, 
-			mountain_address 
-		from mountain
-		<where>
-			<if test="lastmountain != 'nomountain'">
-				<![CDATA[
-					and mountain_code > #{lastmountain}
-				]]>
-			</if>
-			<if test = "keyword != null">
-				and (mountain_name like CONCAT('%',#{keyword},'%'))
-			</if>
-		</where>
-		order by mountain_code
+		select distinct(m.mountain_code), 
+			m.mountain_name, 
+			m.mountain_phone, 
+			m.mountain_hight, 
+			m.mountain_content, 
+			m.mountain_address 
+		from mountain m, mountain_path p
+		where m.mountain_code = p.mountain_code
+		<if test="lastmountain != 'nomountain'">
+			<![CDATA[
+				and m.mountain_code > #{lastmountain}
+			]]>
+		</if>
+		<if test = "keyword != null">
+			and (m.mountain_name like CONCAT('%',#{keyword},'%'))
+		</if>
+		order by m.mountain_code
 		limit 6
 	</select>
+	
+	<select id="getMountainNameCode" resultType="com.themountaineers.domain.MountainVO">
+		select distinct(m.mountain_code), m.mountain_name
+		from mountain m, mountain_path p
+		where m.mountain_code = p.mountain_code and m.mountain_img_src is null
+	</select>
+	
+	<update id="insertMountainImg" parameterType="map">
+		update mountain
+		set mountain_img_src = #{mountain_img_src}
+		where mountain_code = #{mountain_code}
+	</update>
 </mapper>
