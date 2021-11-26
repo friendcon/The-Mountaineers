@@ -148,8 +148,8 @@ public class MountainApiController {
 	
 	@GetMapping("/getAndsaveImage")
 	public void getMountainImg() {
-		String clientId = "HQijGhUb20KYJUWhMrDy";
-        String clientSecret = "QaOssuka1q";
+		String clientId = "clintId";
+        String clientSecret = "SecretKey";
         List<MountainVO> mountainList = mapper.getMountainNameCode();
         int count = 0;
         log.info(mountainList);
