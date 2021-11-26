@@ -79,19 +79,19 @@ public class MountainMapperTests {
 		mapper.insertMountainPath(pathList);
 	}*/
 	
-	/*@Test
+	@Test
 	public void selectMountainTest() {
-		List<MountainVO> mountain = mapper.selectMountain("nomountain", "");
+		List<MountainVO> mountain = mapper.selectMountain("nomountain", "북한");
 		log.info(mountain);
-	}*/
+	}
 	
 	/*@Test
 	public void getMountainNameCode() {
 		mapper.getMountainNameCode();
 	}*/
 	
-	@Test
+	/*@Test
 	public void MountainImgInsert() {
 		mapper.insertMountainImg("111100101", "dassda");
-	}
+	}*/
 }

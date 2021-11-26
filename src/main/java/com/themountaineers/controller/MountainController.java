@@ -55,11 +55,15 @@ public class MountainController {
 		log.info(lastMountain);
 		log.info(keyword);
 		
+		if(lastMountain == null) {
+			lastMountain = "nomountain";
+		}
 		
 		if(keyword == null) {
 			keyword = "";
 		}
 		List<MountainVO> mountainList = service.getMountainList(lastMountain, keyword);
+		log.info(mountainList);
 		return mountainList;
 	}
 	

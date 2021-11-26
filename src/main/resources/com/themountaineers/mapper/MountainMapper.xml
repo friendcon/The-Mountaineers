@@ -66,7 +66,8 @@
 			m.mountain_phone, 
 			m.mountain_hight, 
 			m.mountain_content, 
-			m.mountain_address 
+			m.mountain_address,
+			m.mountain_img_src
 		from mountain m, mountain_path p
 		where m.mountain_code = p.mountain_code
 		<if test="lastmountain != 'nomountain'">

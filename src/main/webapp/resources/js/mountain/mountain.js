@@ -36,11 +36,13 @@ function getMountain() {
 			  console.log("hello");
 			  var appendHere = $(".append_here");
 			  var addMountainHtml = "";
-			  
+			  console.log(result);
 			  for(var i=0; i<result.length; i++) {
 				  addMountainHtml += "<div class='mountain_container' data-groupno ='";
 				  addMountainHtml += result[i].mouontain_code;
-				  addMountainHtml += "'><div class='group_img'><img class='group_profile_image' name='group_profile_image'/>";
+				  addMountainHtml += "'><div class='mountain_img'><img class='mountain_image' src='";
+				  addMountainHtml += result[i].mountain_img_src;
+				  addMountainHtml += "' />";
 				  addMountainHtml += "</div><div class='mountain_content_box'>";
 				  addMountainHtml += "<h5><a href='/mountain/view?mountain_code=";
 				  addMountainHtml += result[i].mountain_code;

@@ -65,8 +65,8 @@
 						<div class="append_here" id="append_here">
 							<c:forEach var="mountain" items="${mountains }" varStatus="status">
 								<div class="mountain_container" data-mounno = "${mountain.mountain_code}">
-									<div class="group_img">
-										<img class="group_profile_image" name="group_profile_image" />
+									<div class="mountain_img">
+										<img class="mountain_image" name="mountain_image" src="${mountain.mountain_img_src}" />
 									</div>
 									<div class="mountain_content_box">
 										<h5><a href="/mountain/view?mountain_code=${mountain.mountain_code }"> ${mountain.mountain_name } </a></h5>
