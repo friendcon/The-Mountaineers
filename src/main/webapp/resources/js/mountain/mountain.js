@@ -15,6 +15,13 @@ function getMountain() {
 	if(scrollEnd == true) {
 		return;
 	}
+	
+	if(lastMountain == "nomountain"){
+		var lastone = $('.mountain_container:last').data("mounno");
+		lastMountain = lastone;
+		console.log(document.getElementById("lastmountain").value);
+		console.log("처리후 마지막 요소: " + lastMountain); 
+	}
 	$.ajax({
 		  url: '/mountain/getList',
 		  type: 'GET',
@@ -52,7 +59,7 @@ function getMountain() {
 				  scrollEnd = true;
 			}
 			  console.log(addMountainHtml);
-			  var lastMountainNo = result[result.length-1].mountain_code;
+			  lastMountainNo = result[result.length-1].mountain_code;
 			  console.log(lastMountainNo);
 			  $(".append_here").append(addMountainHtml);
 			  

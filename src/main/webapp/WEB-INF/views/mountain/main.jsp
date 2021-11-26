@@ -64,7 +64,7 @@
 						<input type='hidden' class='lastmountain' id="lastmountain" name='lastmountain' value='nomountain'> 
 						<div class="append_here" id="append_here">
 							<c:forEach var="mountain" items="${mountains }" varStatus="status">
-								<div class="mountain_container" data-groupno = "${mountain.mountain_code}">
+								<div class="mountain_container" data-mounno = "${mountain.mountain_code}">
 									<div class="group_img">
 										<img class="group_profile_image" name="group_profile_image" />
 									</div>

@@ -55,9 +55,6 @@ public class MountainController {
 		log.info(lastMountain);
 		log.info(keyword);
 		
-		if(lastMountain == null) {
-			lastMountain = "nomountain";
-		} 
 		
 		if(keyword == null) {
 			keyword = "";
