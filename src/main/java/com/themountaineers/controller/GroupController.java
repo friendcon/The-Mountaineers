@@ -40,10 +40,7 @@ import lombok.extern.log4j.Log4j;
 @AllArgsConstructor
 @RequestMapping("/group/*")
 public class GroupController {
-	
-	
-	private static final int PAGESIZE = 9;
-	
+
 	@Setter(onMethod_ = @Autowired)
 	private GroupService service;
 	
@@ -69,8 +66,8 @@ public class GroupController {
 			@RequestParam(value="lastGroup", required=false) Integer lastGroup,
 			@RequestParam(value="keyword", required=false) String keyword) {
 		
-		log.info("********** ±×·ì ¸ÞÀÎ ÆäÀÌÁö**********");
-		log.info("¸¶Áö¸· ±×·ì : " + lastGroup);
+		log.info("********** ï¿½×·ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½**********");
+		log.info("ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½×·ï¿½ : " + lastGroup);
 		
 		List<GroupProfileVO> profiles = new ArrayList<>();
 
@@ -102,7 +99,7 @@ public class GroupController {
 		hashList = hashNULL(hashList);
 		
 		log.info(hashList);
-		log.info("¸¶Áö¸· ±×·ì : " + lastGroup);
+		log.info("ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½×·ï¿½ : " + lastGroup);
 		
 		List<GroupVO> groups = service.groupTotal(list, lastCursor, keyword);
 		groups.forEach(group -> log.info(group.getGroup_no()));
@@ -116,13 +113,13 @@ public class GroupController {
 	
 	@GetMapping("/create")
 	public void groupCreate() {
-		log.info("********** ±×·ì »ý¼º ÆäÀÌÁö**********");
+		log.info("********** ï¿½×·ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½**********");
 	}
 	
 	@PostMapping("/new")
 	public String groupNew(GroupVO group, Principal principal, 
 			@RequestParam("hashList") List<Integer> groupHashList){
-		log.info("********** ±×·ì »ý¼º post **********");
+		log.info("********** ï¿½×·ï¿½ ï¿½ï¿½ï¿½ï¿½ post **********");
 		log.info(principal.getName());
 		log.info(group);
 
@@ -157,10 +154,10 @@ public class GroupController {
 		return list;
 	}
 
-	// ±×·ì»ý¼º ÆäÀÌÁö
+	// ï¿½×·ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 	@GetMapping("/schedulePage")
 	public void groupScheduleCreate(Model model, @RequestParam("group_no") int group_no) {
-		log.info("±×·ì¹øÈ£ : " + group_no);
+		log.info("ï¿½×·ï¿½ï¿½È£ : " + group_no);
 		model.addAttribute("group_no", group_no);
 	}
 	

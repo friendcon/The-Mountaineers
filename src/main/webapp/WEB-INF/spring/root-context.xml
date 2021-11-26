@@ -16,7 +16,8 @@
 	<!-- Root Context: defines shared resources visible to all other web components -->
 	<bean id="hikariConfig" class="com.zaxxer.hikari.HikariConfig">
         <property name="driverClassName" value="com.mysql.cj.jdbc.Driver"></property>
-        <property name="jdbcUrl" value="jdbc:mysql://127.0.0.1:3306/themountaineers?useSSL=false&amp;serverTimezone=UTC"></property>
+        <property name="jdbcUrl" value="jdbc:mysql://127.0.0.1:3306/themountaineers?useSSL=false&amp;allowPublicKeyRetrieval=true&amp;
+		serverTimezone=UTC"></property>
         <property name="username" value="root"></property>
         <property name="password" value="1234"></property>
     </bean>

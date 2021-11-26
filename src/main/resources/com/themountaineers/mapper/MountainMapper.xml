@@ -38,17 +38,17 @@
 			climb_path_length,
 			climb_path_name
 		)
-		values 
+		values
 		<foreach collection="list" item="path" index="index" separator=",">
 		(
-			#{path.climb_path_num,jdbcType=VARCHAR}, 
-			#{path.mountain_code,jdbcType=VARCHAR}, 
-			#{path.climb_path_XY,jdbcType=VARCHAR}, 
-			#{path.climb_path_difficult,jdbcType=VARCHAR},
-			#{path.climb_path_uptime,jdbcType=VARCHAR},
-			#{path.climb_path_downtime,jdbcType=VARCHAR},
-			#{path.climb_path_length,jdbcType=VARCHAR},
-			#{path.climb_path_name,jdbcType=VARCHAR}
+			#{path.climb_path_num}, 
+			#{path.mountain_code}, 
+			#{path.climb_path_XY,jdbcType=LONGVARCHAR}, 
+			#{path.climb_path_difficult},
+			#{path.climb_path_uptime},
+			#{path.climb_path_downtime},
+			#{path.climb_path_length},
+			#{path.climb_path_name}
 		)
 		</foreach>
 	</insert>
@@ -57,5 +57,28 @@
 		select mountain_code 
 		from mountain
 		where mountain_code = #{code}
+	</select>
+	
+	<select id="selectMountain" resultType="com.themountaineers.domain.MountainVO" 
+	parameterType="map">
+		select mountain_code, 
+			mountain_name, 
+			mountain_phone, 
+			mountain_hight, 
+			mountain_content, 
+			mountain_address 
+		from mountain
+		<where>
+			<if test="lastmountain != 'nomountain'">
+				<![CDATA[
+					and mountain_code > #{lastmountain}
+				]]>
+			</if>
+			<if test = "keyword != null">
+				and (mountain_name like CONCAT('%',#{keyword},'%'))
+			</if>
+		</where>
+		order by mountain_code
+		limit 6
 	</select>
 </mapper>

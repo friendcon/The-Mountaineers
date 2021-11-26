@@ -50,7 +50,7 @@ public class MountainMapperTests {
 		mapper.insertMountain(list);
 	}
 	
-	@Test
+	/*@Test
 	public void insertMountainPathTest() {
 		MountainPathVO path1 = new MountainPathVO();
 		MountainPathVO path2 = new MountainPathVO();
@@ -77,6 +77,11 @@ public class MountainMapperTests {
 		pathList.add(path1);
 		pathList.add(path2);
 		mapper.insertMountainPath(pathList);
-	}
+	}*/
 	
+	@Test
+	public void selectMountainTest() {
+		List<MountainVO> mountain = mapper.selectMountain("nomountain", "");
+		log.info(mountain);
+	}
 }

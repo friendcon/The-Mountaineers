@@ -69,15 +69,15 @@ public class MountainApiController {
 	// JSON 을 PATHVO로 파싱
 	private static MountainPathVO makePathVO(JsonObject attribute, String paths) {
 		MountainPathVO mountainPathVO = new MountainPathVO();
-		log.info("함수 : " + attribute);
-		log.info(paths);
-		String difficult = attribute.get("PMNTN_DFFL").toString();
-		String downTime = attribute.get("PMNTN_GODN").toString();
-		String pathLength = attribute.get("PMNTN_LT").toString();
-		String pathName = attribute.get("PMNTN_NM").toString();
-		String pathNum = attribute.get("PMNTN_SN").toString();
-		String upTime = attribute.get("PMNTN_UPPL").toString();
-		String mountainCode = attribute.get("MNTN_CODE").toString();
+		//log.info("함수 : " + attribute);
+		//log.info(paths);
+		String difficult = attribute.get("PMNTN_DFFL").getAsString();
+		String downTime = attribute.get("PMNTN_GODN").getAsString();
+		String pathLength = attribute.get("PMNTN_LT").getAsString();
+		String pathName = attribute.get("PMNTN_NM").getAsString();
+		String pathNum = attribute.get("PMNTN_SN").getAsString();
+		String upTime = attribute.get("PMNTN_UPPL").getAsString();
+		String mountainCode = attribute.get("MNTN_CODE").getAsString();
 		mountainPathVO.setClimb_path_difficult(difficult.isEmpty() ? difficult= " " : difficult);
 		mountainPathVO.setClimb_path_downtime(downTime.isEmpty() ? downTime=" " : downTime);
 		mountainPathVO.setClimb_path_length(pathLength.isEmpty() ? pathLength = " " : pathLength);
@@ -122,7 +122,7 @@ public class MountainApiController {
 	private static String[] pathCheck(JsonElement paths) {
 		JsonArray arr = paths.getAsJsonArray().getAsJsonArray();
 		if(arr.size() == 1) {
-			log.info("사이즈1");
+			//log.info("사이즈1");
 			StringBuilder builder = new StringBuilder(paths.toString());
 			builder.replace(0, 3, "");
 			builder.replace(builder.length()-3, builder.length(), "");
@@ -132,7 +132,7 @@ public class MountainApiController {
 		}
 		List<String> list = new ArrayList<>();
 		for(int i=0; i<arr.size(); i++) {
-			log.info("사이즈1초과");
+			//log.info("사이즈1초과");
 			StringBuilder p = new StringBuilder(arr.get(i).toString());
 			p.replace(0, 2, "");
 			p.replace(p.length()-2, p.length(), "");
@@ -158,8 +158,12 @@ public class MountainApiController {
 		JsonObject jsonObj = null;
 		JsonElement obj1 = null;
 		JsonArray ar = null;
-		
+		int count = 1;
 		for(String fileName : fileNames) {
+			
+			count++;
+			MountainPathVO pathVO = null;
+			
 			Reader reader = new FileReader(path + "\\" + fileName);
 			//log.info(fileName);
 			jsonObj = gson.fromJson(reader, JsonObject.class);
@@ -173,16 +177,21 @@ public class MountainApiController {
 				
 				JsonObject attribute = feature_Object.get("attributes").getAsJsonObject();
 				JsonElement paths = feature_Object.get("geometry").getAsJsonObject().get("paths");
-				
-				//pathCheck(paths);
+
 				String changeResult = addChangeXY(pathCheck(paths));
 
-				MountainPathVO pathVO = makePathVO(attribute, changeResult);
+				pathVO = makePathVO(attribute, changeResult);
 				pathList.add(pathVO);
 			}
+			
+			if(count % 50 == 0) {
+				log.info("여기");
+				mapper.insertMountainPath(pathList);
+				pathList = new ArrayList<>();
+			}
+			
 		}
 		
-		mapper.insertMountainPath(pathList);
 	}
 	
 	@GetMapping("/readJSON")
@@ -291,8 +300,7 @@ public class MountainApiController {
 	
 	private static MountainVO makeMountain(NodeList list) {
 		MountainVO mountain = new MountainVO();
-		
-		for(int i=0; i<list.getLength(); i++) {
+		for(int i=1; i<=list.getLength(); i++) {
 			Node node = list.item(i);
 			String attr = node.getNodeName();
 			String value = node.getTextContent();

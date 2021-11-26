@@ -1,0 +1,50 @@
+@CHARSET "UTF-8";
+
+.mountain_container {
+	display: inline-block;
+	width: 30%;
+	padding: 3% 1% 0px 2%;
+}
+.mountain_content_box {
+	display: table;
+    width: 100%;
+    /* height: 130px; */
+    height: 150px;
+    margin-left: 1px;
+    border-left: solid;
+    border-left-color: #dadada;
+    border-left-width: 1px;
+    border-right: solid;
+    border-right-color: #dadada;
+    border-right-width: 1px;
+    border-bottom: solid;
+    border-bottom-color: #dadada;
+    border-bottom-width: 1px; */
+    box-sizing: border-box;
+    background: #fff;
+    position: static;
+}
+
+.mountain_content_box > h5 {
+	padding-top: 15px;
+	padding-left: 15px;
+	font-weight: bold;
+}
+
+.mountain_content_box a {
+	 text-decoration: none;
+	 color: black;
+}
+
+.mountain_content_box label {
+	padding: 1px 5px 1px 5px;
+	margin: 5px 0px 0px 15px;
+	font-size: 12px;
+	border-radius: 40px;
+	color: white;
+}
+
+.mountain_content_box p {
+	font-size: 14px;
+	padding: 5px 15px 0px 15px;
+}
