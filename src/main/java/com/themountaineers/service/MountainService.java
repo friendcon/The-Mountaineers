@@ -6,4 +6,5 @@ import com.themountaineers.domain.MountainVO;
 
 public interface MountainService {
 	public List<MountainVO> getMountainList(String lastMountain, String keyword);
+	public MountainVO getMountainInfo(String mountain_code);
 }

@@ -93,4 +93,34 @@
 		set mountain_img_src = #{mountain_img_src}
 		where mountain_code = #{mountain_code}
 	</update>
+	<resultMap type="com.themountaineers.domain.MountainVO" id="MountainResult">
+		<id property="mountain_code" column="mountain_code"/>
+		<result property="mountain_name" column="mountain_name"/>
+		<result property="mountain_phone" column="mountain_phone"/>
+		<result property="mountain_hight" column="mountain_hight"/>
+		<result property="mountain_content" column="mountain_content"/>
+		<result property="mountain_address" column="mountain_address"/>
+		<result property="mountain_img_src" column="mountain_img_src"/>
+		<collection property="pathList" resultMap="pathMap"></collection>
+	</resultMap>
+	
+	<resultMap type="com.themountaineers.domain.MountainPathVO" id="pathMap">
+		<id property="climb_path_num" column="climb_path_num"/>
+		<result property="mountain_code" column="mountain_code"/>
+		<result property="climb_path_XY" column="climb_path_XY"/>
+		<result property="climb_path_difficult" column="climb_path_difficult"/>
+		<result property="climb_path_uptime" column="climb_path_uptime"/>
+		<result property="climb_path_downtime" column="climb_path_downtime"/>
+		<result property="climb_path_length" column="climb_path_length"/>
+		<result property="climb_path_name" column="climb_path_name"/>
+	</resultMap>
+	<select id="selectMountainDetail" resultMap="MountainResult" parameterType="String">
+		select m.mountain_code, m.mountain_name, m.mountain_phone,
+		m.mountain_hight, m.mountain_content, m.mountain_address,
+		m.mountain_img_src, p.climb_path_num, p.climb_path_XY,
+		p.climb_path_difficult, p.climb_path_uptime,
+		p.climb_path_downtime, p.climb_path_length, p.climb_path_name
+		from mountain m, mountain_path p
+		where m.mountain_code = p.mountain_code and m.mountain_code = #{mountain_code}
+	</select>
 </mapper>

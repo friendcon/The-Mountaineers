@@ -69,6 +69,7 @@ public class MountainController {
 	
 	@GetMapping("/view")
 	public void mountainView(Model model, @RequestParam(value="mountain_code") String mountain_code) {
-		
+		log.info("****************view************");
+		model.addAttribute("mountain", service.getMountainInfo(mountain_code));
 	}
 }

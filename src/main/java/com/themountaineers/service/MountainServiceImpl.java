@@ -22,4 +22,9 @@ public class MountainServiceImpl implements MountainService {
 		return mapper.selectMountain(lastMountain, keyword);
 	}
 
+	@Override
+	public MountainVO getMountainInfo(String mountain_code) {
+		return mapper.selectMountainDetail(mountain_code);
+	}
+
 }

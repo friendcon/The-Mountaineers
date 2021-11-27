@@ -79,11 +79,11 @@ public class MountainMapperTests {
 		mapper.insertMountainPath(pathList);
 	}*/
 	
-	@Test
+	/*@Test
 	public void selectMountainTest() {
 		List<MountainVO> mountain = mapper.selectMountain("nomountain", "북한");
 		log.info(mountain);
-	}
+	}*/
 	
 	/*@Test
 	public void getMountainNameCode() {
@@ -94,4 +94,11 @@ public class MountainMapperTests {
 	public void MountainImgInsert() {
 		mapper.insertMountainImg("111100101", "dassda");
 	}*/
+	
+	@Test
+	public void MountainSelectInfo() {
+		MountainVO vo = mapper.selectMountainDetail("112300101");
+		log.info(vo);
+		log.info(vo.getPathList());
+	}
 }

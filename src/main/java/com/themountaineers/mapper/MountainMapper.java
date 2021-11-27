@@ -16,4 +16,5 @@ public interface MountainMapper {
 	public List<MountainVO> getMountainNameCode();
 	public int insertMountainImg(@Param("mountain_code") String mountain_code,
 			@Param("mountain_img_src") String mountain_img_src);
+	public MountainVO selectMountainDetail(String mountain_code);
 }
