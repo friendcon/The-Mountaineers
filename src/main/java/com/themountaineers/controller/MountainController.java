@@ -72,4 +72,5 @@ public class MountainController {
 		log.info("****************view************");
 		model.addAttribute("mountain", service.getMountainInfo(mountain_code));
 	}
+	
 }

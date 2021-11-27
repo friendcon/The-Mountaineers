@@ -1,7 +1,9 @@
 package com.themountaineers.mapper;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -95,10 +97,19 @@ public class MountainMapperTests {
 		mapper.insertMountainImg("111100101", "dassda");
 	}*/
 	
-	@Test
+	/*@Test
 	public void MountainSelectInfo() {
 		MountainVO vo = mapper.selectMountainDetail("112300101");
 		log.info(vo);
 		log.info(vo.getPathList());
+	}*/
+	
+	@Test
+	public void MountainNameAddrUpdate() {
+		Map<String, Object> updateMap = new HashMap<>();
+		updateMap.put("mountain_x", 10.213123123);
+        updateMap.put("mountain_y", 10.213123123);
+        updateMap.put("mountain_code", "112300101");
+		mapper.updateMountainXYAddr(updateMap);
 	}
 }

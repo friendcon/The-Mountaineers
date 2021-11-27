@@ -13,6 +13,8 @@ public class MountainVO {
 	private String mountain_content;
 	private String mountain_address;
 	private String mountain_img_src;
+	private double mountain_x;
+	private double mountain_y;
 	
 	List<MountainPathVO> pathList;
 }

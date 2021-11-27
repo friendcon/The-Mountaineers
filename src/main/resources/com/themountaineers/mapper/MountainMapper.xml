@@ -67,7 +67,9 @@
 			m.mountain_hight, 
 			m.mountain_content, 
 			m.mountain_address,
-			m.mountain_img_src
+			m.mountain_img_src,
+			m.mountain_x,
+			m.mountain_y
 		from mountain m, mountain_path p
 		where m.mountain_code = p.mountain_code
 		<if test="lastmountain != 'nomountain'">
@@ -88,6 +90,12 @@
 		where m.mountain_code = p.mountain_code and m.mountain_img_src is null
 	</select>
 	
+	<select id="getMountainNameAddr" resultType="com.themountaineers.domain.MountainVO">
+		select distinct(m.mountain_code), m.mountain_name, m.mountain_address
+		from mountain m, mountain_path p
+		where m.mountain_code = p.mountain_code
+	</select>
+	
 	<update id="insertMountainImg" parameterType="map">
 		update mountain
 		set mountain_img_src = #{mountain_img_src}
@@ -101,6 +109,8 @@
 		<result property="mountain_content" column="mountain_content"/>
 		<result property="mountain_address" column="mountain_address"/>
 		<result property="mountain_img_src" column="mountain_img_src"/>
+		<result property="mountain_x" column="mountain_x"/>
+		<result property="mountain_y" column="mountain_y"/>
 		<collection property="pathList" resultMap="pathMap"></collection>
 	</resultMap>
 	
@@ -117,10 +127,25 @@
 	<select id="selectMountainDetail" resultMap="MountainResult" parameterType="String">
 		select m.mountain_code, m.mountain_name, m.mountain_phone,
 		m.mountain_hight, m.mountain_content, m.mountain_address,
-		m.mountain_img_src, p.climb_path_num, p.climb_path_XY,
+		m.mountain_img_src, m.mountain_x, m.mountain_y, p.climb_path_num, p.climb_path_XY,
 		p.climb_path_difficult, p.climb_path_uptime,
 		p.climb_path_downtime, p.climb_path_length, p.climb_path_name
 		from mountain m, mountain_path p
 		where m.mountain_code = p.mountain_code and m.mountain_code = #{mountain_code}
 	</select>
+	
+	<update id="updateMountainXYAddr" parameterType="java.util.HashMap">
+		update mountain
+		set mountain_x = #{mountain_x}
+		,mountain_y = #{mountain_y}
+		,mountain_address = #{mountain_address}
+		where mountain_code = #{mountain_code}
+		and mountain_x is null
+	</update>
+	
+	<update id="updateAddrFin" parameterType="java.util.HashMap">
+		update mountain
+		set mountain_address = #{mountain_address}
+		where mountain_code = #{mountain_code}
+	</update>
 </mapper>
