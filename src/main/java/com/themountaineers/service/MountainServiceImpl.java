@@ -41,7 +41,7 @@ public class MountainServiceImpl implements MountainService {
 	public List<MountainPathVO> getpathList(String mountain_code) {
 		MountainVO mountain = mapper.selectMountainDetail(mountain_code);
 		List<MountainPathVO> pathList = mountain.getPathList();
-		log.info(mountain);
+		//log.info(mountain);
 		List<MountainPathVO> afterPathList = new ArrayList<>();
 
 		String[] grade = {"쉬움", "중간", "어려움"};
@@ -55,7 +55,7 @@ public class MountainServiceImpl implements MountainService {
 			pathName.add(path.getClimb_path_name());
 		}
 		
-		log.info(pathName);
+		//log.info(pathName);
 		
 		/*
 		 * 등산로 이름만큼 등산로 객체 생성
@@ -68,8 +68,10 @@ public class MountainServiceImpl implements MountainService {
 		
 		count = new int[afterPathList.size()][3];
 		
+		// path 리스트중 하나
 		for(MountainPathVO path : pathList) {
 			String name = path.getClimb_path_name();
+			System.out.println(pathName.size());
 			for(int i=0; i<pathName.size(); i++) {
 				String afterPathName = afterPathList.get(i).getClimb_path_name();
 				if(name.equals(afterPathName)){
@@ -132,7 +134,9 @@ public class MountainServiceImpl implements MountainService {
 					
 					// 등산로 좌표 처리
 					String xy = path.getClimb_path_XY();
+					System.out.println(xy);
 					String afterXY = afterPath.getClimb_path_XY();
+					System.out.println(afterXY);
 					String totalXY = xy + afterXY;
 					afterPath.setClimb_path_XY(totalXY);
 					
@@ -177,6 +181,8 @@ public class MountainServiceImpl implements MountainService {
 				afterPathList.get(i).setClimb_path_difficult("어려움");
 			}
 		}
+		
+		//log.info(afterPathList);
 		return afterPathList;
 	}
 }

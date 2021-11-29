@@ -73,7 +73,6 @@ public class MountainController {
 		log.info("****************view************");
 		MountainVO mountain = service.getMountainInfo(mountain_code);
 		List<MountainPathVO> path = service.getpathList(mountain_code);
-		
 		for(MountainPathVO moun : path) {
 			int upTime = Integer.parseInt(moun.getClimb_path_uptime());
 			int downTime = Integer.parseInt(moun.getClimb_path_downtime());
@@ -82,7 +81,14 @@ public class MountainController {
 			moun.setClimb_path_length(changeLength);
 			moun.setClimb_path_uptime(changeTime(upTime));
 			moun.setClimb_path_downtime(changeTime(downTime));
+			
+			if(moun.getClimb_path_name().equals(" ")) {
+				moun.setClimb_path_name(mountain.getMountain_name());
+			}
+			log.info("1 : " + moun.getClimb_path_name());
 		}
+		
+		
 		model.addAttribute("mountain", mountain);
 		model.addAttribute("path", path);
 	}

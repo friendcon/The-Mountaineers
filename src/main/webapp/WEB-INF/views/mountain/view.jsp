@@ -88,8 +88,9 @@
 								<div class="col-lg-2"></div>
 								<div class="col-lg-8" class="pathList">
 									<c:forEach var="path" items="${path}" varStatus="status">
-										<div class="path_container">
-											<button type="button" class="btn btn-sm btn-success rounded-pill viewpath">view</button>
+										<div class="path_container" id="path-container${status.count}">
+											<input type="hidden" id="pathNum${status.count}">
+											<button type="button" data-pathcount="${status.count}" class="btn btn-sm btn-success rounded-pill viewpath" >view</button>
 											<p class="path_count">${status.count}번째 등산로</p>
 											<span class="path_level">
 												<c:if test="${path.climb_path_difficult eq '쉬움'}">
@@ -104,8 +105,8 @@
 											</span>
 											<h6 class="path_name">${path.climb_path_name} (${path.climb_path_length}km)</h6>
 											<p class="climb-time">등산 시간 : ${path.climb_path_uptime} &nbsp;&nbsp;&nbsp; /  &nbsp;&nbsp;&nbsp;하산 시간 : ${path.climb_path_downtime} </p>
+											<input type="hidden" class="pathstring" id="path${status.count}" name ="path${status.count}" value="${path.climb_path_XY}">
 										</div>
-										<input type="hidden" value="${path.climb_path_XY}">
 									</c:forEach>
 								</div>
 								<div class="col-lg-2"></div>
@@ -116,7 +117,12 @@
 							<script type="text/javascript" src="http://dapi.kakao.com/v2/maps/sdk.js?appkey=13ced59236edab8d9f8aad2858084915&autoload=false"></script>
 							<script type="text/javascript">
 								
+								
 								kakao.maps.load(function() {
+									let checkClick = false;
+									let pathViewButton = document.getElementsByClassName('viewpath');
+									/**/
+									
 									var x = document.getElementById("mountain_y").value;
 									var y = document.getElementById("mountain_x").value;
 			
@@ -132,7 +138,50 @@
 								    };
 									
 									var map = new kakao.maps.Map(mapContainer, mapOption);
-									//var map2 = new kakao.maps.Map(pathContainer, mapOption2);
+									var polyline;
+									
+									var addEvents;
+									
+									
+									for(var i=0; i<pathViewButton.length; i++) {
+										var countFor = i+1;
+										console.log("시발" + countFor);
+										pathViewButton[i].addEventListener("click", addEvents = function(i){
+											console.log(countFor);
+											var btn = this.dataset.pathcount;
+											console.log(btn);
+
+											var container_id = "path-container" + btn;
+											var path_container = document.getElementById(container_id);
+
+											if(checkClick == true) {
+												polyline.setMap(null);
+												checkClick = false;
+												return;
+											}
+											
+											var pathId = "path" + btn;
+											console.log(pathId);
+											var xyArr = document.getElementById(pathId).value.split("/");
+											var linePath = [];
+
+											for(var j=0; j<xyArr.length-1; j++) {
+												var splitPoint = xyArr[j].split(",");
+												var point = new kakao.maps.LatLng(splitPoint[0], splitPoint[1]);
+												linePath.push(point);
+											}
+											
+											polyline = new kakao.maps.Polyline({
+											    path: linePath,
+											    strokeWeight: 5, 
+											    strokeColor: '#FFAE00', 
+											    strokeOpacity: 0.7, 
+											    strokeStyle: 'solid'
+											});
+											checkClick = true;
+											polyline.setMap(map);
+										});
+									}
 									
 									var markerPosition  = new kakao.maps.LatLng(x, y); 
 
@@ -141,7 +190,9 @@
 									});
 
 									marker.setMap(map);
-								}) 
+									
+								})
+								
 							</script>
 			</div>
 		</div>
