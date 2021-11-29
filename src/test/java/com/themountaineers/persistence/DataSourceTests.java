@@ -33,7 +33,7 @@ public class DataSourceTests {
 	public void testMyBatis() {
 		try (SqlSession session = sqlSessionFactory.openSession();
 				Connection con = session.getConnection();) {
-			log.info("********** 目池记, 技记 积己 己傍 **********");
+			log.info("********** 鞐瓣舶 **********");
 			log.info(session);
 			log.info(con);
 		} catch (Exception e) {

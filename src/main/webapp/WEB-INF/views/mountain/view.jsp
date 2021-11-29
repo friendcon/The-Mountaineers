@@ -15,7 +15,8 @@
 	<title>The Mountaineers</title>
 	<jsp:include page="../common/head.jsp"></jsp:include>
 	<jsp:include page="../common/script.jsp"></jsp:include>
-	<script type="text/javascript" src="../../resources/js/group/group_view.js"></script>
+
+	<script type="text/javascript" src="../../resources/js/mountain/mountainView.js"></script>
 </head>
 <body>
 	<jsp:include page="../common/header.jsp"></jsp:include>
@@ -55,13 +56,15 @@
 						</div>
 						<div class="mountain_content_info">
 							<span class="mountain_name">${mountain.mountain_name} </span>
-
+							<h5 class="mountain_content">산 높이 : ${mountain.mountain_hight }</h5>
+							<h5 class="mountain_content">산 평점  ★★★☆☆ </h5><br>
 							<h5 class="mountain_content">${mountain.mountain_address }</h5>
 							<h5 class="mountain_content">${mountain.mountain_phone }</h5>
-							<h5 class="mountain_content">산 평점  ★★★☆☆ </h5>
 
 						</div>
 				</div>
+				<input type="hidden" id="mountain_x" value="${mountain.mountain_x}" />
+				<input type="hidden" id="mountain_y" value="${mountain.mountain_y}" />
 				<div class="row mountain_inner_container">
 					<div class="nav-container">
 						<span class="nav-menu notice">공지사항</span>
@@ -69,23 +72,84 @@
 						<span class="nav-menu freeboard">자유게시판</span>
 					</div>
 					<div class="inner_content">
-							<p class="climb-calendar-label">산행일정</p>
-							<div class="row claendar-container">
-								<div class="col-lg-1"></div>
-								<div class="col-lg-10" id="calendar">
-									
+							<p class="climb-calendar-label">위치</p>
+							<div class="row">
+								<div class="col-lg-2"></div>
+								<div class="col-lg-8" id="map"></div>
+								<div class="col-lg-2"></div>
+							</div>
+							<p class="climb-calendar-label">등산로</p>
+							<div class="row">
+								<div class="col-lg-2"></div>
+								<!-- <div class="col-lg-8" id="map2"></div> -->
+								<div class="col-lg-2"></div>
+							</div>
+							<div class="row">
+								<div class="col-lg-2"></div>
+								<div class="col-lg-8" class="pathList">
+									<c:forEach var="path" items="${path}" varStatus="status">
+										<div class="path_container">
+											<button type="button" class="btn btn-sm btn-success rounded-pill viewpath">view</button>
+											<p class="path_count">${status.count}번째 등산로</p>
+											<span class="path_level">
+												<c:if test="${path.climb_path_difficult eq '쉬움'}">
+													<label class="level1">쉬움</label>
+												</c:if>
+												<c:if test="${path.climb_path_difficult eq '중간'}">
+													<label class="level2">중간</label>
+												</c:if>
+												<c:if test="${path.climb_path_difficult eq '어려움'}">
+													<label class="level3">어려움</label>
+												</c:if>
+											</span>
+											<h6 class="path_name">${path.climb_path_name} (${path.climb_path_length}km)</h6>
+											<p class="climb-time">등산 시간 : ${path.climb_path_uptime} &nbsp;&nbsp;&nbsp; /  &nbsp;&nbsp;&nbsp;하산 시간 : ${path.climb_path_downtime} </p>
+										</div>
+										<input type="hidden" value="${path.climb_path_XY}">
+									</c:forEach>
 								</div>
-								<div class="col-lg-1"></div>
+								<div class="col-lg-2"></div>
 							</div>
 					</div>
 				</div>
+				
+							<script type="text/javascript" src="http://dapi.kakao.com/v2/maps/sdk.js?appkey=13ced59236edab8d9f8aad2858084915&autoload=false"></script>
+							<script type="text/javascript">
+								
+								kakao.maps.load(function() {
+									var x = document.getElementById("mountain_y").value;
+									var y = document.getElementById("mountain_x").value;
+			
+									var mapContainer = document.getElementById('map'), // 지도를 표시할 div 
+								    mapOption = { 
+								        center: new kakao.maps.LatLng(x, y), // 지도의 중심좌표
+								        level: 4 // 지도의 확대 레벨
+								    };
+									var pathContainer = document.getElementById('map2'),
+									mapOption2 = { 
+								        center: new kakao.maps.LatLng(x, y), // 지도의 중심좌표
+								        level: 3 // 지도의 확대 레벨
+								    };
+									
+									var map = new kakao.maps.Map(mapContainer, mapOption);
+									//var map2 = new kakao.maps.Map(pathContainer, mapOption2);
+									
+									var markerPosition  = new kakao.maps.LatLng(x, y); 
+
+									var marker = new kakao.maps.Marker({
+									    position: markerPosition
+									});
+
+									marker.setMap(map);
+								}) 
+							</script>
 			</div>
 		</div>
 	</div>
 	</section>
 	<!-- Shop Section End -->
 	<jsp:include page="../common/footer.jsp"></jsp:include>
-
+	
 </body>
 
 

@@ -25,17 +25,7 @@ function getSchedule() {
 function addEvent() {
 		console.log("호출!!!!!!!!!");
 		var schedule = getSchedule();
-		/*var date = "now";
 		
-		if(str == null) {
-			console.log("시발2");
-			schedule = getSchedule(date);
-		} else {
-			console.log("존나2");
-			date = getCurrentPageDate(str);
-			schedule = getSchedule(date);
-		}*/
-
 	  var schList = [];
 	  for(var i=0; i<schedule.length; i++){
 		  if(schedule[i].finish_date == "donthave"){
