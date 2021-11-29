@@ -59,7 +59,7 @@ public class MountainApiServiceImpl implements MountainApiService {
 
 	@Override
 	public void getMountainDetailInfo() throws UnsupportedEncodingException {
-		String appKey = "KakaoAK 9ef1e91f45d9d6047704e764236f6d5a";
+		String appKey = "KakaoAK key";
 
 		List<MountainVO> mountainList = mapper.getMountainNameAddr();
 		for(MountainVO mountain : mountainList) {
@@ -126,7 +126,7 @@ public class MountainApiServiceImpl implements MountainApiService {
 		String clientId = "clintId";
         String clientSecret = "SecretKey";
         List<MountainVO> mountainList = mapper.getMountainNameCode();
-        int count = 0;
+
         log.info(mountainList);
         for(MountainVO mountain : mountainList) {
         	
@@ -262,10 +262,10 @@ public class MountainApiServiceImpl implements MountainApiService {
 	public void mountainInsert() throws ParserConfigurationException, IOException, SAXException {
 		 StringBuilder urlBuilder = new StringBuilder("http://apis.data.go.kr/1400000/service/cultureInfoService/mntInfoOpenAPI"); 
 	     urlBuilder.append("?" + URLEncoder.encode("serviceKey","UTF-8") + 
-	    		 "=Ur+wXwEv82BAS5HNUGwmeggp79q3UXvOI2rDzd+bSvc+6OU4cJuYtk2K8eyTsPeKxLUMVpjmxDCXQY41Zic/2Q=="); 
+	    		 "key"); 
 	     urlBuilder.append("&" + URLEncoder.encode("searchWrd","UTF-8") + "=" + URLEncoder.encode("", "UTF-8")); 
 	     urlBuilder.append("&" + URLEncoder.encode("ServiceKey","UTF-8") + "=" 
-	     + URLEncoder.encode("Ur+wXwEv82BAS5HNUGwmeggp79q3UXvOI2rDzd+bSvc+6OU4cJuYtk2K8eyTsPeKxLUMVpjmxDCXQY41Zic/2Q==", "UTF-8")); 
+	     + URLEncoder.encode("key", "UTF-8")); 
 	     
         //List<MountainVO> mountainList = new ArrayList<>();
         List<Map<String, String>> mountainList = new ArrayList<>();
