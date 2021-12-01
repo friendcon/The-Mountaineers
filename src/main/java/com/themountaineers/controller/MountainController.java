@@ -1,8 +1,9 @@
 package com.themountaineers.controller;
 
 import java.util.List;
+import java.util.Map;
 
-import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Autowired;import org.springframework.security.core.authority.mapping.MappableAttributesRetriever;
 import org.springframework.stereotype.Controller;
 import org.springframework.stereotype.Service;
 import org.springframework.ui.Model;
@@ -92,6 +93,54 @@ public class MountainController {
 		model.addAttribute("mountain", mountain);
 		model.addAttribute("path", path);
 	}
+	
+	@GetMapping("/auth")
+	public void mountainAuth(Model model, @RequestParam(value="mountain_code") String mountain_code){
+		model.addAttribute("mountain_code", mountain_code);
+	}
+	
+	@GetMapping("/compareXY")
+	public @ResponseBody String mountainXYcompare(@RequestParam("mountaincode") String mountain_code, 
+			@RequestParam("currentX") double currentX,
+			@RequestParam("currentY") double currentY) {
+		String resultVal = "";
+		log.info("Asdasdasd");
+		double mX = Double.parseDouble(String.valueOf(service.getMountainXY(mountain_code).get(0).get("mountain_y")));
+		double mY = Double.parseDouble(String.valueOf(service.getMountainXY(mountain_code).get(0).get("mountain_x")));
+		log.info(mX);
+		
+		double nowX = currentX;
+		double nowY = currentY;
+		double distanceMeter = distanceXY(mX, mY, nowX, nowY);
+		log.info(distanceMeter);
+		if(distanceMeter >= 100) {
+			resultVal = "failauth";
+		} else {
+			resultVal = "succesauth";
+		}
+		log.info(resultVal);
+		return resultVal;
+	}
+	
+	private static double distanceXY(double mountainX, double mountainY, double nowX, double nowY) {
+		double theta = mountainY-nowY;
+		double dist = (Math.sin(deg2rad(mountainX))*Math.sin(deg2rad(nowX))
+				+ Math.cos(deg2rad(mountainX))*Math.cos(deg2rad(nowX))*Math.cos(deg2rad(theta)));
+		
+		dist = Math.acos(dist);
+	    dist = rad2deg(dist);
+	    dist = (dist * 60 * 1.1515);
+	    dist =(dist * 1609.344);
+		return dist;
+	}
+
+    private static double deg2rad(double deg) {
+        return (deg * Math.PI / 180.0);
+    }
+
+    private static double rad2deg(double rad) {
+        return (rad * 180 / Math.PI);
+    }
 	
 	private static String changeTime(int time) {
 		String finTime = null;

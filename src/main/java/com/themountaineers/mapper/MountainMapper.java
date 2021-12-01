@@ -22,4 +22,5 @@ public interface MountainMapper {
 	public List<MountainVO> getMountainNameAddr();
 	public int updateMountainXYAddr(Map<String, Object> map);
 	public int updateAddrFin(Map<String, String> map);
+	public List<Map<String,String>> getXY(String mountain_code);
 }

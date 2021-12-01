@@ -148,4 +148,9 @@
 		set mountain_address = #{mountain_address}
 		where mountain_code = #{mountain_code}
 	</update>
+	
+	<select id="getXY" resultType="java.util.HashMap">
+		select mountain_x, mountain_y from mountain 
+		where mountain_code = #{mountain_code}
+	</select>
 </mapper>

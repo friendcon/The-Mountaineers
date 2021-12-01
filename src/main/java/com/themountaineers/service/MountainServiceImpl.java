@@ -185,4 +185,9 @@ public class MountainServiceImpl implements MountainService {
 		//log.info(afterPathList);
 		return afterPathList;
 	}
+	
+	@Override
+	public List<Map<String, String>> getMountainXY(String mountain_code) {
+		return mapper.getXY(mountain_code);
+	}
 }

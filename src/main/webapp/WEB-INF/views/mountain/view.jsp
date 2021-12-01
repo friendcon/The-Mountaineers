@@ -47,14 +47,12 @@
 			<div class="col-lg-9 col-md-9">
 				
 				<div class="mountain_information row ml-0">
-						<div class="schedule-here">
-						</div>
-						
 						<input type="hidden" id="mountain_code" name="mountain_code" value="${mountain.mountain_code}">
 						<div class="mountain_img_info">
 							<img class="mountain_image" name="mountain_image" src="${mountain.mountain_img_src}" />
 						</div>
 						<div class="mountain_content_info">
+							<button type="button" class="btn btn-primary rounded-pill viewpath" id="climbauth">등산인증하러가기</button>
 							<span class="mountain_name">${mountain.mountain_name} </span>
 							<h5 class="mountain_content">산 높이 : ${mountain.mountain_hight }</h5>
 							<h5 class="mountain_content">산 평점  ★★★☆☆ </h5><br>
@@ -145,7 +143,6 @@
 									
 									for(var i=0; i<pathViewButton.length; i++) {
 										var countFor = i+1;
-										console.log("시발" + countFor);
 										pathViewButton[i].addEventListener("click", addEvents = function(i){
 											console.log(countFor);
 											var btn = this.dataset.pathcount;

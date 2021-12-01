@@ -1,0 +1,21 @@
+@CHARSET "UTF-8";
+
+.uploadBtnContainer {
+	width:793px;
+	padding-left:20px;
+}
+.positionCheckContainer {
+	width:793px;
+	padding-left:20px;
+
+}
+.climb-box{
+	display: block;
+    width: 773px;
+    height: 300px;
+    border: solid 1px #dadada;
+    padding: 10px 14px 10px 14px;
+    box-sizing: border-box;
+    background: #fff;
+    position: relative;
+}

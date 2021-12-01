@@ -32,7 +32,14 @@
 			<artifactId>spring-webmvc</artifactId>
 			<version>${org.springframework-version}</version>
 		</dependency>
-		
+	
+		<!-- AWS SDK Java -->
+        <dependency>
+            <groupId>com.amazonaws</groupId>
+            <artifactId>aws-java-sdk</artifactId>
+            <version>1.11.66</version>
+        </dependency>
+
 		<!-- 좌표변환 -->
 		<!-- https://mvnrepository.com/artifact/org.locationtech.proj4j/proj4j -->
 		<dependency>

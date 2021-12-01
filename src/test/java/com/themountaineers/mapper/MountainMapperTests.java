@@ -104,12 +104,18 @@ public class MountainMapperTests {
 		log.info(vo.getPathList());
 	}*/
 	
-	@Test
+	/*@Test
 	public void MountainNameAddrUpdate() {
 		Map<String, Object> updateMap = new HashMap<>();
 		updateMap.put("mountain_x", 10.213123123);
         updateMap.put("mountain_y", 10.213123123);
         updateMap.put("mountain_code", "112300101");
 		mapper.updateMountainXYAddr(updateMap);
+	}*/
+	
+	@Test
+	public void MountainGetXY() {
+		List<Map<String, String>> map = mapper.getXY("112300101");
+		log.info(map);
 	}
 }

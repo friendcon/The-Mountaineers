@@ -2,6 +2,7 @@ package com.themountaineers.service;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -34,7 +35,7 @@ public class GroupServiceImpl implements GroupService {
 	@Override
 	public int groupInsert(GroupVO group, String memberId, List<Integer> groupHashList) {
 		int query1 = mapper.groupInsert(group);
-		log.info("°á°ú : " + query1);
+		log.info("ï¿½ï¿½ï¿½ : " + query1);
 		
 		group.getProfile().setGroup_no(group.getGroup_no());
 		
@@ -56,7 +57,7 @@ public class GroupServiceImpl implements GroupService {
 
 	@Override
 	public List<GroupVO> groupTotal(List<Integer> hashList, int lastGroup, String keyword) {
-		log.info("¼­ºñ½º±îÁö ¿Ô¾î");
+		log.info("ï¿½ï¿½ï¿½ñ½º±ï¿½ï¿½ï¿½ ï¿½Ô¾ï¿½");
 		return mapper.groupTotalSelect(hashList, lastGroup, keyword);
 	}
 
@@ -84,4 +85,6 @@ public class GroupServiceImpl implements GroupService {
 	public List<GroupClimbVO> groupScheduleGet(int group_no) {
 		return mapper.groupScheduleGet(group_no);
 	}
+
+	
 }
