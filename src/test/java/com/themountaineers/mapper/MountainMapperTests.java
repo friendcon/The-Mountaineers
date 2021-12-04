@@ -11,6 +11,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
+import com.themountaineers.domain.ClimbPathImageVO;
+import com.themountaineers.domain.ClimbPostVO;
 import com.themountaineers.domain.MountainPathVO;
 import com.themountaineers.domain.MountainVO;
 
@@ -113,9 +115,24 @@ public class MountainMapperTests {
 		mapper.updateMountainXYAddr(updateMap);
 	}*/
 	
-	@Test
+	/*@Test
 	public void MountainGetXY() {
 		List<Map<String, String>> map = mapper.getXY("112300101");
 		log.info(map);
+	}*/
+	
+	@Test
+	public void MountainAuthPost() {
+		ClimbPostVO vo = new ClimbPostVO();
+		vo.setClimb_post_content("수명산 인증했어요");
+		vo.setMem_id("sleep1027");
+		vo.setMountain_code("112300101");
+		mapper.postClimbAuthInsert(vo);
+		
+		ClimbPathImageVO imgVO = new ClimbPathImageVO();
+		imgVO.setClimb_post_img_path("ads");
+		imgVO.setClimb_post_num(vo.getClimb_post_num());
+		imgVO.setMem_id(vo.getMem_id());
+		mapper.postClimbAuthImageInsert(imgVO);
 	}
 }

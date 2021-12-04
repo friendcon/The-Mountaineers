@@ -6,6 +6,8 @@ import java.util.Map;
 
 import org.apache.ibatis.annotations.Param;
 
+import com.themountaineers.domain.ClimbPathImageVO;
+import com.themountaineers.domain.ClimbPostVO;
 import com.themountaineers.domain.MountainPathVO;
 import com.themountaineers.domain.MountainVO;
 
@@ -23,4 +25,6 @@ public interface MountainMapper {
 	public int updateMountainXYAddr(Map<String, Object> map);
 	public int updateAddrFin(Map<String, String> map);
 	public List<Map<String,String>> getXY(String mountain_code);
+	public int postClimbAuthInsert(ClimbPostVO post);
+	public int postClimbAuthImageInsert(ClimbPathImageVO imageVO);
 }

@@ -153,4 +153,34 @@
 		select mountain_x, mountain_y from mountain 
 		where mountain_code = #{mountain_code}
 	</select>
+	
+	<insert id="postClimbAuthInsert" parameterType="com.themountaineers.domain.ClimbPostVO">
+		insert into climb_post
+		(mem_id, mountain_code,
+		climb_post_content)
+		values
+		(
+			#{mem_id},
+			#{mountain_code}, #{climb_post_content}
+		)
+		
+		<selectKey keyProperty="climb_post_num" order="AFTER" resultType="int">
+			select  LAST_INSERT_ID()
+		</selectKey>
+	</insert>
+	
+	<insert id="postClimbAuthImageInsert" parameterType="com.themountaineers.domain.ClimbPathImageVO">
+		insert into climb_post_img
+		(
+			climb_post_num, climb_post_img_path, mem_id
+		)
+		values
+		(
+			#{climb_post_num}, #{climb_post_img_path},
+			#{mem_id}
+		)
+		<selectKey keyProperty="climb_post_num" order="AFTER" resultType="int">
+			select  LAST_INSERT_ID()
+		</selectKey>
+	</insert>
 </mapper>

@@ -10,6 +10,7 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>The Mountaineers | Group Create</title>
 <jsp:include page="../common/head.jsp"></jsp:include>
+<link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css"/>
 <link href="../../resources/css/group/groupcreate.css" rel="stylesheet" type="text/css">
 <link href="../../resources/css/mountain/mountainauth.css" rel="stylesheet" type="text/css">
 <jsp:include page="../common/script.jsp"></jsp:include>
@@ -49,9 +50,9 @@
 						<hr>
 					</div>
 				</div>
-				<input type="hidden" id="mountain_code" value="${mountain_code}">
-<%-- 				<input type="hidden" id="mountain_y" value="${mountainY}"> --%>
-				<form role="form" action="/group/new" method="post">
+				
+				<form role="form" action="/mountain/authPhoto" method="post" enctype="multipart/form-data">
+					<input type="hidden" id="mountain_code" name= "mountain_code" value="${mountain_code}">
 					<div class="positionCheckContainer">
 						<input type="text" id="positionButton" class="btn btn-success btn-lg btn-block positionBtn" value="위치인증">
 					</div>
@@ -59,36 +60,33 @@
 						<h3>
 							<label for="group_profile">인증사진업로드</label>
 						</h3>
-						<div class="profile_wrap">
-							<div class="profile_path">
-								<span class="climb-box">
-									<input type="text" id="group_profile" name="group_img" class="int" readonly >
-								</span>
+						<div class="swiper mySwiper">
+							<div class="swiper-wrapper" id="imgSrcCotainer">
 							</div>
-							
+							<div class="swiper-pagination"></div>
 						</div>
 						<div class="error_next_box"></div>
-						<div class="uploadResult">
-							
-						</div>
+						<div class="uploadResult"></div>
 					</div>
 					<div class="uploadBtnContainer">
-						<input type="text" class="btn btn-primary btn-lg btn-block uploadBtn" value="인증 사진 업로드">
+						<div>
+							<label id="fileBtnCss" for="fileBtn">인증사진업로드</label>
+						</div>
+						<input type="file" name="uploadFile" class="btn btn-primary btn-lg btn-block uploadBtn" id="fileBtn" value="인증 사진 업로드" multiple>
 					</div>
-					<div class="row group_input mb-4 mt-2">
-						<h3>
-							<label for="group_content">내용</label>
-						</h3>
-						<span class="box int_id">
-							<input type="text" id="group_content" name="group_content" class="int" maxlength="30"
-							placeholder="그룹에 대한 설명을 자유롭게해주세요.">
-						</span>
-						<div class="error_next_box"></div>
+					<div class="row group_input mb-4">
+							<h3>
+								<label for="group_content">내용</label>
+							</h3>
+							<span class="box int_id">
+								<input type="text" id="group_content" name="climb_post_content" class="int" maxlength="30"
+								placeholder="등산 인증 완료 소감을 입력하세요!">
+							</span>
+							<div class="error_next_box"></div>
 					</div>
-					
 					
 					<div class="btn_area">
-						<button type="submit" id="createButton">
+						<button type="submit" class="authBtn" id="createButton" disabled>
 							<span>등산인증하기</span>
 						</button>
 					</div>
@@ -99,7 +97,7 @@
 	</section>
 	<!-- Shop Section End -->
 	<jsp:include page="../common/footer.jsp"></jsp:include>
-
+	<script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
 </body>
 <jsp:include page="../common/script.jsp"></jsp:include>
 

@@ -1,5 +1,6 @@
 package com.themountaineers.controller;
 
+import java.security.Principal;
 import java.util.List;
 import java.util.Map;
 
@@ -8,14 +9,18 @@ import org.springframework.stereotype.Controller;
 import org.springframework.stereotype.Service;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.multipart.MultipartFile;
 
+import com.themountaineers.domain.ClimbPostVO;
 import com.themountaineers.domain.Criteria;
 import com.themountaineers.domain.MountainPathVO;
 import com.themountaineers.domain.MountainVO;
 import com.themountaineers.domain.PageMaker;
+import com.themountaineers.service.MountainAuthPostService;
 import com.themountaineers.service.MountainInfoService;
 import com.themountaineers.service.MountainService;
 
@@ -31,6 +36,9 @@ public class MountainController {
 
 	@Setter(onMethod_ = @Autowired)
 	private MountainService service;
+	
+	@Setter(onMethod_ = @Autowired)
+	private MountainAuthPostService authService;
 	
 	@GetMapping("/main") 
 	public void getMountainMain(Model model, 
@@ -108,7 +116,7 @@ public class MountainController {
 		double mX = Double.parseDouble(String.valueOf(service.getMountainXY(mountain_code).get(0).get("mountain_y")));
 		double mY = Double.parseDouble(String.valueOf(service.getMountainXY(mountain_code).get(0).get("mountain_x")));
 		log.info(mX);
-		
+		log.info(mY);
 		double nowX = currentX;
 		double nowY = currentY;
 		double distanceMeter = distanceXY(mX, mY, nowX, nowY);
@@ -120,6 +128,27 @@ public class MountainController {
 		}
 		log.info(resultVal);
 		return resultVal;
+	}
+	
+	@PostMapping("/authPhoto")
+	public String mountainAuthPhoto(Principal principal, ClimbPostVO post, MultipartFile[] uploadFile) {
+		log.info("********** 폼 업로드 **********");
+		log.info(uploadFile);
+		log.info(post.getMountain_code());
+		post.setMem_id(principal.getName());
+		service.postClimbAuth(post, uploadFile);
+		return "redirect:/mountain/main";
+	}
+	
+	@PostMapping("/getPath")
+	public @ResponseBody List<String> getPostPath(MultipartFile[] uploadFile) {
+
+		List<String> pathList = authService.getUploadPath(uploadFile);
+		log.info(uploadFile);
+		log.info(uploadFile.length);
+
+		log.info(pathList);
+		return pathList;
 	}
 	
 	private static double distanceXY(double mountainX, double mountainY, double nowX, double nowY) {

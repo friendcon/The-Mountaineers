@@ -1,18 +1,20 @@
 package com.themountaineers.service;
 
 import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
-import org.apache.ibatis.annotations.Param;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
+import org.springframework.web.multipart.MultipartFile;
 
+import com.amazonaws.services.s3.AmazonS3;
 import com.mysql.cj.x.protobuf.MysqlxDatatypes.Array;
+import com.themountaineers.domain.ClimbPathImageVO;
+import com.themountaineers.domain.ClimbPostVO;
 import com.themountaineers.domain.MountainPathVO;
 import com.themountaineers.domain.MountainVO;
 import com.themountaineers.mapper.MountainMapper;
@@ -26,6 +28,9 @@ public class MountainServiceImpl implements MountainService {
 
 	@Setter(onMethod_ = @Autowired)
 	private MountainMapper mapper;
+	
+	@Setter(onMethod_ = @Autowired)
+	private MountainAuthPostService service;
 	
 	@Override
 	public List<MountainVO> getMountainList(String lastMountain, String keyword) {
@@ -189,5 +194,16 @@ public class MountainServiceImpl implements MountainService {
 	@Override
 	public List<Map<String, String>> getMountainXY(String mountain_code) {
 		return mapper.getXY(mountain_code);
+	}
+
+	@Override
+	public void postClimbAuth(ClimbPostVO vo, MultipartFile[] file) {
+		mapper.postClimbAuthInsert(vo);
+		vo.getMem_id();
+		ClimbPathImageVO image = new ClimbPathImageVO();
+		image.setClimb_post_num(vo.getClimb_post_num());
+		image.setMem_id(vo.getMem_id());
+		image.setClimb_post_img_path("");
+		service.uploadMountainAuthPostImage(vo.getMem_id(), vo.getClimb_post_num(), file);
 	}
 }
