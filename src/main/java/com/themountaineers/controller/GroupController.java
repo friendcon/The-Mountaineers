@@ -146,7 +146,8 @@ public class GroupController {
 		model.addAttribute("group", group);
 		model.addAttribute("memcount", memberCount);
 	}
-	
+
+	// 캘린더에 데이터 뿌리기 위한 API
 	@GetMapping("/getSchedule")
 	public @ResponseBody List<GroupClimbVO> groupSchedule(@RequestParam("group_no") int group_no){
 		List<GroupClimbVO> list = service.groupScheduleGet(group_no);
@@ -154,7 +155,7 @@ public class GroupController {
 		return list;
 	}
 
-	// �׷���� ������
+	//
 	@GetMapping("/schedulePage")
 	public void groupScheduleCreate(Model model, @RequestParam("group_no") int group_no) {
 		log.info("�׷��ȣ : " + group_no);
