@@ -14,7 +14,11 @@ public class CheckTLS {
 		}
 		
 		URL url;
-		
+		/**
+		 * 외부 API 를 통해 산의 정상좌표를 가지고 오기 위한 과정
+		 * category_group_code AT4의 의미 => 관광명소
+		 * 카카오 지도 검색 API 에서 category_group_code 를 AT4 로 설정한 후
+		 */
 		url = new URL("https://dapi.kakao.com/v2/local/search/keyword.json?query=북한산 산&category_group_code=AT4");
 		HttpsURLConnection con = (HttpsURLConnection) url.openConnection();
 		System.out.println("Response Code : " + con.getResponseCode());

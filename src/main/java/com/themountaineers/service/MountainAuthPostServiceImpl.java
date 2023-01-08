@@ -25,6 +25,9 @@ import lombok.AllArgsConstructor;
 import lombok.Setter;
 import lombok.extern.log4j.Log4j;
 
+/**
+ * 등산인증사진 업로드는 S3 에 업로드
+ */
 @Log4j
 @Service
 @AllArgsConstructor

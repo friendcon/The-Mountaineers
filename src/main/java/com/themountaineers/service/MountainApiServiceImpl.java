@@ -57,6 +57,11 @@ public class MountainApiServiceImpl implements MountainApiService {
 	@Setter(onMethod_ = @Autowired)
 	private MountainMapper mapper;
 
+	/**
+	 * getMountainDetailInfo() : 산 상세정보는.. 카카오 맵 API 를 사용하였습니다..
+	 * 정상의 위도경도, 산 주소, 산 코드
+	 * @throws UnsupportedEncodingException
+	 */
 	@Override
 	public void getMountainDetailInfo() throws UnsupportedEncodingException {
 		String appKey = "KakaoAK key";
@@ -120,7 +125,10 @@ public class MountainApiServiceImpl implements MountainApiService {
 		}
 		
 	}
-	
+
+	/**
+	 * getImg() : 네이버 검색 API 에서 산 이미지를 가져온다
+	 */
 	@Override
 	public void getImg() {
 		String clientId = "clintId";
@@ -176,6 +184,11 @@ public class MountainApiServiceImpl implements MountainApiService {
         }
 	}
 
+	/**
+	 * mountainPathInsert() : unzip 폴더에서 파일 하나씩 순회하며 등산로 경로 Path 를 String 으로 만든 후 DB에 저장
+	 * @throws FileNotFoundException
+	 */
+
 	@Override
 	public void mountainPathInsert() throws FileNotFoundException {
 		String path = "C:\\Users\\imhyy\\OneDrive\\바탕 화면\\mountain\\mountain\\unzip";
@@ -220,7 +233,6 @@ public class MountainApiServiceImpl implements MountainApiService {
 				mapper.insertMountainPath(pathList);
 				pathList = new ArrayList<>();
 			}
-			
 		}
 	}
 
@@ -258,6 +270,12 @@ public class MountainApiServiceImpl implements MountainApiService {
 		}
 	}
 
+	/**
+	 * mountain 정보 OPEN API 를 활용하여 저장..
+	 * @throws ParserConfigurationException
+	 * @throws IOException
+	 * @throws SAXException
+	 */
 	@Override
 	public void mountainInsert() throws ParserConfigurationException, IOException, SAXException {
 		 StringBuilder urlBuilder = new StringBuilder("http://apis.data.go.kr/1400000/service/cultureInfoService/mntInfoOpenAPI"); 

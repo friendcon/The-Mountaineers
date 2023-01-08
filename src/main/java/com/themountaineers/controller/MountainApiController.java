@@ -21,7 +21,8 @@ import lombok.Setter;
 public class MountainApiController {
 	@Setter(onMethod_ = @Autowired)
 	private MountainApiService service;
-	
+
+	//
 	@GetMapping("/getAndsaveImage")
 	public void getMountainImg() {
 		service.getImg();
